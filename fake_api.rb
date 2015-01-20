@@ -5,6 +5,10 @@ get '/' do
   File.new('public/index.html').readlines
 end
 
+get '/api/v1/stops.geojson' do
+  json_response 200, 'stops.geojson'
+end
+
 get '/api/v1/stops.json' do
   if params[:bbox]
     json_response 200, 'stops_bbox.json'
