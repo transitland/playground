@@ -7,14 +7,46 @@
   <script src="/js/lib/jquery.js"></script>
   <script src="/js/lib/underscore.js"></script>
   <script src="/js/lib/backbone.js"></script>
-
-  <link href="/assets/developer-playground.css" rel='stylesheet' />
+  <script src="/js/lib/leaflet-src.js"></script>
   <link href="assets/bootstrap.css" rel="stylesheet">
+  <link href="assets/leaflet.css" rel="stylesheet">
+  <link href="/assets/developer-playground.css" rel='stylesheet' />
+
+ 
 </head>
 <body>
 
   <div id="developer-playground">
   </div>
+  
+  <script type="text/template" id="playground-template">
+      <h1>Query Builder</h1>
+        <p class="lead">I want to see ___ in ___.</p>
+        <button class="btn btn-lg btn-default">Submit Query</button>
+  </script>
+  
+  <script type="text/template" id="table-template">
+    <table>
+      <thead>
+        <tr>
+          <th>value1</th>
+          <th>value2</th>
+          <th>value3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% _.each(stops, function(stop) { %>
+          <tr>
+            <td><%= stop.get('value1') %></td>
+            <td><%= stop.get('value2') %></td>
+            <td><%= stop.get('value3') %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </script>
+
+ <!--  <div id="map"></div> -->
 
   <script src="js/lib/bootstrap.js"></script>
   <script type='text/javascript' src="/js/developer-playground.js"></script>
