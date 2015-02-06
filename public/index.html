@@ -19,33 +19,27 @@
   <div id="developer-playground">
   </div>
 
-  <!-- bootstrap text input -->
-  <!-- <input type="text" class="form-control" placeholder="Text input"> -->
-
-  <!-- bootstrap dropdown select -->
-  <!-- <select class="form-control">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select> -->
-
-  <!-- bootstrap radio select -->
-  <!-- <label class="radio-inline">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-  </label> -->
-
+ 
   <script type="text/template" id="playground-template">
       <h1>Query Builder</h1>
-        <p class="lead">I want to see ___ in ___.</p>
-        <button class="btn btn-lg btn-default">Submit Query</button>
+        <p class="lead">I want to see 
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">entity options<span class="caret"></span>
+          </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+
+        <select class="form-control">
+          <option>stops</option>
+          <option>operators</option></select> in
+          <select class="form-control">
+          <option>city</option>
+          <option>bounding box</option>.
+          <button class="btn btn-lg btn-default">Submit Query</button>
+        </p>
   </script>
 
   
