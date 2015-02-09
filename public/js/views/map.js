@@ -10,7 +10,7 @@ var MapView = Backbone.View.extend({
     }
 });
 
-// var mapView = new MapView();
+var mapView = new MapView();
 
 
 // var map = L.map('map').setView([37.749, -122.443], 1);
