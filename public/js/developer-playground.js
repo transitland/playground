@@ -21,6 +21,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     }
 });
 
+
 $(document).ready(function () {
     var startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
 });

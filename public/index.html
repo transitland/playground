@@ -23,24 +23,28 @@
   <script type="text/template" id="playground-template">
       <h1>Query Builder</h1>
         <p class="lead">I want to see 
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">entity options<span class="caret"></span>
-          </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
 
-        <select class="form-control">
-          <option>stops</option>
-          <option>operators</option></select> in
-          <select class="form-control">
-          <option>city</option>
-          <option>bounding box</option>.
-          <button class="btn btn-lg btn-default">Submit Query</button>
+         <span class="btn-group">
+            <select class="form-control" id="entity">
+              <option selected value="base">(entity)</option>
+              <option value="stops">stops</option>
+              <option value="operators">operators</option>
+            </select>
+          </span> by 
+
+          <span class="btn-group">
+            <select class="form-control" id="parameter">
+              <option>(parameter)<option>
+            </select>
+          </span>
         </p>
+
+        <div class="footer">
+          <button class="btn btn-lg btn-default">Submit Query</button>
+        </div>
+
   </script>
+
 
   
   <script type="text/template" id="table-template">
