@@ -21,6 +21,55 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     }
 });
 
+$(function() {
+    var selectValues = {
+        "stops": {
+            "bounding box": ""
+        },
+        "operator": {
+            "name": ""
+        }
+    };
+
+    var $entitySelect = $('select.form-control#entity');
+    var $parameterSelect = $('select.form-control#parameter');
+    $entitySelect.change(function() {
+        $parameterSelect.empty().append(function() {
+            var output = '';
+            $.each(selectValues[$entitySelect.val()], function(key, value) {
+                output += '<option>' + key + '</option>';
+            });
+            return output;
+        });
+    }).change();
+
+$(function() {
+    var selectValues = {
+        "stops": {
+            "bbox": ""
+        },
+        "operator": {
+            "name": ""
+        }
+    };
+
+    var $entitySelect = $('select.form-control#entity');
+    var $parameterSelect = $('select#parameter');
+    $entitySelect.change(function() {
+        $parameterSelect.empty().append(function() {
+            var output = '';
+            $.each(selectValues[$entitySelect.val()], function(key, value) {
+                output += '<option>' + key + '</option>';
+            });
+            return output;
+        });
+    }).change();
+
+   
+});
+   
+});
+
 
 $(document).ready(function () {
     var startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
