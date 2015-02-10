@@ -11,6 +11,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     // but this worked:
     template: _.template($('#playground-template').html()),
 
+    events: {
+        'change .form-control#entity': 'changeParam'
+    },
+
     initialize: function () {
         this.render();
     },
@@ -18,61 +22,40 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         return this;
-    }
-});
+    },
 
-$(function() {
-    var selectValues = {
-        "stops": {
-            "bounding box": ""
-        },
-        "operator": {
-            "name": ""
-        }
-    };
+    changeParam: function() {
+        var selectValues = {
+            "stops": {
+                "bbox": ""
+            },
+            "operator": {
+                "name": ""
+            }
+        };
 
-    var $entitySelect = $('select.form-control#entity');
-    var $parameterSelect = $('select.form-control#parameter');
-    $entitySelect.change(function() {
-        $parameterSelect.empty().append(function() {
-            var output = '';
-            $.each(selectValues[$entitySelect.val()], function(key, value) {
-                output += '<option>' + key + '</option>';
+        var $entitySelect = $('select.form-control#entity');
+        var $parameterSelect = $('select.form-control#parameter');
+        $entitySelect.change(function() {
+            $parameterSelect.empty().append(function() {
+                var output = '';
+                $.each(selectValues[$entitySelect.val()], function(key, value) {
+                    output += '<option>' + key + '</option>';
+                });
+                console.log("HI!");
+                return output;
             });
-            return output;
         });
-    }).change();
-
-$(function() {
-    var selectValues = {
-        "stops": {
-            "bbox": ""
-        },
-        "operator": {
-            "name": ""
         }
-    };
-
-    var $entitySelect = $('select.form-control#entity');
-    var $parameterSelect = $('select#parameter');
-    $entitySelect.change(function() {
-        $parameterSelect.empty().append(function() {
-            var output = '';
-            $.each(selectValues[$entitySelect.val()], function(key, value) {
-                output += '<option>' + key + '</option>';
-            });
-            return output;
-        });
-    }).change();
-
-   
 });
-   
-});
+
+
 
 
 $(document).ready(function () {
     var startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
+    // changeParam();
+    
 });
 
 
