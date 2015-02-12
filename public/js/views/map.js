@@ -3,11 +3,17 @@ var DeveloperPlayground = DeveloperPlayground || {};
 DeveloperPlayground.MapView = Backbone.View.extend({
     el: '#map-view',
 
+    // template: _.template($('#map-view').html()),
+
+	// events: {},
+
     initialize: function () {
         console.log("mapview initialized");
+        this.render();
     },
     
     render: function() {
+		this.$el.html(this.template());
         var map = L.map(this.el).setView([37.77293, -122.21433], 4);
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(map);
         return this;
