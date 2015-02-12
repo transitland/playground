@@ -21,8 +21,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     //     var template = _.template($('#map-template').html(), {stops: stops.models});
     //     this.$el.html(template);
 
-    //     var map = L.map(this.$('#map')[0]).setView ([55.75, 37.58], 10); L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {
-    //     	maxZoom: 18
+    //     var map = L.map(this.$('#map')[0]).setView ([55.75, 37.58], 10); L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {maxZoom: 18
     //     }).addTo(map);
 
     //     console.log("MAP!!");
@@ -35,7 +34,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
 $(document).ready(function () {
     var mapView = new DeveloperPlayground.MapView();
-    console.log("mapView added")
+    console.log("mapView added");
 });
 
 

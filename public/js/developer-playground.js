@@ -6,7 +6,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     template: _.template($('#playground-template').html()),
 
     events: {
-        'change .form-control#entity': 'changeParam'
+        'change .form-control#entity': 'changeMode',
+        'change .form-control#parameter': 'changeView',
     },
 
     initialize: function () {
@@ -18,21 +19,28 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    changeParam: function() {
+    changeView: function(view) {
+        console.log("changeView:", view);
+        $("#map-view").text("Ok!");
+    },
 
+    changeMode: function() {
          // this works, but it might not be best practice
          // please review
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
-
         var selectValues = {
             "stops": {
-                "bbox": ""
+                "bbox": "",
+                "hello": "world",
             },
             "operator": {
-                "name": ""
+                "name": "",
             }
         };
+
+        var mode = $entitySelect.val();
+        console.log("Setting mode:", mode);
 
         $parameterSelect.empty().append(function() {
             var output = '';
