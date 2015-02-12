@@ -1,5 +1,7 @@
-var Stops = Backbone.Collection.extend({
-	model: Stop
+var DeveloperPlayground = DeveloperPlayground || {};
+
+DeveloperPlayground.Stops = Backbone.Collection.extend({
+	model: DeveloperPlayground.Stop
 });
 
 // how to create models from a collection? (rather than

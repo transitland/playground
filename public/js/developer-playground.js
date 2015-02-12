@@ -1,4 +1,4 @@
-window.DeveloperPlayground = {};
+var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     el: "#developer-playground",

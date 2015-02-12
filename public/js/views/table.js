@@ -1,4 +1,6 @@
-var TableView = Backbone.View.extend({
+var DeveloperPlayground = DeveloperPlayground || {};
+
+DeveloperPlayground.TableView = Backbone.View.extend({
     el: '.table',
 
     template: _.template($('#table-template').html(), {stops: stops.models}),

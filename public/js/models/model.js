@@ -1,4 +1,6 @@
-var Stop = Backbone.Model.extend({
+var DeveloperPlayground = DeveloperPlayground || {};
+
+DeveloperPlayground.Stop = Backbone.Model.extend({
 	// use default values?
 	// defaults: {
 	// 	example: 'example',
