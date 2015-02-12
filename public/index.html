@@ -52,29 +52,6 @@
     <h1>map-template</h1>
   </script>
 
-
-  
-  <script type="text/template" id="table-template">
-    <table>
-      <thead>
-        <tr>
-          <th>value1</th>
-          <th>value2</th>
-          <th>value3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% _.each(stops, function(stop) { %>
-          <tr>
-            <td><%= stop.get('value1') %></td>
-            <td><%= stop.get('value2') %></td>
-            <td><%= stop.get('value3') %></td>
-          </tr>
-        <% }); %>
-      </tbody>
-    </table>
-  </script>
-
  <!--  <div id="map"></div> -->
 
   <script src="js/lib/bootstrap.js"></script>
