@@ -6,8 +6,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     template: _.template($('#playground-template').html()),
 
     events: {
-        'change .form-control#entity': 'changeMode',
-        'change .form-control#parameter': 'changeView',
+        'change .form-control#entity': 'changeParam',
+        // 'change .form-control#parameter': 'changeView',
     },
 
     initialize: function () {
@@ -18,8 +18,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     
     render: function() {
         this.$el.html(this.template());
-        this.$("#map-view").append(this.mapview.render().el);
-        this.$("#table-view").append(this.tableview.render().el);
+        // this.$("#map-view").append(this.mapview.render().el);
+        // this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
 
@@ -43,8 +43,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
-        var mode = $entitySelect.val();
-        console.log("Setting mode:", mode);
+        // var mode = $entitySelect.val();
+        // console.log("Setting mode:", mode);
 
         $parameterSelect.empty().append(function() {
             var output = '';
