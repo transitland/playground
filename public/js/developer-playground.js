@@ -11,20 +11,24 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     },
 
     initialize: function () {
+        this.mapview = new DeveloperPlayground.Mapview;
+        this.tableview = new DeveloperPlayground.TableView;
         this.render();
     },
     
     render: function() {
         this.$el.html(this.template());
+        this.$("#map-view").append(this.mapview.render().el);
+        this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
 
-    changeView: function(view) {
-        console.log("changeView:", view);
-        $("#map-view").text("Ok!");
-    },
+    // changeView: function(view) {
+    //     console.log("changeView:", view);
+    //     $("#map-view").text("Ok!");
+    // },
 
-    changeMode: function() {
+    changeParam: function() {
          // this works, but it might not be best practice
          // please review
         var $entitySelect = $('select.form-control#entity');
