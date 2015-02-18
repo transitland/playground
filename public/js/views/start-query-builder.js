@@ -23,14 +23,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    // changeView: function(view) {
-    //     console.log("changeView:", view);
-    //     $("#map-view").text("Ok!");
-    // },
+    
 
     changeParam: function() {
-         // this works, but it might not be best practice
-         // please review
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var selectValues = {
@@ -43,8 +38,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
-        // var mode = $entitySelect.val();
-        // console.log("Setting mode:", mode);
 
         $parameterSelect.empty().append(function() {
             var output = '';
