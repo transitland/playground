@@ -19,10 +19,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     
     render: function() {
         this.$el.html(this.template());
-        // this.mapview.render();
+        $(".form-control#operator-name").hide();
         // this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
+
+    // set up separate function to show/hide name menu on change to entity and parameter form controls
 
     submit: function(){
         var $entitySelect = $('select.form-control#entity');
@@ -78,6 +80,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 "BART": "",
             }
         };
+
+        $(".form-control#operator-name").show();
+
     
         $nameSelect.empty().append(function() {
             var output = '';
