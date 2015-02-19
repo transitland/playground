@@ -25,22 +25,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     },
 
     // if name is selected from name select menu upon submit button click, generate URL
-
-    submit: function() {
-        var $entitySelect = $('select.form-control#entity');
-        var $parameterSelect = $('select.form-control#parameter');
-        var $nameSelect = $('select.form-control#operator-name');
-        if($parameterSelect.val() == "bbox") {
-            this.mapview.render();
-        } else if($parameterSelect.val() == "hello") {
-            alert($parameterSelect.val());
-        } else if ($parameterSelect.val() == "name") {
-            console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
-            //generateURL($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
-        } else {
-            alert("nope");
-        }
-    },
+    // http://localhost:4567/api/v1/operators.json?identifier=BART
 
     changeParam: function() {
         var $entitySelect = $('select.form-control#entity');
@@ -50,17 +35,16 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 "bbox": "",
                 "hello": "",
             },
-            "operator": {
+            "operators": {
                 "hello": "",
                 "name": "",
             }
         };
 
         console.log($parameterSelect.val());
-        console.log('test');
 
 
-        if($entitySelect.val() != "operator") {
+        if($entitySelect.val() != "operators") {
             $(".form-control#operator-name").hide();
         }
 
@@ -97,5 +81,29 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             });
             return output;
         });
+    },
+
+    // generateURL: function($entitySelect,$parameterSelect,$nameSelect) {
+    // // generateURL: function($entitySelect.val(),$parameterSelect.val(),$nameSelect.val()) {
+    //     // console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
+    //     console.log($entitySelect,$parameterSelect,$nameSelect);
+    // },
+
+    submit: function() {
+        var $entitySelect = $('select.form-control#entity');
+        var $parameterSelect = $('select.form-control#parameter');
+        var $nameSelect = $('select.form-control#operator-name');
+        if($parameterSelect.val() == "bbox") {
+            this.mapview.render();
+        } else if($parameterSelect.val() == "hello") {
+            alert("please select a different parameter");
+        } else if ($parameterSelect.val() == "name") {
+            console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
+            console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
+        } else {
+            alert("please select a parameter");
+        }
     }
+    
+
 });
