@@ -8,7 +8,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit'
+        'click .btn' : 'submit',
     },
 
     initialize: function () {
@@ -24,9 +24,20 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    // set up separate function to show/hide name menu on change to entity and parameter form controls
+    // displayNameMenu: function() {
+    //     var $parameterSelect = $('select.form-control#parameter');
+    //     if($parameterSelect.val() == "name") {
+    //         $(".form-control#operator-name").show();
+    //     } else {
+    //         $(".form-control#operator-name").hide();
+    //     }
+    // },
 
-    submit: function(){
+    // set up separate function to show/hide name menu on change to entity and parameter form controls
+    // if parameter is changed to name, display name select menu
+    // if name is selected from name select menu upon submit button click, generate URL
+
+    submit: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
@@ -42,11 +53,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         }
     },
 
-    // if parameter is changed to name, display name select menu
-    // if name is selected from name select menu upon submit button click, generate URL
-    // 
-    
-
     changeParam: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
@@ -61,6 +67,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
+        console.log($parameterSelect.val());
+        console.log('test');
+
+
+        if($entitySelect.val() != "operator") {
+            $(".form-control#operator-name").hide();
+        }
 
         $parameterSelect.empty().append(function() {
             var output = '';
@@ -81,7 +94,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
-        $(".form-control#operator-name").show();
+        // $(".form-control#operator-name").show();
+
+        if($parameterSelect.val() == "name") {
+            $(".form-control#operator-name").show();
+        } else {
+            $(".form-control#operator-name").hide();
+        }
 
     
         $nameSelect.empty().append(function() {
