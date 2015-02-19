@@ -7,11 +7,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     events: {
         'change .form-control#entity': 'changeParam',
-        'click .btn' : 'alert'
-
-        // set up event to listen for submit button click, show mapview, tableview on click
-        // query builder view should move to header on click (is this a separate view?)
-        // 'onclick .submit-button': '(listView.$el.append(itemView.el;)'
+        'click .btn' : 'submit'
     },
 
     initialize: function () {
@@ -27,7 +23,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    alert: function(){
+    submit: function(){
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         if($parameterSelect.val() == "bbox") {
