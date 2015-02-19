@@ -24,17 +24,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    // displayNameMenu: function() {
-    //     var $parameterSelect = $('select.form-control#parameter');
-    //     if($parameterSelect.val() == "name") {
-    //         $(".form-control#operator-name").show();
-    //     } else {
-    //         $(".form-control#operator-name").hide();
-    //     }
-    // },
-
-    // set up separate function to show/hide name menu on change to entity and parameter form controls
-    // if parameter is changed to name, display name select menu
     // if name is selected from name select menu upon submit button click, generate URL
 
     submit: function() {
@@ -93,8 +82,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 "BART": "",
             }
         };
-
-        // $(".form-control#operator-name").show();
 
         if($parameterSelect.val() == "name") {
             $(".form-control#operator-name").show();
