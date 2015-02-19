@@ -7,6 +7,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     events: {
         'change .form-control#entity': 'changeParam',
+        'change .form-control#parameter': 'changeName',
         'click .btn' : 'submit'
     },
 
@@ -26,16 +27,22 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     submit: function(){
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
+        var $nameSelect = $('select.form-control#operator-name');
         if($parameterSelect.val() == "bbox") {
             this.mapview.render();
         } else if($parameterSelect.val() == "hello") {
             alert($parameterSelect.val());
-        } else if ($parameterSelect.val() == "name") { alert("add text input functionality");
+        } else if ($parameterSelect.val() == "name") {
+            console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
+            //generateURL($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
         } else {
             alert("nope");
         }
     },
 
+    // if parameter is changed to name, display name select menu
+    // if name is selected from name select menu upon submit button click, generate URL
+    // 
     
 
     changeParam: function() {
@@ -44,9 +51,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var selectValues = {
             "stops": {
                 "bbox": "",
-                "hello": "world",
+                "hello": "",
             },
             "operator": {
+                "hello": "",
                 "name": "",
             }
         };
@@ -55,6 +63,25 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         $parameterSelect.empty().append(function() {
             var output = '';
             $.each(selectValues[$entitySelect.val()], function(key, value) {
+                output += '<option>' + key + '</option>';
+            });
+            return output;
+        });
+    },
+    
+    changeName: function() {
+        var $parameterSelect = $('select.form-control#parameter');
+        var $nameSelect = $('select.form-control#operator-name');
+        var selectName = {
+            "name": {
+                "Muni": "",
+                "BART": "",
+            }
+        };
+    
+        $nameSelect.empty().append(function() {
+            var output = '';
+            $.each(selectName[$parameterSelect.val()], function(key, value) {
                 output += '<option>' + key + '</option>';
             });
             return output;
