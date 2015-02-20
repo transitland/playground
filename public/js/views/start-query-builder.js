@@ -99,7 +99,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
             console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
+            var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
             console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
+            console.log($.getJSON(url));
         } else {
             alert("please select a parameter");
         }
