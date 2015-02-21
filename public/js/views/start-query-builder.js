@@ -14,6 +14,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     initialize: function () {
         this.mapview = new DeveloperPlayground.MapView();
         // this.tableview = new DeveloperPlayground.TableView();
+        // initialize two collections here
+        this.operators = new DeveloperPlayground.Operators();
         this.render();
     },
     
@@ -99,6 +101,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
             console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
             console.log($.getJSON(url));
+            if ($entitySelect.val() == 'operator') {
+                this.operators.setQueryParameters({
+                    identifier: $nameSelect.val()
+                });
+                this.operators.fetch()
+            }
         } else {
             alert("please select a parameter");
         }

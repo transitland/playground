@@ -1,4 +1,4 @@
-var app = app || {};
+var DeveloperPlayground = DeveloperPlayground || {};
 
 app.ChildView = Backbone.View.extend({
 	tag name: 'li',
