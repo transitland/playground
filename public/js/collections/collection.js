@@ -1,20 +1,17 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
-var url = 'http://localhost:4567/api/v1/operators.json?identifier=Muni';
 
-var DeveloperPlayground.stops = new DeveloperPlayground.Stops(myJSON, {view: this});
+var Stops = Backbone.Collection.extend({
+	model: DeveloperPlayground.Stop,
+	url: 'http://localhost:4567/api/v1/operators.json?identifier=BART'
+});
 
-var myJSON = $.getJSON(url);
+var stops = new Stops();
 
-DeveloperPlayground.Stops = Backbone.Collection.extend({
-	model: DeveloperPlayground.Stop
-
-	initialize: function (models, options){
-
-	}
-
+stops.fetch();
+stops.bind('reset', function() {
+	StartQueryBuilderView.render();
 });
 
 
-// how to create models from a collection? (rather than
-// crete a collection from a set of models)
+

@@ -24,9 +24,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    // if name is selected from name select menu upon submit button click, generate URL
-    // http://localhost:4567/api/v1/operators.json?identifier=BART
-
     changeParam: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
