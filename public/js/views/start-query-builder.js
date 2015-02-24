@@ -82,12 +82,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         });
     },
 
-    // generateURL: function($entitySelect,$parameterSelect,$nameSelect) {
-    // // generateURL: function($entitySelect.val(),$parameterSelect.val(),$nameSelect.val()) {
-    //     // console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
-    //     console.log($entitySelect,$parameterSelect,$nameSelect);
-    // },
-
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
@@ -97,20 +91,21 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else if($parameterSelect.val() == "hello") {
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
-            console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
+            // console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
             var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
-            console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
-            console.log($.getJSON(url));
+            // console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
+            // console.log($.getJSON(url));
+            // look at this:
             if ($entitySelect.val() == 'operator') {
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
-                this.operators.fetch()
+                this.operators.fetch();
             }
+            // **pass param to collection when collection is initialized in playground, generate url in collection
         } else {
             alert("please select a parameter");
         }
     }
-    
 
 });
