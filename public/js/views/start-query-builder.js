@@ -14,17 +14,15 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     initialize: function () {
         this.mapview = new DeveloperPlayground.MapView();
         // this.tableview = new DeveloperPlayground.TableView();
-        // initialize two collections here
         this.operators = new DeveloperPlayground.Operators();
         this.stops = new DeveloperPlayground.Stops();
-        // this.operator = new DeveloperPlayground.Operator();
         this.render();
     },
     
     render: function() {
         this.$el.html(this.template());
         $(".form-control#operator-name").hide();
-        // this.$("#table-view").append(this.tableview.render().el);
+        this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
 
