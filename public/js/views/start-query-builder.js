@@ -16,6 +16,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         // this.tableview = new DeveloperPlayground.TableView();
         // initialize two collections here
         this.operators = new DeveloperPlayground.Operators();
+        // this.operator = new DeveloperPlayground.Operator();
         this.render();
     },
     
@@ -88,18 +89,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else if($parameterSelect.val() == "hello") {
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
-            // console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
-            // var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
-            // console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
-            // console.log($.getJSON(url));
-            // look at this:
             if ($entitySelect.val() == 'operators') {
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
                 this.operators.fetch();
             }
-            // **pass param to collection when collection is initialized in playground, generate url in collection
         } else {
             alert("please select a parameter");
         }
