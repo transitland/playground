@@ -16,6 +16,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         // this.tableview = new DeveloperPlayground.TableView();
         // initialize two collections here
         this.operators = new DeveloperPlayground.Operators();
+        this.stops = new DeveloperPlayground.Stops();
         // this.operator = new DeveloperPlayground.Operator();
         this.render();
     },
@@ -88,6 +89,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $nameSelect = $('select.form-control#operator-name');
         if($parameterSelect.val() == "bbox") {
             this.mapview.render();
+            // temporary functionality to get stop model working, bbox input not implemented
+            this.stops.setQueryParameters({
+                    url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
+                });
+                this.stops.fetch();
+                // DeveloperPlayground.startQueryBuilderView.stops.models[0].attributes.geometry.coordinates
+
         } else if($parameterSelect.val() == "hello") {
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
@@ -96,6 +104,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                     identifier: $nameSelect.val()
                 });
                 this.operators.fetch();
+                // DeveloperPlayground.startQueryBuilderView.operators.first().attributes.identifiers[0]
             }
         } else {
             alert("please select a parameter");
