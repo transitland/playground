@@ -7,6 +7,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     // var geojsonLayer = new L.GeoJSON.AJAX("http://localhost:4567/api/v1/operators.json?identifier=BART", {onEachFeature:popUp});
 
+    // faked API endpoint for stops in a bounding box: http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861
+
 
     initialize: function () {
         console.log("mapview initialized");

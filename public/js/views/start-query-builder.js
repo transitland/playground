@@ -57,6 +57,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeName: function() {
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
+        // populate selectName using operators API endpoint
+        // operators faked API endpoint: http://localhost:4567/api/v1/operators.json
         var selectName = {
             "name": {
                 "Muni": "",
