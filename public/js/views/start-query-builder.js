@@ -22,7 +22,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $(".form-control#operator-name").hide();
-        this.$("#table-view").append(this.tableview.render().el);
+        // this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
 
