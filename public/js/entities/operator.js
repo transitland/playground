@@ -10,6 +10,7 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 	},
 	// this overrides built-in parse function
 	parse: function(response, xhr) {
+		// console.log(response.operators);
 		return response.operators;
 	}
 });

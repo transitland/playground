@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
+    DeveloperPlayground.startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
 
     // changeParam();
     

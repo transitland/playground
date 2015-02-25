@@ -40,9 +40,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
-        console.log($parameterSelect.val());
-
-
         if($entitySelect.val() != "operators") {
             $(".form-control#operator-name").hide();
         }
@@ -92,11 +89,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
             // console.log($entitySelect.val(),$parameterSelect.val(),$nameSelect.val());
-            var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
+            // var url = 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val();
             // console.log('http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+$nameSelect.val());
             // console.log($.getJSON(url));
             // look at this:
-            if ($entitySelect.val() == 'operator') {
+            if ($entitySelect.val() == 'operators') {
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
