@@ -88,6 +88,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "bbox") {
             this.mapview.render();
             // temporary functionality to get stop model working, bbox input not implemented
+            // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
