@@ -17,12 +17,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.stops = new DeveloperPlayground.Stops();
         // Create views
         this.mapview = new DeveloperPlayground.MapView();
+        this.tableview = new DeveloperPlayground.TableView();
         // Connect collections to views
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
+        // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
         // Render it all
         this.render();
-        // this.tableview = new DeveloperPlayground.TableView();
-        // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
 
 
     },
@@ -94,26 +94,24 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
         if($parameterSelect.val() == "bbox") {
-            this.mapview.render();
+
             // temporary functionality to get stop model working, bbox input not implemented
             // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
                 this.stops.fetch();
-                // DeveloperPlayground.startQueryBuilderView.stops.models[0].attributes.geometry.coordinates
-
+                this.tableview.render();
+                this.mapview.render();
         } else if($parameterSelect.val() == "hello") {
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
-                this.tableview.render();
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
                 this.operators.fetch();
                 
-                // DeveloperPlayground.startQueryBuilderView.operators.first().attributes.identifiers[0]
             }
         } else {
             alert("please select a parameter");
