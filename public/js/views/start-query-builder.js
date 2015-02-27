@@ -21,8 +21,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
         // Render it all
         this.render();
-        this.tableview = new DeveloperPlayground.TableView();
-        this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
+        // this.tableview = new DeveloperPlayground.TableView();
+        // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
 
 
     },
