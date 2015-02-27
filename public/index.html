@@ -7,11 +7,11 @@
   <script src="/js/lib/jquery.js"></script>
   <script src="/js/lib/underscore.js"></script>
   <script src="/js/lib/backbone.js"></script>
-  <script src="/js/lib/leaflet-src.js"></script>
   <link href="/assets/bootstrap.css" rel="stylesheet">
-  <link href="/assets/leaflet.css" rel="stylesheet">
   <link href="/assets/developer-playground.css" rel='stylesheet' />
 
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
  
 </head>
 <body>
@@ -26,7 +26,7 @@
 
          <span class="btn-group">
             <select class="form-control" id="entity">
-              <option selected value="base">(entity)</option>
+              <option value="base">(entity)</option>
               <option value="stops">stops</option>
               <option value="operators">operator</option>
             </select>
@@ -34,7 +34,7 @@
 
           <span class="btn-group">
             <select class="form-control" id="parameter">
-              <option><option>
+              <option value="bbox">bbox</option>
             </select>
           </span>
           <span class="btn-group">
@@ -49,8 +49,19 @@
         </div>
 
         <div id="map-view" style="width:400px;height:200px;"></div>
-        <div id="table-view" style="background: white; width:400px;height:200px;"></div>
-        // <div id="stop-view"></div>
+        <div id="table-view" style="background: white; width:400px;height:200px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Longitude</th>
+                <th>Latitude</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
   </script>
 
   

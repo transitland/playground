@@ -12,13 +12,21 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     },
 
     initialize: function () {
-        this.mapview = new DeveloperPlayground.MapView();
-        // this.tableview = new DeveloperPlayground.TableView();
+        // Create operator and stop collections
         this.operators = new DeveloperPlayground.Operators();
         this.stops = new DeveloperPlayground.Stops();
+        // Create views
+        this.mapview = new DeveloperPlayground.MapView();
+        // Connect collections to views
+        this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
+        // Render it all
         this.render();
+        this.tableview = new DeveloperPlayground.TableView();
+        this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
+
+
     },
-    
+
     render: function() {
         this.$el.html(this.template());
         $(".form-control#operator-name").hide();
@@ -99,10 +107,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
+                this.tableview.render();
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
                 this.operators.fetch();
+                
                 // DeveloperPlayground.startQueryBuilderView.operators.first().attributes.identifiers[0]
             }
         } else {

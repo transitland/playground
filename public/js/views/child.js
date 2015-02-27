@@ -2,7 +2,7 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 app.ChildView = Backbone.View.extend({
 	tag name: 'li',
-	template: _.template( $('#item-template').html() ),
+	template: _.template( $('#stop-template').html() ),
 	// events: {},
 	
 	initialize: function() {
