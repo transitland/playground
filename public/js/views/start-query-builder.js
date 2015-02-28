@@ -20,7 +20,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.tableview = new DeveloperPlayground.TableView();
         // Connect collections to views
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
-        // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
+        this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
         // Render it all
         this.render();
 
@@ -100,6 +100,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
+            // DeveloperPlayground.startQueryBuilderView.stops.models[0].attributes.geometry.coordinates
                 this.stops.fetch();
                 this.tableview.render();
                 this.mapview.render();
@@ -110,7 +111,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
+                // DeveloperPlayground.startQueryBuilderView.operators.first().attributes.identifiers[0]
                 this.operators.fetch();
+
                 
             }
         } else {

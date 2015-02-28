@@ -1,14 +1,14 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.TableView = Backbone.View.extend({
-    el: '#table-view',
+    el: 'tbody',
 
     // template: _.template($('#table-template').html(), {stops: stops.models}),
      
     initialize:function(){
         // this.render();
         console.log("tableview initialized");
-        // this.table = null;
+        this.table = null;
         // this.listenTo(DeveloperPlayground.Stops, 'add', this.addOne);
         // DeveloperPlayground.Stops.fetch():
     },
@@ -26,8 +26,13 @@ DeveloperPlayground.TableView = Backbone.View.extend({
 
     add_stop: function(stop) {
         // add a stop to the table
-        var s = {'type': 'Feature', 'geometry':stop.attributes.geometry};
+        var s = {
+            'type': 'Feature',
+            'longitude':stop.attributes.geometry.coordinates[0],
+            'latitude':stop.attributes.geometry.coordinates[1]
+        };
         console.log(s);
+        s.addTo(this.table);
     }
 
 });
