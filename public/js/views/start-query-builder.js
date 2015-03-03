@@ -89,6 +89,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         });
     },
 
+    // var rowTemplate = _.template("<tr>"+"<td class='longitude'><%= latitude %></td>"+"<tr>"+"<td class='latitude'><%= longitude %></td>"+"</tr>");
+
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
