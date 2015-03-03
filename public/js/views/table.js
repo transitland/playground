@@ -32,7 +32,7 @@ DeveloperPlayground.TableView = Backbone.View.extend({
             'latitude':stop.attributes.geometry.coordinates[1]
         };
         console.log(s);
-        s.addTo(this.table);
+        // s.addTo(this.table);
     }
 
 });
