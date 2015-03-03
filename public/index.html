@@ -49,8 +49,7 @@
         </div>
 
         <div id="map-view" style="width:400px;height:200px;"></div>
-        <div id="table-view" style="background: white; width:400px;height:200px;">
-          <table>
+        <table id="table-view" style="background: white; width:400px;height:200px;">
             <thead>
               <tr>
                 <th>Longitude</th>
@@ -60,8 +59,12 @@
             <tbody>
             </tbody>
           </table>
-        </div>
 
+  </script>
+
+  <script type="text/template" id="row-template">
+    <td><%= geometry.coordinates[0] %></td>
+    <td><%= geometry.coordinates[1] %></td>
   </script>
 
   
