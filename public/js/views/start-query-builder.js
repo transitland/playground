@@ -17,7 +17,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.stops = new DeveloperPlayground.Stops();
         // Create views
         this.mapview = new DeveloperPlayground.MapView();
-        // this.tableview = new DeveloperPlayground.TableView();
         // Connect collections to views
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
         // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
@@ -89,7 +88,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         });
     },
 
-    // var rowTemplate = _.template("<tr>"+"<td class='longitude'><%= latitude %></td>"+"<tr>"+"<td class='latitude'><%= longitude %></td>"+"</tr>");
 
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
@@ -102,7 +100,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
-            // DeveloperPlayground.startQueryBuilderView.stops.models[0].attributes.geometry.coordinates
                 this.stops.fetch();
                 this.tableview = new DeveloperPlayground.TableView({
                     collection: this.stops
@@ -118,8 +115,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
                 // DeveloperPlayground.startQueryBuilderView.operators.first().attributes.identifiers[0]
                 this.operators.fetch();
-
-                
+                this.tableview = new DeveloperPlayground.TableView({
+                    collection: this.operators
+                });
+                this.tableview.render();
+                this.mapview.render();
             }
         } else {
             alert("please select a parameter");

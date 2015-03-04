@@ -2,8 +2,6 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.TableView = Backbone.View.extend({
     el: 'table#table-view',
-
-    // template: _.template($('#table-template').html(), {stops: stops.models}),
      
     initialize:function(options){
         this.collection = options.collection;

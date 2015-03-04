@@ -15,9 +15,4 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 });
 
 
-// stops.bind('reset', function() {
-// StartQueryBuilderView.render();
-// });
-
-
 

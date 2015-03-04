@@ -3,9 +3,8 @@ var DeveloperPlayground = DeveloperPlayground || {};
 DeveloperPlayground.RowView = Backbone.View.extend({
 	tagName: 'tr',
 	template: _.template( $('#row-template').html() ),
-	events: {
-		"click .latitude": function() {console.log(this.model.get("latitude"));}
-	},
+	
+	// events: {},
 	
 	initialize: function() {},
 	
