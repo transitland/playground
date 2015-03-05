@@ -50,6 +50,7 @@
 
         <div id="map-view" style="width:400px;height:200px;"></div>
         <table id="table-view" style="background: steelblue; width:400px;height:200px;">
+            // move everything below to a template
             <thead>
               <tr>
                 <th>Longitude</th>
@@ -59,10 +60,13 @@
             <tbody>
             </tbody>
           </table>
+          // 
 
   </script>
 
   <script type="text/template" id="row-template">
+    // no equals sign means it's javascript logic
+    // <% if (name == 'blah') { %>
     <td><%= geometry.coordinates[0] %></td>
     <td><%= geometry.coordinates[1] %></td>
   </script>

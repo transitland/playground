@@ -18,6 +18,7 @@ DeveloperPlayground.TableView = Backbone.View.extend({
     renderRow: function(model) {
         var rowView = new DeveloperPlayground.RowView({model: model});
         $("tbody", this.$el).append(rowView.render().$el);
+
     }
 
 });

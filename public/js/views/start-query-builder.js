@@ -19,8 +19,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview = new DeveloperPlayground.MapView();
         // Connect collections to views
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
-        // this.tableview.listenTo(this.stops, 'add', this.tableview.add_stop);
-        // Render it all
         this.render();
 
 
@@ -29,7 +27,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $(".form-control#operator-name").hide();
-        // this.$("#table-view").append(this.tableview.render().el);
         return this;
     },
 
@@ -39,10 +36,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var selectValues = {
             "stops": {
                 "bbox": "",
-                "hello": "",
+                "city": "",
             },
             "operators": {
-                "hello": "",
+                "city": "",
                 "name": "",
             }
         };
@@ -63,12 +60,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeName: function() {
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
-        // populate selectName using operators API endpoint
-        // operators faked API endpoint: http://localhost:4567/api/v1/operators.json
         var selectName = {
             "name": {
-                "Muni": "",
                 "BART": "",
+                "AC Transit": "",
+                "Muni": "",
             }
         };
 
@@ -95,7 +91,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $nameSelect = $('select.form-control#operator-name');
         if($parameterSelect.val() == "bbox") {
 
-            // temporary functionality to get stop model working, bbox input not implemented
+            // temporary functionality
             // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'

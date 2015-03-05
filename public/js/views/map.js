@@ -8,7 +8,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     initialize: function () {
         console.log("mapview initialized");
         this.map = null;
-        // this.render();
     },
     
     render: function() {
@@ -20,7 +19,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     add_stop: function(stop) {
         var s = {'type': 'Feature', 'geometry':stop.attributes.geometry};
-        // console.log(s);
         L.geoJson(s).addTo(this.map);
     }
 
