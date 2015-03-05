@@ -9,13 +9,21 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 	
 	initialize: function() {},
 	
-	// render: function() {
-	//	if is a stop {
-	//		var renderedHtml = this.stopTemplate(this.model.toJSON())	
+	// render: function(model) {
+	//	var renderedHtml = "";
+	//	var modelType = model;
+
+	//	if (model instanceof DeveloperPlayground.Stops) {
+	//		console.log("model: stop");
+	//		renderedHtml = this.row-template(this.model.toJSON());
+	//		this.$el.html(renderedHtml);
+	//		return this;
+	//	} else if (model == DeveloperPlayground.operators) {
+	//		console.log("model: operator");
+	//		renderedHtml = this.row-template(this.model.toJSON());
+	//		this.$el.html(renderedHtml);
+	//		return this;
 	//	}
-		
-	//	this.$el.html(renderedHtml);
-	//	return this;
 	// },
 
 	render: function() {
