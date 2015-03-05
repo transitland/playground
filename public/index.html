@@ -49,18 +49,21 @@
         </div>
 
         <div id="map-view" style="width:400px;height:200px;"></div>
-        <table id="table-view" style="background: steelblue; width:400px;height:200px;">
-            <thead>
-              <tr>
-                <th>Longitude</th>
-                <th>Latitude</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+        <table id="table-view" style="background: steelblue; width:400px;height:200px;">    
+          <thead>
+            <tr>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
 
   </script>
+
+  <script type="text/template" id="header-template"> 
+            <th>Longitude</th>
+            <th>Latitude</th>
+  </script>    
 
   <script type="text/template" id="row-template">
     <td><%= geometry.coordinates[0] %></td>
@@ -68,8 +71,8 @@
   </script>
 
   <script type="text/template" id="stop-template">
-    <td><%= geometry.coordinates[0] %></td>
-    <td><%= geometry.coordinates[1] %></td>
+    <td><%= identifiers[0].identifier %></td>
+    <td><%= name %></td>
   </script>
 
   

@@ -5,6 +5,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     template: _.template($('#playground-template').html()),
 
+
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
