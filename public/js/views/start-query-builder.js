@@ -36,10 +36,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var selectValues = {
             "stops": {
                 "bbox": "",
-                "city": "",
+                "hello": "",
             },
             "operators": {
-                "city": "",
+                "hello": "",
                 "name": "",
             }
         };
