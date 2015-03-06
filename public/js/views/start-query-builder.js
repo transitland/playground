@@ -97,8 +97,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
                 this.tableview.render();
                 this.mapview.render();
-        } else if($parameterSelect.val() == "hello") {
-            alert("please select a different parameter");
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
                 
@@ -120,7 +118,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             
                 this.mapview.render();
             }
-
+        } else if($parameterSelect.val() == "hello") {
+            alert("please select a different parameter");
         } else {
             alert("please select a parameter");
         }
