@@ -5,9 +5,13 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
 	// events: {},
 
-    initialize: function () {
+    initialize: function (options) {
+        this.collection = options.collection;
         console.log("mapview initialized");
         this.map = null;
+        this.listenTo(this.collection, 'add', this.add_point);
+        // this.mapview.listenTo(this.operators, 'sync', this.mapview.add_polygon(this.operators));
+
     },
     
     render: function() {
@@ -17,38 +21,24 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         return this;
     },
 
-    add_stop: function(stop) {
+    add_point: function(stop) {
         var s = {'type': 'Feature', 'geometry':stop.attributes.geometry};
         L.geoJson(s).addTo(this.map);
     },
-    
 
-    // 
-    // 
-    // Start editing this on Friday:
-    // 
     add_polygon: function(operator) {
        
-        console.log("this:",operator);
-
-        var coordinateArray = [];
-
-        for (var i = 0; i < operator.models[0].attributes.geometry.coordinates[0].length; i++) {
-            coordinateArray.push.apply(this.models[0].attributes.geometry.coordinates[i]);
-        }
+        console.log("this:",this.collection);
 
         // var operatorPolygon = L.polygon([
         //     coordinateArray
         // ]).addTo(this.map);
 
-        (console.log(coordinateArray));
+        console.log("coordinateArray");
 
         return this;
 
     }
-    // 
-    // 
-    // 
 
 });
 
