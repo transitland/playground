@@ -20,7 +20,35 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     add_stop: function(stop) {
         var s = {'type': 'Feature', 'geometry':stop.attributes.geometry};
         L.geoJson(s).addTo(this.map);
+    },
+    
+
+    // 
+    // 
+    // Start editing this on Friday:
+    // 
+    add_polygon: function(operator) {
+       
+        console.log("this:",operator);
+
+        var coordinateArray = [];
+
+        for (var i = 0; i < operator.models[0].attributes.geometry.coordinates[0].length; i++) {
+            coordinateArray.push.apply(this.models[0].attributes.geometry.coordinates[i]);
+        }
+
+        // var operatorPolygon = L.polygon([
+        //     coordinateArray
+        // ]).addTo(this.map);
+
+        (console.log(coordinateArray));
+
+        return this;
+
     }
+    // 
+    // 
+    // 
 
 });
 

@@ -20,6 +20,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview = new DeveloperPlayground.MapView();
         // Connect collections to views
         this.mapview.listenTo(this.stops, 'add', this.mapview.add_stop);
+        // 
+        // 
+        // Start editing this on Friday:
+        this.mapview.listenTo(this.operators, 'sync', this.mapview.add_polygon(this.operators));
+        // 
+        // 
+        // 
         this.render();
 
 
