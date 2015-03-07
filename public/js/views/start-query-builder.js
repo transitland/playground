@@ -93,11 +93,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.stops;
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
-                
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
-
                 collection = this.operators;
             }
         } else if($parameterSelect.val() == "hello") {

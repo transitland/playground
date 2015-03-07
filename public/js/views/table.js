@@ -4,22 +4,12 @@ DeveloperPlayground.TableView = Backbone.View.extend({
     el: 'table#table-view',
 
     // templateClearRows: _.template( $('#clear-rows-template').html() ),
-
-
-
      
     initialize:function(options){
         this.collection = options.collection;
+        $("tbody", this.$el).empty(this.$el);
         this.listenTo(this.collection, 'add', this.renderRow);
-        // this.listenTo(this.collection, 'sync', this.renderrHeader);
     },
-
-    // renderHeader: function(collection) {
-    //     var headerView = new DeveloperPlayground.HeaderView({
-    //         collection: this.collection
-    //     });
-    //     console.log("renderHeader called");
-    // },
 
     renderRow: function(model) {
         var rowView = new DeveloperPlayground.RowView({
