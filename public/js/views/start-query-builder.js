@@ -9,7 +9,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit',
+        'click .btn' : 'submit'
     },
 
     initialize: function () {
@@ -83,20 +83,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
+        var collection;
         if($parameterSelect.val() == "bbox") {
             // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/stops.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
-                this.stops.fetch();
-                this.tableview = new DeveloperPlayground.TableView({
-                    collection: this.stops
-                });
-                this.mapview = new DeveloperPlayground.MapView({
-                    collection: this.stops
-                });
-                this.tableview.render();
-                this.mapview.render();
+            collection = this.stops;
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
                 
@@ -104,25 +97,20 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                     identifier: $nameSelect.val()
                 });
 
-                this.operators.fetch();
-                
-                this.tableview = new DeveloperPlayground.TableView({
-                    collection: this.operators
-                });
-                
-                this.mapview = new DeveloperPlayground.MapView({
-                    collection: this.operators
-                });
-                
-                this.tableview.render();
-            
-                this.mapview.render();
+                collection = this.operators;
             }
         } else if($parameterSelect.val() == "hello") {
             alert("please select a different parameter");
         } else {
             alert("please select a parameter");
         }
+        collection.fetch();
+        this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        if (!this.mapview) {
+            this.mapview = new DeveloperPlayground.MapView({collection: collection});
+        }
+        this.tableview.render();
+        this.mapview.render();
     }
 
 });

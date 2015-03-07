@@ -61,21 +61,24 @@
   </script>
 
  
-  <script type="text/template" id="header-template"> 
-    <tr>
+  <script type="text/template" id="stop-header-template"> 
     <th>Longitude</th>
     <th>Latitude</th>
-    </tr>
+  </script>
+
+  <script type="text/template" id="operator-header-template"> 
+    <th>Name</th>
+    <th>Name</th>
   </script>   
   
-  <script type="text/template" id="row-template">
+  <script type="text/template" id="stop-template">
     <td><%= geometry.coordinates[0] %></td>
     <td><%= geometry.coordinates[1] %></td>
   </script>
 
 
 
-  <script type="text/template" id="stop-template">
+  <script type="text/template" id="operator-template">
     <td><%= identifiers[0].identifier %></td>
     <td><%= name %></td>
   </script>

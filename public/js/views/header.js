@@ -1,45 +1,31 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.HeaderView = Backbone.View.extend({
-	tagName: 'thead',
-    templateHeaderRow: _.template( $('#header-template').html() ),
-	
-
-	
-	// events: {},
-	
+	el: 'table#table-view thead',
+    templateStopHeader: _.template( $('#stop-header-template').html() ),
+    templateOperatorHeader: _.template( $('#operator-header-template').html() ),
+		
 	initialize: function() {
 		console.log("headerView initialized");
         this.render();
-
-
 	},
 	
 	render: function() {
 
 		console.log("headerView rendered");
 
-		// this.$el.html(this.templateHeaderRow());
-
 		if (this.collection instanceof DeveloperPlayground.Stops) {
-			this.$el.html(this.templateHeaderRow());
-			console.log("header instanceof WORKING", this.collection);
+			this.$el.html(this.templateStopHeader());
 			return this;
-		} else if (this.model instanceof DeveloperPlayground.Operator) {
-			renderedHtml = this.templateStop(this.model.toJSON());
-			this.$el.html(renderedHtml);
+		} else if (this.collection instanceof DeveloperPlayground.Operators) {
+			this.$el.html(this.templateOperatorHeader());
 			return this;
 		} else {
-			console.log("header instanceof not working:",this.model);
+			console.log("header instanceof not working:");
 			return this;
 		}
 	},
 
-	// renderOne: function(model) {
- //        var row = new RowView({model:model});
- //        this.$el.append(row.render().$el);
- //        return this;
-    // },
 });
 
 
