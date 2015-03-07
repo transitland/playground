@@ -10,7 +10,6 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 	},
 	
 	render: function() {
-
 		if (this.model instanceof DeveloperPlayground.Stop) {
 			renderedHtml = this.templateStop(this.model.toJSON());
 			this.$el.html(renderedHtml);
@@ -22,8 +21,7 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 		} else {
 			console.log("instanceof not working");
 		}
-	}
-
+	},
 });
 
 

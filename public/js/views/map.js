@@ -6,7 +6,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     initialize: function (options) {
         this.collection = options.collection;
         console.log("mapview initialized");
-        // this.map = null;
+        this.map = null;
         this.listenTo(this.collection, 'add', this.add_point);
     },
     
