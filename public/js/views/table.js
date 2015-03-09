@@ -2,8 +2,6 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.TableView = Backbone.View.extend({
     el: 'table#table-view',
-
-    // templateClearRows: _.template( $('#clear-rows-template').html() ),
      
     initialize:function(options){
         this.collection = options.collection;
@@ -20,9 +18,15 @@ DeveloperPlayground.TableView = Backbone.View.extend({
 
     // clearRows: function() {
     //     console.log("clear rows here");
-    //     $("tbody", this.$el).empty($el);
+    //     $("table#table-view tbody").empty();
 
     // }
+
+    remove: function() {
+      this.$el.empty().off(); /* off to unbind the events */
+      this.stopListening();
+      return this;
+    }
 
 });
 
