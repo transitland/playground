@@ -103,13 +103,22 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else {
             alert("please select a parameter");
         }
+        
         collection.fetch();
+
+        if (!this.mapview){
+            this.mapview = new DeveloperPlayground.MapView({collection: collection});
+            this.mapview.render();
+        } else {
+            this.mapview.initialize({collection: collection});
+        }
+
         this.tableview = new DeveloperPlayground.TableView({collection: collection});
         this.tableview.render();
         this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
         this.headerView.render();
-        this.mapview = new DeveloperPlayground.MapView({collection: collection});
-        this.mapview.render();
+        // this.mapview = new DeveloperPlayground.MapView({collection: collection});
+        // this.mapview.render();
     }
 
 });
