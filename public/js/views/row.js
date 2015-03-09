@@ -7,6 +7,8 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 	
 	initialize: function() {
 		console.log("rowView initialized");
+		// this.listenTo(this.model, 'remove', this.clearRows);
+
 	},
 	
 	render: function() {
@@ -22,6 +24,12 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 			console.log("instanceof not working");
 		}
 	},
+
+	// clearRows: function() {
+ //        console.log("clear a single row");
+ //        $(this.$el).remove();
+
+ //    }
 });
 
 

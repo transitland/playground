@@ -1,5 +1,13 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
+// Backbone.View.prototype.close = function(){
+//         this.remove();
+//         this.unbind();
+        // if (this.onClose){
+        //     this.onClose();
+        // }
+    // };
+
 DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     el: "#developer-playground",
 
@@ -11,6 +19,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#parameter': 'changeName',
         'click .btn' : 'submit'
     },
+
 
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
@@ -85,12 +94,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $nameSelect = $('select.form-control#operator-name');
         var collection;
 
-        if (this.tableview) {
-            this.tableview.remove();
-            this.tableview = new DeveloperPlayground.TableView({collection: collection});
-            this.tableview.render();
-        }
-
         if($parameterSelect.val() == "bbox") {
             // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
@@ -111,6 +114,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         }
 
         collection.fetch();
+        
 
         if (!this.mapview){
             this.mapview = new DeveloperPlayground.MapView({collection: collection});
@@ -119,12 +123,22 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.mapview.initialize({collection: collection});
         }
 
+        // Create TableView 
+        // if (this.tableview) {
+        //     this.tableview.close();
+        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        //     this.tableview.initialize({collection: collection});
+        // } else {
+        //     // console.log("initialize tableview");
+        //     // console.log(this.tableview.collection);
+        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        //     this.tableview.initialize({collection: collection});
+        // }
         this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        this.tableview.render();
+        this.tableview.initialize({collection: collection});
         this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
         this.headerView.render();
-        // this.mapview = new DeveloperPlayground.MapView({collection: collection});
-        // this.mapview.render();
+
     }
 
 });

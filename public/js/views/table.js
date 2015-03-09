@@ -5,8 +5,12 @@ DeveloperPlayground.TableView = Backbone.View.extend({
      
     initialize:function(options){
         this.collection = options.collection;
-        $("tbody", this.$el).empty(this.$el);
+        // $("tbody", this.$el).empty(this.$el);
         this.listenTo(this.collection, 'add', this.renderRow);
+        // this.listenTo(this.collection, 'change', this.close);
+        // new:
+        // this.listenTo(this.collection, 'remove', this.clearRows);
+        // 
     },
 
     renderRow: function(model) {
@@ -16,17 +20,33 @@ DeveloperPlayground.TableView = Backbone.View.extend({
         $("tbody", this.$el).append(rowView.render().$el);
     },
 
-    // clearRows: function() {
-    //     console.log("clear rows here");
-    //     $("table#table-view tbody").empty();
+    // if (this.tableview) {
+        //     this.tableview.close();
+        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        //     this.tableview.initialize({collection: collection});
+        // } else {
+        //     // console.log("initialize tableview");
+        //     // console.log(this.tableview.collection);
+        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        //     this.tableview.initialize({collection: collection});
+        // }
 
+
+    // onClose: function(){
+    //     this.collection.unbind("change", this.render);
     // }
 
-    remove: function() {
-      this.$el.empty().off(); /* off to unbind the events */
-      this.stopListening();
-      return this;
-    }
+    // clearRows: function() {
+    //     console.log("clear rows here");
+    //     //$("table#table-view tbody tr").empty();
+
+    // },
+
+    // remove: function() {
+    //   this.$el.empty().off();  off to unbind the events 
+    //   this.stopListening();
+    //   return this;
+    // }
 
 });
 
