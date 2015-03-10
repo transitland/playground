@@ -1,13 +1,5 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
-Backbone.View.prototype.close = function(){
-        this.remove();
-        this.unbind();
-        // if (this.onClose){
-        //     this.onClose();
-        // }
-    };
-
 DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     el: "#developer-playground",
 
@@ -122,14 +114,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.mapview.initialize({collection: collection});
         }
 
-    
-        // if (!this.tableview) {
-        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        // } else {
-        //     console.log("initialize tableview");
-        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-
-        // }
+        if ('undefined' !== typeof this.tableview) this.tableview.close();
 
         this.tableview = new DeveloperPlayground.TableView({collection: collection});
         this.headerView = new DeveloperPlayground.HeaderView({collection: collection});

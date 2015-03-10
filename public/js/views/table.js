@@ -21,33 +21,11 @@ DeveloperPlayground.TableView = Backbone.View.extend({
         $("tbody", this.$el).append(rowView.render().$el);
     },
 
-    // if (this.tableview) {
-        //     this.tableview.close();
-        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        //     this.tableview.initialize({collection: collection});
-        // } else {
-        //     // console.log("initialize tableview");
-        //     // console.log(this.tableview.collection);
-        //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        //     this.tableview.initialize({collection: collection});
-        // }
-
-
-    // onClose: function(){
-    //     this.collection.unbind("change", this.render);
-    // }
-
-    // clearRows: function() {
-    //     console.log("clear rows here");
-    //     $this.$el.empty();
-
-    // },
-
-    // remove: function() {
-    //   this.$el.empty().off();  off to unbind the events 
-    //   this.stopListening();
-    //   return this;
-    // }
+    close: function() {
+        $('thead, tbody', this.$el).empty();
+        this.stopListening();
+        return this;
+    }
 
 });
 
