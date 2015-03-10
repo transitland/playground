@@ -1,12 +1,12 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
-// Backbone.View.prototype.close = function(){
-//         this.remove();
-//         this.unbind();
-//         if (this.onClose){
-//             this.onClose();
-//         }
-//     };
+Backbone.View.prototype.close = function(){
+        this.remove();
+        this.unbind();
+        // if (this.onClose){
+        //     this.onClose();
+        // }
+    };
 
 DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     el: "#developer-playground",

@@ -2,7 +2,7 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.TableView = Backbone.View.extend({
     el: 'table#table-view',
-     
+
     initialize:function(options){
         this.collection = options.collection;
         // $("tbody", this.$el).empty(this.$el);
@@ -39,7 +39,7 @@ DeveloperPlayground.TableView = Backbone.View.extend({
 
     // clearRows: function() {
     //     console.log("clear rows here");
-    //     //$("table#table-view tbody tr").empty();
+    //     $this.$el.empty();
 
     // },
 

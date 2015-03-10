@@ -4,11 +4,15 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 	tagName: 'tr',
 	templateStop: _.template( $('#stop-template').html() ),
 	templateOperator: _.template( $('#operator-template').html() ),
+
+	events: {
+        // 'click .btn' : this.close()
+
+	},
 	
 	initialize: function() {
 		console.log("rowView initialized");
-		// this.listenTo(this.model, 'remove', this.clearRows);
-
+		this.listenTo(this.model, 'remove', this.close);
 	},
 	
 	render: function() {
@@ -25,12 +29,17 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 		}
 	},
 
-	// clearRows: function() {
- //        console.log("clear a single row");
- //        $(this.$el).remove();
 
- //    }
-});
+	clearRows: function() {
+        console.log("clear rows here");
+        // this.model.close();
+        // $("tbody", this.$el).empty();
+        this.$el.empty();
+        return this;
+
+    }
+
+ });
 
 
 
