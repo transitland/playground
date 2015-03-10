@@ -3,10 +3,10 @@ var DeveloperPlayground = DeveloperPlayground || {};
 // Backbone.View.prototype.close = function(){
 //         this.remove();
 //         this.unbind();
-        // if (this.onClose){
-        //     this.onClose();
-        // }
-    // };
+//         if (this.onClose){
+//             this.onClose();
+//         }
+//     };
 
 DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     el: "#developer-playground",
@@ -87,7 +87,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         });
     },
 
-
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
@@ -123,21 +122,17 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.mapview.initialize({collection: collection});
         }
 
-        // Create TableView 
-        // if (this.tableview) {
-        //     this.tableview.close();
+    
+        // if (!this.tableview) {
         //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        //     this.tableview.initialize({collection: collection});
         // } else {
-        //     // console.log("initialize tableview");
-        //     // console.log(this.tableview.collection);
+        //     console.log("initialize tableview");
         //     this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        //     this.tableview.initialize({collection: collection});
+
         // }
+
         this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        this.tableview.initialize({collection: collection});
         this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
-        this.headerView.render();
 
     }
 

@@ -11,6 +11,7 @@ DeveloperPlayground.TableView = Backbone.View.extend({
         // new:
         // this.listenTo(this.collection, 'remove', this.clearRows);
         // 
+        // this.render();
     },
 
     renderRow: function(model) {
