@@ -5,13 +5,20 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
+.btn-default {
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  color: white;
+  background-color: #333;
+  border: 2px solid #fff;
 }
+.btn-default:hover{
+  text-shadow: none; /* Prevent inheritence from `body` */
+  color: white;
+  background-color: steelblue;
+  border: 2px solid steelblue;
+}
+ 
+
 
 body {
   padding-top: 10%;
