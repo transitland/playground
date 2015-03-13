@@ -6,7 +6,7 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 	templateOperator: _.template( $('#operator-template').html() ),
 	
 	initialize: function() {
-		console.log("rowView initialized");
+		// console.log("rowView initialized");
 		this.listenTo(this.model, 'remove', this.close);
 	},
 	
@@ -20,7 +20,7 @@ DeveloperPlayground.RowView = Backbone.View.extend({
 			this.$el.html(renderedHtml);
 			return this;
 		} else {
-			console.log("instanceof not working");
+			// console.log("instanceof not working");
 		}
 	},
 

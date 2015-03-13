@@ -6,13 +6,12 @@ DeveloperPlayground.HeaderView = Backbone.View.extend({
     templateOperatorHeader: _.template( $('#operator-header-template').html() ),
 		
 	initialize: function() {
-		console.log("headerView initialized");
+		// console.log("headerView initialized");
         this.render();
 	},
 	
 	render: function() {
 
-		console.log("headerView rendered");
 
 		if (this.collection instanceof DeveloperPlayground.Stops) {
 			this.$el.html(this.templateStopHeader());
@@ -21,7 +20,7 @@ DeveloperPlayground.HeaderView = Backbone.View.extend({
 			this.$el.html(this.templateOperatorHeader());
 			return this;
 		} else {
-			console.log("header instanceof not working:");
+			// console.log("header instanceof not working:");
 			return this;
 		}
 	},

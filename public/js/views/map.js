@@ -16,6 +16,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         // this.layergroup = new L.layerGroup();
         this.featuregroup = new L.featureGroup();
         this.map = L.map('map-view').setView([37.749, -122.443], 7);
+        this.bounds=this.map.getBounds();
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {maxZoom: 18})
             .addTo(this.map);
         return this;
@@ -32,6 +33,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.map.fitBounds(this.featuregroup.getBounds());
         // this.map.fitBounds(this.featuregroup.getBounds(), {padding: [80,80]});
         // this.map.fitBounds(this.layergroup.getBounds());
+        // console.log("map bounds: ",this.map.getBounds());
+
         return this;
     },
 
