@@ -16,12 +16,16 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
         this.stops = new DeveloperPlayground.Stops();
+        // this.mapview = new DeveloperPlayground.MapView();
+        // this.mapview.render();
         this.render();
     },
 
     render: function() {
         this.$el.html(this.template());
         $(".form-control#operator-name").hide();
+         this.mapview = new DeveloperPlayground.MapView();
+        this.mapview.render();
         return this;
     },
 
@@ -68,7 +72,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else {
             $(".form-control#operator-name").hide();
         }
-
     
         $nameSelect.empty().append(function() {
             var output = '';
@@ -84,7 +87,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
         var collection;
-
 
         if($parameterSelect.val() == "bbox") {
             // this.mapview = new DeveloperPlayground.MapView({collection: collection});
@@ -107,20 +109,18 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         }
 
         collection.fetch();
-        
 
         if (!this.mapview){
+            // call setCollection
             this.mapview = new DeveloperPlayground.MapView({collection: collection});
             this.mapview.render();
             console.log("bounds", this.mapview.bounds);
-            
 
         } else {
-            // this.mapview.removeFeatureGroup();
-            // this.mapview.layergroup.clearLayers();
+            this.mapview.setCollection({collection: collection});
             this.mapview.featuregroup.clearLayers();
             this.mapview.initialize({collection: collection});
-
+            console.log("new bounds", this.mapview.bounds);
         }
 
         if ('undefined' !== typeof this.tableview) this.tableview.close();
