@@ -21,7 +21,7 @@
 
  
   <script type="text/template" id="playground-template">
-      <h1>Query Builder</h1>
+      <!--<h1>Query Builder</h1>-->
         <p class="lead">I want to see 
 
          <span class="btn-group">
@@ -42,16 +42,18 @@
               <option><option>
             </select>
           </span>
+          <button class="btn btn-med btn-default">Submit Query</button>
+
         </p>
 
-        <div class="footer">
+        <!--<div class="footer">
           <button class="btn btn-med btn-default">Submit Query</button>
-        </div>
+        </div>-->
 
-        <div id="map-view" style="width:400px;height:200px;"></div>
+        <div id="map-view" style="width:100vw;height:300px;"></div>
 
         
-        <table id="table-view" style="background: steelblue; width:400px;height:200px;">    
+        <table id="table-view" style="background: steelblue; width:100vw;height:200px;">    
           <thead>
           </thead>
           <tbody>
@@ -73,14 +75,14 @@
   </script>   
   
  <script type="text/template" id="stop-template">
-    <td><%= geometry.coordinates[0] %></td>
-    <td><%= geometry.coordinates[1] %></td>
+    <td align="left"><%= geometry.coordinates[0] %></td>
+    <td align="left"><%= geometry.coordinates[1] %></td>
   </script>
   
 
   <script type="text/template" id="operator-template">
-    <td><%= identifiers[0].identifier %></td>
-    <td><%= name %></td>
+    <td align="left"><%= identifiers[0].identifier %></td>
+    <td align="left"><%= name %></td>
   </script>
 
   
