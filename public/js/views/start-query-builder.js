@@ -87,13 +87,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
 
         if($parameterSelect.val() == "bbox") {
-            this.mapview = new DeveloperPlayground.MapView({collection: collection});
-            this.mapview.render();
+            // this.mapview = new DeveloperPlayground.MapView({collection: collection});
+            // this.mapview.render();
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                 });
             collection = this.stops;
-            console.log("bounds", this.mapview.bounds);
         } else if ($parameterSelect.val() == "name") {
             if ($entitySelect.val() == 'operators') {
                 this.operators.setQueryParameters({
@@ -113,6 +112,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if (!this.mapview){
             this.mapview = new DeveloperPlayground.MapView({collection: collection});
             this.mapview.render();
+            console.log("bounds", this.mapview.bounds);
+            
 
         } else {
             // this.mapview.removeFeatureGroup();
