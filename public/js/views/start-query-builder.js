@@ -112,6 +112,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.mapview = new DeveloperPlayground.MapView({collection: collection});
             this.mapview.render();
         } else {
+            // this.mapview.removeFeatureGroup();
+            // this.mapview.layergroup.clearLayers();
+            this.mapview.featuregroup.clearLayers();
             this.mapview.initialize({collection: collection});
         }
 
