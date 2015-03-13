@@ -85,6 +85,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $nameSelect = $('select.form-control#operator-name');
         var collection;
 
+
         if($parameterSelect.val() == "bbox") {
             // use map extent for bbox instead of requiring user to draw bbox
             this.stops.setQueryParameters({
@@ -111,7 +112,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.mapview = new DeveloperPlayground.MapView({collection: collection});
             this.mapview.render();
         } else {
-            this.mapview.remove_layergroup();
             this.mapview.initialize({collection: collection});
         }
 
