@@ -35,18 +35,27 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             "stops": {
                 "": "",
                 "map view": "",
-                "city": "",
-                "radius from a point": "",
+                "operator name": "",
+                // "mode": "",
             },
             "operators": {
                 "": "",
                 "map view": "",
-                "city": "",
                 "name": "",
+                // "mode": "",
+            },
+            "routes": {
+                "": "",
+                "map view": "",
+                "operator": "",
+                "route number": "",
+                // accept typed search on string for name/identifier:
+                // "name": "",
+                // "mode": "",
             }
         };
 
-        if($entitySelect.val() != "operators") {
+        if($entitySelect.val() == "operators" || $entitySelect.val() == "stops" && $parameterSelect() != "name") {
             $(".form-control#operator-name").hide();
         }
 
@@ -62,13 +71,23 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeName: function() {
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
+
+        // 
+        // ***** Populate selectName list using operator query?
+        // 
         var selectName = {
             "name": {
-                "BART": "",
+                "": "",
                 "AC Transit": "",
+                "BART": "",
                 "Muni": "",
+                "SamTrans": "",
+                "VTA": "",
             }
         };
+        // 
+        // 
+        // 
 
         if($parameterSelect.val() == "name") {
             $(".form-control#operator-name").show();
@@ -101,36 +120,42 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.stops.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
-            // for search by city
-            } else if($parameterSelect.val() == "city") {
-                alert("stops by city not yet functional");
-            // for search by mode
-            } else if($parameterSelect.val() == "mode") {
-                alert("stops by mode not yet functional");
+            // for search by operator name
+            } else if($parameterSelect.val() == "operator name") {
+                alert("stops by operator name not yet functional");
             }
+        
         // FOR OPERATOR QUERIES
+        
         } else if ($entitySelect.val() == "operators") {
             collection = this.operators;
             if($parameterSelect.val() == "map view") {
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
-            } else if($parameterSelect.val() == "city") {
-                alert("operators by city not yet functional");
-            // for search by mode
-            } else if($parameterSelect.val() == "mode") {
-                alert("operators by mode not yet functional");
+            } else if($parameterSelect.val() == "name") {
+                this.operators.setQueryParameters({
+                    identifier: $nameSelect.val()
+                });
             }
+            // for search by mode
+            // } else if($parameterSelect.val() == "mode") {
+            //     alert("operators by mode not yet functional");
+            // }
+
         //  FOR ROUTE QUERIES
+        
         } else if ($entitySelect.val() == "routes") {
             collection = this.routes;
             if($parameterSelect.val() == "map view") {
                 alert("routes by map view not yet functional");
-            } else if($parameterSelect.val() == "city") {
-                alert("routes by city not yet functional");
+            } else if($parameterSelect.val() == "operator") {
+                alert("routes by operator not yet functional");
             // for search by mode
-            } else if($parameterSelect.val() == "mode") {
-                alert("routes by mode not yet functional");
+            } else if($parameterSelect.val() == "route number") {
+                alert("routes by route number not yet functional");
+            // } else if($parameterSelect.val() == "mode") {
+            //     alert("routes by mode not yet functional");
             }
         } else {
             alert("please select a parameter");
