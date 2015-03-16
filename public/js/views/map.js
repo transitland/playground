@@ -4,8 +4,12 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     el: '#map-view',
 
     // initialize: function () {
-    //     this.render();
+        
     // },
+
+    events: {
+        'click #map-view' : 'getBounds'
+    },
 
     setCollection: function(options){
         this.collection = options.collection;
@@ -15,10 +19,17 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     render: function() {
         this.featuregroup = new L.featureGroup();
         this.map = L.map('map-view').setView([37.749, -122.443], 9);
-        this.bounds=this.map.getBounds();
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {maxZoom: 18})
             .addTo(this.map);
         return this;
+    },
+
+    getBounds: function() {
+        this.bounds=this.map.getBounds();
+        this.bBoxString=this.bounds.toBBoxString();
+        // console.log("bounds: ", this.bounds);
+        console.log("bounds as string: ", this.bBoxString);
+        return this.bBoxString;
     },
 
     add_point: function(stop) {
