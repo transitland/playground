@@ -33,11 +33,15 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $parameterSelect = $('select.form-control#parameter');
         var selectValues = {
             "stops": {
-                "bbox": "",
-                "hello": "",
+                "": "",
+                "map view": "",
+                "city": "",
+                "radius from a point": "",
             },
             "operators": {
-                "hello": "",
+                "": "",
+                "map view": "",
+                "city": "",
                 "name": "",
             }
         };
@@ -85,28 +89,49 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
+        var bounds=this.mapview.getBounds();
         var collection;
 
-        if($parameterSelect.val() == "bbox") {
-            // var bounds = this.mapview.bounds;
-            var bounds=this.mapview.getBounds();
+        // FOR STOP QUERIES
 
+        if ($entitySelect.val() == "stops") {
+            collection = this.stops;
+            // for search by map view
+            if($parameterSelect.val() == "map view") {
             this.stops.setQueryParameters({
-                    // url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
-            console.log("bounds from query builder: ", bounds);
-            collection = this.stops;
-
-        } else if ($parameterSelect.val() == "name") {
-            if ($entitySelect.val() == 'operators') {
+            // for search by city
+            } else if($parameterSelect.val() == "city") {
+                alert("stops by city not yet functional");
+            // for search by mode
+            } else if($parameterSelect.val() == "mode") {
+                alert("stops by mode not yet functional");
+            }
+        // FOR OPERATOR QUERIES
+        } else if ($entitySelect.val() == "operators") {
+            collection = this.operators;
+            if($parameterSelect.val() == "map view") {
                 this.operators.setQueryParameters({
                     identifier: $nameSelect.val()
                 });
-                collection = this.operators;
+            } else if($parameterSelect.val() == "city") {
+                alert("operators by city not yet functional");
+            // for search by mode
+            } else if($parameterSelect.val() == "mode") {
+                alert("operators by mode not yet functional");
             }
-        } else if($parameterSelect.val() == "hello") {
-            alert("please select a different parameter");
+        //  FOR ROUTE QUERIES
+        } else if ($entitySelect.val() == "routes") {
+            collection = this.routes;
+            if($parameterSelect.val() == "map view") {
+                alert("routes by map view not yet functional");
+            } else if($parameterSelect.val() == "city") {
+                alert("routes by city not yet functional");
+            // for search by mode
+            } else if($parameterSelect.val() == "mode") {
+                alert("routes by mode not yet functional");
+            }
         } else {
             alert("please select a parameter");
         }
@@ -122,6 +147,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.tableview = new DeveloperPlayground.TableView({collection: collection});
         this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
 
-    }
+    },
+
 
 });
