@@ -33,6 +33,16 @@ get '/api/v1/operators.json' do
   end
 end
 
+get '/api/v1/routes.json' do
+  if params[:bbox] && params[:operatedBy]
+    json_response 200, 'routes_bbox_operatedBy.json'
+  elsif params[:bbox]
+    json_response 200, 'routes_bbox.json'
+  else
+    halt 404
+  end
+end
+
 def json_response(response_code, file_name)
   content_type :json
   status response_code
