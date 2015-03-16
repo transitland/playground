@@ -9,7 +9,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit'
+        'click .btn' : 'submit',
+        // 'click #map-view' : 'getBounds'
     },
 
 
@@ -87,11 +88,14 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var collection;
 
         if($parameterSelect.val() == "bbox") {
-            var bounds = this.mapview.bounds;
+            // var bounds = this.mapview.bounds;
+            var bounds=this.mapview.getBounds();
+
             this.stops.setQueryParameters({
                     // url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox=-122.39893913269043,37.76651662158726,-122.38070011138915,37.77178331201861'
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
+            console.log("bounds from query builder: ", bounds);
             collection = this.stops;
 
         } else if ($parameterSelect.val() == "name") {
