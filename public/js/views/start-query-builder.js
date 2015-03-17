@@ -124,7 +124,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             // for search by operator name
             } else if($parameterSelect.val() == "name") {
                 this.stops.setQueryParameters({
-                    // identifier: $nameSelect.val(),
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
                 });
             }
@@ -135,7 +134,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.operators;
             if($parameterSelect.val() == "map view") {
                 this.operators.setQueryParameters({
-                    identifier: $nameSelect.val()
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
             } else if($parameterSelect.val() == "name") {
                 this.operators.setQueryParameters({
