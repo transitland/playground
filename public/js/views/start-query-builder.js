@@ -132,7 +132,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         
         } else if ($entitySelect.val() == "operators") {
             collection = this.operators;
-            if($parameterSelect.val() == "map view") {
+            if($parameterSelect.val() === "") {
+                this.operators.setQueryParameters({
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json'
+                });
+            }
+            else if($parameterSelect.val() == "map view") {
                 this.operators.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
