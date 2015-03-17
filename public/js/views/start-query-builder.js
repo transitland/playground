@@ -35,7 +35,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             "stops": {
                 "": "",
                 "map view": "",
-                "operator name": "",
+                "name": "",
                 // "mode": "",
             },
             "operators": {
@@ -55,7 +55,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             }
         };
 
-        if($entitySelect.val() == "operators" || $entitySelect.val() == "stops" && $parameterSelect() != "name") {
+        if($parameterSelect.val() != "name") {
             $(".form-control#operator-name").hide();
         }
 
@@ -108,7 +108,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var $nameSelect = $('select.form-control#operator-name');
-        var bounds=this.mapview.getBounds();
+        var bounds = this.mapview.getBounds();
+        var identifier = $nameSelect.val();
         var collection;
 
         // FOR STOP QUERIES
@@ -121,8 +122,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
             // for search by operator name
-            } else if($parameterSelect.val() == "operator name") {
-                alert("stops by operator name not yet functional");
+            } else if($parameterSelect.val() == "name") {
+                this.stops.setQueryParameters({
+                    // identifier: $nameSelect.val(),
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
+                });
             }
         
         // FOR OPERATOR QUERIES
