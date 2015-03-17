@@ -10,13 +10,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
         'click .btn' : 'submit',
-        // 'click #map-view' : 'getBounds'
     },
 
 
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
         this.stops = new DeveloperPlayground.Stops();
+        this.routes = new DeveloperPlayground.Routes();
         this.render();
     },
 
@@ -156,7 +156,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else if ($entitySelect.val() == "routes") {
             collection = this.routes;
             if($parameterSelect.val() == "map view") {
-                alert("routes by map view not yet functional");
+                this.routes.setQueryParameters({
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                });
             } else if($parameterSelect.val() == "operator") {
                 alert("routes by operator not yet functional");
             // for search by mode
