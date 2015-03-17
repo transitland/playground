@@ -47,7 +47,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             "routes": {
                 "": "",
                 "map view": "",
-                "operator": "",
+                "name": "",
                 "route number": "",
                 // accept typed search on string for name/identifier:
                 // "name": "",
@@ -143,7 +143,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
             } else if($parameterSelect.val() == "name") {
                 this.operators.setQueryParameters({
-                    identifier: $nameSelect.val()
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
                 });
             }
             // for search by mode
@@ -159,8 +159,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.routes.setQueryParameters({
                     url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
-            } else if($parameterSelect.val() == "operator") {
-                alert("routes by operator not yet functional");
+            } else if($parameterSelect.val() == "name") {
+                this.routes.setQueryParameters({
+                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
+                });
             // for search by mode
             } else if($parameterSelect.val() == "route number") {
                 alert("routes by route number not yet functional");
