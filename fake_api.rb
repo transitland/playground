@@ -26,6 +26,8 @@ end
 get '/api/v1/operators.json' do
   if params[:lat] && params[:lon]
     json_response 200, 'operators_lat_lon.json'
+  elsif params[:bbox]
+    json_response 200, 'operators_bbox.json'
   elsif params[:identifier]
     json_response 200, 'operators_identifier.json'
   else
