@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +14,22 @@
   <script src="/js/lib/backgrid.js"></script>
   <!-- // <script src="/js/lib/leaflet-src.js"></script> -->
 
-  <link href="/assets/bootstrap.css" rel="stylesheet">
-  <link href="/assets/developer-playground.css" rel='stylesheet' />
-  <link href="/assets/backgrid.css" rel='stylesheet' />
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/developer-playground.css" rel='stylesheet' />
+  <link href="/css/backgrid.css" rel='stylesheet' />
   <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
   <!-- <link href="/assets/leaflet.css" rel='stylesheet' /> -->
 
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-  <link href="/assets/MarkerCluster.css" rel="stylesheet" />
-  <link href="/assets/MarkerCluster.Default.css" rel="stylesheet" />
+  <link href="/css/MarkerCluster.css" rel="stylesheet" />
+  <link href="/css/MarkerCluster.Default.css" rel="stylesheet" />
   <script src="/js/lib/leaflet.markercluster-src.js"></script>
 
-
+  <script>
+    var API_HOST = "{{ site.api_host }}";
+  </script>
  
 </head>
 <body>

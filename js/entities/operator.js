@@ -15,7 +15,7 @@ DeveloperPlayground.Operator = Backbone.Model.extend({
 
 DeveloperPlayground.Operators = Backbone.Collection.extend({
 	model: DeveloperPlayground.Operator,
-	url: '/api/v1/operators.json',
+	url: API_HOST + '/api/v1/operators.json',
 	
 	setQueryParameters: function(queryParameters) {
 		this.url = queryParameters.url;

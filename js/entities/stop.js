@@ -1,11 +1,11 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
-DeveloperPlayground.Route = Backbone.Model.extend();
+DeveloperPlayground.Stop = Backbone.Model.extend();
 
-DeveloperPlayground.Routes = Backbone.Collection.extend({
-	model: DeveloperPlayground.Route,
-	url: '/api/v1/routes.json',
-	
+DeveloperPlayground.Stops = Backbone.Collection.extend({
+	model: DeveloperPlayground.Stop,
+	url: API_HOST + '/api/v1/stops.json',
+
 	setQueryParameters: function(queryParameters) {
 		this.identifier = queryParameters.identifier;
 		this.url = queryParameters.url;
@@ -13,7 +13,7 @@ DeveloperPlayground.Routes = Backbone.Collection.extend({
 	},
 	
 	parse: function(response, xhr) {
-		return response.routes;
+		return response.stops;
 	}
 });
 
