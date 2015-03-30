@@ -13,4 +13,4 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
-api_host: http://localhost:3000
+api_host: http://datastore.transit.land
