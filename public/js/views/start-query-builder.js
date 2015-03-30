@@ -22,42 +22,40 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     render: function() {
         this.$el.html(this.template());
-        $(".form-control#operator-name").hide();
+        $(".form-control#name").hide();
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
         return this;
     },
 
     changeParam: function() {
+
+        $(".form-control#name").hide();
+
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var selectValues = {
+            "base": {
+                "__________": "",
+            },
             "stops": {
-                "": "",
+                "__________": "",
                 "map view": "",
-                "name": "",
-                // "mode": "",
+                "operator": "",
             },
             "operators": {
-                "": "",
+                "__________": "",
                 "map view": "",
                 "name": "",
                 // "mode": "",
             },
             "routes": {
-                "": "",
+                "__________": "",
                 "map view": "",
-                "name": "",
-                "route number": "",
-                // accept typed search on string for name/identifier:
-                // "name": "",
-                // "mode": "",
+                "operator": "",
+                // "route number": "",
             }
         };
-
-        if($parameterSelect.val() != "name") {
-            $(".form-control#operator-name").hide();
-        }
 
         $parameterSelect.empty().append(function() {
             var output = '';
@@ -66,125 +64,116 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             });
             return output;
         });
+
+        return this;
     },
     
     changeName: function() {
         var $parameterSelect = $('select.form-control#parameter');
-        var $nameSelect = $('select.form-control#operator-name');
 
-        // 
-        // ***** Populate selectName list using operator query?
-        // 
-        var selectName = {
-            "name": {
-                "": "",
-                "AC Transit": "",
-                "BART": "",
-                "Muni": "",
-                "SamTrans": "",
-                "VTA": "",
-            }
-        };
-        // 
-        // 
-        // 
-
-        if($parameterSelect.val() == "name") {
-            $(".form-control#operator-name").show();
+        if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
+            collection = this.operators;
+            $(".form-control#name").show();
+            this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            collection.fetch();
+            return this;
         } else {
-            $(".form-control#operator-name").hide();
+            $(".form-control#name").hide();
         }
-    
-        $nameSelect.empty().append(function() {
-            var output = '';
-            $.each(selectName[$parameterSelect.val()], function(key, value) {
-                output += '<option>' + key + '</option>';
-            });
-            return output;
-        });
+
     },
 
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
-        var $nameSelect = $('select.form-control#operator-name');
+        var $nameSelect = $('select.form-control#name');
         var bounds = this.mapview.getBounds();
         var identifier = $nameSelect.val();
-        var collection;
+
+        console.log("identifier: ", identifier);
+
+        var shouldFetchAndResetCollection = true;
 
         // FOR STOP QUERIES
 
         if ($entitySelect.val() == "stops") {
-            collection = this.stops;
             // for search by map view
             if($parameterSelect.val() == "map view") {
+            collection = this.stops;
             this.stops.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: '/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
             // for search by operator name
-            } else if($parameterSelect.val() == "name") {
+            } else if($parameterSelect.val() == "operator") {
+                collection = this.stops;
                 this.stops.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
+                    url: '/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
                 });
+                console.log("url: ", this.url);
             }
         
         // FOR OPERATOR QUERIES
         
         } else if ($entitySelect.val() == "operators") {
-            collection = this.operators;
-            if($parameterSelect.val() === "") {
+            
+            if($parameterSelect.val() == "map view") {
+                collection = this.operators;
                 this.operators.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json'
-                });
-            }
-            else if($parameterSelect.val() == "map view") {
-                this.operators.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: '/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
             } else if($parameterSelect.val() == "name") {
-                this.operators.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
-                });
+                console.log("operators by name");
+                this.operators.hideAll();
+                this.operators.get(identifier).set({ display: true });
+                shouldFetchAndResetCollection = false;
+            } else {
+                alert("Please select either map view or name.");
             }
-            // for search by mode
-            // } else if($parameterSelect.val() == "mode") {
-            //     alert("operators by mode not yet functional");
-            // }
-
+            
         //  FOR ROUTE QUERIES
         
         } else if ($entitySelect.val() == "routes") {
-            collection = this.routes;
             if($parameterSelect.val() == "map view") {
+                collection = this.routes;
                 this.routes.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: '/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
-            } else if($parameterSelect.val() == "name") {
+            } else if($parameterSelect.val() == "operator") {
+                collection = this.routes;
                 this.routes.setQueryParameters({
-                    url: 'http://localhost:4567/api/v1/'+$entitySelect.val()+'.json?identifier='+identifier,
+                    url: '/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
                 });
-            // for search by mode
+                console.log("url: ", this.url);
             } else if($parameterSelect.val() == "route number") {
+                collection = this.routes;
                 alert("routes by route number not yet functional");
-            // } else if($parameterSelect.val() == "mode") {
-            //     alert("routes by mode not yet functional");
             }
         } else {
-            alert("please select a parameter");
+            alert("Please select a parameter.");
         }
 
-        collection.fetch();
+        if (shouldFetchAndResetCollection) {
+            collection.reset();
+        }
 
+        // this.mapview.featuregroup.clearLayers();
+        this.mapview.markerclustergroup.clearLayers();
         this.mapview.setCollection({collection: collection});
-        this.mapview.featuregroup.clearLayers();
         this.mapview.initialize({collection: collection});
 
-        if ('undefined' !== typeof this.tableview) this.tableview.close();
+        // if ('undefined' !== typeof this.tableview) this.tableview.close();
+        if ('undefined' !== typeof this.gridview) this.gridview.close();
 
-        this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
+        this.gridview = new DeveloperPlayground.GridView({collection: collection});
+        
+
+
+        // this.tableview = new DeveloperPlayground.TableView({collection: collection});
+        // this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
+
+        if (shouldFetchAndResetCollection) {
+            collection.fetch();
+        }
 
     },
-
-
 });
