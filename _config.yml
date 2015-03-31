@@ -12,5 +12,6 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+exclude: [vendor] # https://github.com/jekyll/jekyll/issues/2938
 
 api_host: http://datastore.transit.land
