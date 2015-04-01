@@ -1,10 +1,7 @@
-h2{
-  font-weight:700;
-  font-size:32px;
+.h2{
+  font-weight:400;
+  font-size:30px;
   letter-spacing: 2px;
-  display:inline;
-  vertical-align: middle;
-  margin:0 auto;
 }
 .col-1{color:$logo-color-1;}
 .col-2{color:$logo-color-2;}
@@ -16,8 +13,6 @@ h2{
 .desc{
   padding-top:50px;
 }
-
-
 
 .white-text{
   color:#fff;
@@ -42,6 +37,142 @@ p{
   text-align: center;
 }
 
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+
+#developer-playground p.h2{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+/* Custom default button */
+.btn-success:hover, 
+.btn-success:active, 
+.btn-success.active, 
+.btn-success.disabled, 
+.btn-success[disabled],
+.btn-default:focus,
+.btn-default {
+  font-weight:700;
+  font-size:16px;
+  letter-spacing: 3.1px;
+  display:inline;
+  vertical-align: middle;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  color: white;
+  background-color: #8ac418;
+  border: 0px solid #8ac418;
+  /*font-size: 16px;*/
+  outline:none;
+  border-radius: 0px;
+
+}
+
+.btn-default:active, .btn-default.active, .btn-default.disabled, .btn-default[disabled],
+.btn-default:hover{
+  text-shadow: none; /* Prevent inheritence from `body` */
+  color: white;
+  border: 0px solid #8ac418;
+  outline:#8ac418;
+  background-color: #5a881d;
+  font-size: 16px;
+  border-radius: 0px;
+
+}
+
+.custom-popup#map-view {
+  color:black;
+}
+ 
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.queryBuilder-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.dropdown{
+  height:42px;
+  margin-right:5px;
+  margin-left:5px;
+  background-image : url('../images/icon_dropdown.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  vertical-align: baseline;
+  border-bottom: 3px dashed $logo-color-5;
+
+  
+}
+
+#entityMenu,#parameterMenu{
+  width:250px;
+}
+
+#nameMenu{
+  width:900px;
+  height:42px;
+}
+.form-control {
+  width:100%;
+  height:35px;
+  padding: 1px 0;
+  margin:0;
+  border:0;
+  font-weight:400;
+  background-color: transparent;
+  -webkit-appearance: none;  
+  -moz-appearance: none;  
+  color:#fff;
+  text-transform: uppercase;
+  vertical-align: text-top;
+  text-align: center;
+  font-weight:400;
+  font-size:30px;
+  color: rgba(0,0,0,0);
+  text-shadow: 0 0 0 #fff;
+  cursor:pointer;
+  
+}
+option{
+  margin: 2px 0;
+}
+.form-control:focus{
+  border:0;
+  box-shadow:none;
+}
+
+#map-view{
+  width:100vw;
+  height:400px;
+
+}
+
+
 .badge-circle{
   width:90px;
   height:90px;
@@ -56,24 +187,6 @@ p{
   margin-bottom:10px;
 }
 
-#trans-badge-1{
-  background-image:url(../images/badges/badge_train.png);
-}
-#trans-badge-2{
-  background-image:url(../images/badges/badge_bus.png);
-}
-#trans-badge-3{
-  background-image:url(../images/badges/badge_cablecar.png);
-}
-#trans-badge-4{
-  background-image:url(../images/badges/badge_ferry.png);
-}
-#trans-badge-5{
-  background-image:url(../images/badges/badge_tram.png);
-}
-#trans-badge-6{
-  background-image:url(../images/badges/badge_trolley.png);
-}
 .container{
   padding:0px 5.55%;
   position:relative;
