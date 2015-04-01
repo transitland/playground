@@ -58,24 +58,6 @@ h2{
   color:black;
 }
  
-
-
-body {
-  font-family:Lato,Helvetica,Arial,sans-serif;
-  font-weight:700;
-  font-size:16px;
-  letter-spacing: 3.1px;
-  display:inline;
-  vertical-align: middle;
-  margin:0 auto;
-  color: white;
-  padding-top: 10%;
-  height: 100%;
-  background-color: #0a0a0a;
-  /*color: white;*/
-  text-align: center;
-}
-
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
