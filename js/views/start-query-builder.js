@@ -23,6 +23,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $(".form-control#name").hide();
+        if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
         return this;
@@ -31,26 +32,27 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeParam: function() {
 
         $(".form-control#name").hide();
+        if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
         var selectValues = {
             "base": {
-                "__________": "",
+                " ": "",
             },
             "stops": {
-                "__________": "",
+                " ": "",
                 "map view": "",
                 "operator": "",
             },
             "operators": {
-                "__________": "",
+                " ": "",
                 "map view": "",
                 "name": "",
                 // "mode": "",
             },
             "routes": {
-                "__________": "",
+                " ": "",
                 "map view": "",
                 "operator": "",
                 // "route number": "",
@@ -74,11 +76,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $(".form-control#name").show();
+            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             collection.fetch();
             return this;
         } else {
             $(".form-control#name").hide();
+            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
     },
