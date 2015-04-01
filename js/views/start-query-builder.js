@@ -161,7 +161,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.setCollection({collection: collection});
         this.mapview.initialize({collection: collection});
 
-        // if ('undefined' !== typeof this.tableview) this.tableview.close();
         if ('undefined' !== typeof this.gridview) this.gridview.close();
 
         this.gridview = new DeveloperPlayground.GridView({collection: collection});

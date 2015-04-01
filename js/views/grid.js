@@ -35,18 +35,19 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 label: "Operator name",
                 editable: false,
                 cell: "string"
-              // }, {
-              //   name: "website",
-              //   label: "Operator website",
-              //   editable: false,
+              }, {
+                name: "tags.agency_url",
+                label: "Operator website",
+                editable: false,
               //   // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-              //   cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+                cell: "uri" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
             }];
             grid = new Backgrid.Grid({
             columns: columns,
             collection: this.collection
             });
             $("#results").append(grid.render().$el);
+            console.log("model: ", model);
         } else if ($entitySelect.val() == "stops"){
             columns = [{
                 name: "id",
