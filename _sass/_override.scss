@@ -34,13 +34,16 @@ section{
     background-color: #ccc;
     color: #fff;
 }
-
 .jumbotron{
   margin:0;
   background-color:#fff;
 }
 .jumbotron .container{
   max-width:1030px;
+}
+.btn-group{
+  margin-left: 10px;
+  margin-right: 10px;
 }
 a{
   text-decoration: none;
