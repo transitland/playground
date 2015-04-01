@@ -26,11 +26,6 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                   orderSeparator: ''
                 })
               }, {
-                name: "onestop_id",
-                label: "OneStop ID",
-                editable: false,
-                cell: "string"
-              }, {
                 name: "name",
                 label: "Operator name",
                 editable: false,
@@ -39,8 +34,12 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 name: "tags.agency_url",
                 label: "Operator website",
                 editable: false,
-              //   // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-                cell: "uri" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+                cell: "uri"
+              }, {
+                name: "onestop_id",
+                label: "OneStop ID",
+                editable: false,
+                cell: "string"
             }];
             grid = new Backgrid.Grid({
             columns: columns,
@@ -60,6 +59,11 @@ DeveloperPlayground.GridView = Backbone.View.extend({
               }, {
                 name: "name",
                 label: "Stop name",
+                editable: false,
+                cell: "string"
+              }, {
+                name: "operators_serving_stop",
+                label: "Operators serving stop",
                 editable: false,
                 cell: "string"
               }, {
@@ -84,13 +88,18 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                   orderSeparator: ''
                 })
               }, {
-                name: "onestop_id",
-                label: "OneStop ID",
+                name: "name",
+                label: "Route name",
                 editable: false,
                 cell: "string"
               }, {
-                name: "name",
-                label: "Route name",
+                name: "tags.agency_id",
+                label: "Operator",
+                editable: false,
+                cell: "string"
+              }, {
+                name: "onestop_id",
+                label: "OneStop ID",
                 editable: false,
                 cell: "string"
             }];

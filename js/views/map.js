@@ -115,7 +115,11 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         // this.featuregroup.addTo(this.map);
         this.markerclustergroup.addTo(this.map);
         // this.map.fitBounds(this.featuregroup.getBounds());
-        this.map.fitBounds(this.markerclustergroup.getBounds());
+        if (collection != "routes") {
+            console.log('not routes');
+            this.map.fitBounds(this.markerclustergroup.getBounds());
+        }
+        
 
     }
 
