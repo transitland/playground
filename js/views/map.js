@@ -111,12 +111,12 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
 
     addFeatureGroup: function() {
+        var $entitySelect = $('select.form-control#entity');
         console.log('add');
         // this.featuregroup.addTo(this.map);
         this.markerclustergroup.addTo(this.map);
         // this.map.fitBounds(this.featuregroup.getBounds());
-        if (collection != "routes") {
-            console.log('not routes');
+        if ($entitySelect.val() !== "routes") {
             this.map.fitBounds(this.markerclustergroup.getBounds());
         }
         
