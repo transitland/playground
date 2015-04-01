@@ -47,6 +47,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
             });
             $("#results").append(grid.render().$el);
             console.log("model: ", model);
+            console.log("grid append operator");
         } else if ($entitySelect.val() == "stops"){
             columns = [{
                 name: "id",
@@ -88,8 +89,13 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                   orderSeparator: ''
                 })
               }, {
-                name: "name",
-                label: "Route name",
+                name: "tags.route_short_name",
+                label: "Route short name",
+                editable: false,
+                cell: "string"
+              }, {
+                name: "tags.route_long_name",
+                label: "Route long name",
                 editable: false,
                 cell: "string"
               }, {
@@ -110,6 +116,8 @@ DeveloperPlayground.GridView = Backbone.View.extend({
             });
             $("#results").append(grid.render().$el);
         }
+            
+
 
     },
 
