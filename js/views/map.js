@@ -65,7 +65,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             color: "#dd339c",
             fillColor: "#dd339c",
             weight: 3,
-            opacity: .8,
+            opacity: .6,
             fillOpacity: .3,
             className: 'blah'
         };

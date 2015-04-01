@@ -6,6 +6,9 @@ DeveloperPlayground.GridView = Backbone.View.extend({
     initialize:function(options){
         this.collection = options.collection;
         this.listenTo(this.collection, 'sync', this.render);
+        if (this.collection.length > 0) {
+            this.render();
+        }
     },
 
     render: function(model){
@@ -46,8 +49,6 @@ DeveloperPlayground.GridView = Backbone.View.extend({
             collection: this.collection
             });
             $("#results").append(grid.render().$el);
-            console.log("model: ", model);
-            console.log("grid append operator");
         } else if ($entitySelect.val() == "stops"){
             columns = [{
                 name: "id",
