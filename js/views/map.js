@@ -17,11 +17,14 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             this.addFeatureGroup();
         }
     },
+
+    clearCollection: function() {
+        this.stopListening();
+    },
     
     render: function() {
-        this.markerclustergroup = new L.MarkerClusterGroup(
+        this.markerclustergroup = new L.MarkerClusterGroup();
         
-        );
         this.map = L.map('map-view',{
             scrollWheelZoom: false
         }).setView([37.749, -122.443], 15);
@@ -114,7 +117,9 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         var $entitySelect = $('select.form-control#entity');
         console.log('add');
         // this.featuregroup.addTo(this.map);
-        this.markerclustergroup.addTo(this.map);
+        if (!this.map.hasLayer(this.markerclustergroup)) {
+            this.markerclustergroup.addTo(this.map);
+        }
         // this.map.fitBounds(this.featuregroup.getBounds());
         if ($entitySelect.val() !== "routes") {
             this.map.fitBounds(this.markerclustergroup.getBounds());
