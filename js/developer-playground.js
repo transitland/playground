@@ -3,8 +3,17 @@ $(document).ready(function () {
 		 $("#loading").removeClass("hide");
      $(".btn-default").addClass("btn-inactive");
 	});
-	$(document).ajaxComplete(function(event, request, settings) {
+      $(document).ajaxError(function() {
+        console.log('error');
+
+  });
+    $(document).ajaxSuccess(function() {
+console.log('success!');
+
+  });
+	$(document).ajaxComplete(function(event, xhr, settings) {
 		// stop spinner, add style here
+    console.log(  xhr.responseText);
     $("#loading").addClass("hide");
     $(".btn-default").removeClass("btn-inactive");
 
