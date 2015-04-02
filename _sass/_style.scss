@@ -159,11 +159,26 @@ a:hover {
   
 }
 option{
-  margin: 2px 0;
+  margin: 2px auto;
+  text-align: center;
 }
 .form-control:focus{
   border:0;
   box-shadow:none;
+}
+
+.hide{
+  display:none;
+}
+#loading{
+  background-image:url("../images/loader.gif");
+  background-size:cover;
+  position:fixed;
+  top:60%;
+  left:50%;
+  width:80px;
+  height:80px;
+  z-index:1030;
 }
 
 #map-view{

@@ -1,10 +1,11 @@
 $(document).ready(function () {
 	$(document).ajaxStart(function() {
-		// start spinner, add style here
-		console.log("Start spinner here");
+		 $("#loading").removeClass("hide");
+		
 	})
 	$(document).ajaxComplete(function(event, request, settings) {
 		// stop spinner, add style here
+    $("#loading").addClass("hide");
 		console.log("Stop spinner here");
 	})
     DeveloperPlayground.startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
