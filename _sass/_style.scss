@@ -37,25 +37,13 @@ p{
   text-align: center;
 }
 
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
-
 #developer-playground p.h2{
   margin-bottom: 30px;
   margin-top: 30px;
 }
 
 /* Custom default button */
-.btn-success:hover, 
-.btn-success:active, 
-.btn-success.active, 
-.btn-success.disabled, 
-.btn-success[disabled],
-.btn-default:focus,
+
 .btn-default {
   font-weight:700;
   font-size:16px;
@@ -72,7 +60,13 @@ a:hover {
 
 }
 
-.btn-default:active, .btn-default.active, .btn-default.disabled, .btn-default[disabled],
+.btn-inactive{
+  border: 0px solid #8ac418;
+  outline:#8ac418;
+  background-color: #5a881d;
+}
+
+
 .btn-default:hover{
   text-shadow: none; /* Prevent inheritence from `body` */
   color: white;
@@ -174,7 +168,7 @@ option{
   background-image:url("../images/loader.gif");
   background-size:cover;
   position:fixed;
-  top:60%;
+  top:55%;
   left:50%;
   width:80px;
   height:80px;
@@ -183,8 +177,7 @@ option{
 
 #map-view{
   width:100vw;
-  height:400px;
-
+  height:500px;
 }
 
 
