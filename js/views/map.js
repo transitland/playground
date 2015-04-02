@@ -81,8 +81,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         var routeStyle = {
             color: color,
             // color: "#"+feature.attributes.tags.route_color,
-            weight: 3,
-            opacity: 1,
+            weight: 4,
+            opacity: .3,
             className: 'blah'
         };
 
@@ -104,8 +104,20 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         function highlightFeature(e) {
             var layer = e.target;
 
+            layer.setStyle({
+                opacity: 1,
+            });
+
             layer.bringToFront();
 
+        }
+
+        function resetFeatureStyle(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                opacity: .3,
+            });
         }
 
         var stopIcon = L.icon({
@@ -122,7 +134,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         }
 
         layer.on({
-            popupopen: highlightFeature
+            popupopen: highlightFeature,
+            popupclose: resetFeatureStyle
         });
 
         layer.bindPopup(feature.name);
