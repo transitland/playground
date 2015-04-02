@@ -9,8 +9,8 @@
 .backgrid-container {
   position: relative;
   display: block;
-  width: 800px  ;
-  height: 465px;
+  width: auto;
+  height: auto;
   margin:30px auto;
   padding: 0;
   overflow: auto;
