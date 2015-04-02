@@ -63,9 +63,15 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     styleEachFeature: function(feature) {
 
+        var color;
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        color= "rgb("+r+" ,"+g+","+ b+")";
+
         var operatorStyle = {
-            color: "#dd339c",
-            fillColor: "#dd339c",
+            color: color,
+            fillColor: color,
             weight: 3,
             opacity: .6,
             fillOpacity: .3,
@@ -73,7 +79,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         };
 
         var routeStyle = {
-            color: "#7720f2",
+            color: color,
             // color: "#"+feature.attributes.tags.route_color,
             weight: 3,
             opacity: 1,
