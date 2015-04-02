@@ -24,7 +24,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         );
         this.map = L.map('map-view',{
             scrollWheelZoom: false
-        }).setView([37.749, -122.443], 9);
+        }).setView([37.749, -122.443], 15);
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.li1lhlf0/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

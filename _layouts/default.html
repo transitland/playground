@@ -37,6 +37,7 @@ navigation:
   <script src="/js/lib/underscore.js"></script>
   <script src="/js/lib/backbone.js"></script>
   <script src="/js/lib/backgrid.js"></script>
+  <script src="/js/lib/bootstrap.min.js"></script>
   <script>
     var API_HOST = "http://datastore.transit.land";
   </script>
@@ -61,7 +62,7 @@ navigation:
           {% assign url = page.url|remove:'index.html' %}
             {% for link in page.navigation %}
               <div class="float-left">
-                <a {% if url == link.url %}class="selected"{% endif %} href="{{link.url}}">
+                <a {% if url == link.url %}class="selected"{% endif %} href="{{link.url}}" target="_self">
                   <div class="circle"></div>
                   <div class="main">
                     {{link.text}}
