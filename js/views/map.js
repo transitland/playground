@@ -22,7 +22,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     },
     
     render: function() {
-        this.markerclustergroup = new L.MarkerClusterGroup();
+        this.markerclustergroup = new L.MarkerClusterGroup({showCoverageOnHover: false});
         
         this.map = L.map('map-view',{
             scrollWheelZoom: false

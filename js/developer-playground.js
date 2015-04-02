@@ -1,10 +1,12 @@
 $(document).ready(function () {
 	$(document).ajaxStart(function() {
+    console.log("ajaxStart");
 		 $("#loading").removeClass("hide");
      $(".btn-default").addClass("btn-inactive");
 	});
 	$(document).ajaxComplete(function(event, request, settings) {
 		// stop spinner, add style here
+    console.log("ajaxComplete");
     $("#loading").addClass("hide");
     $(".btn-default").removeClass("btn-inactive");
 
