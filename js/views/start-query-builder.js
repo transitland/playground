@@ -77,7 +77,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.operators;
             $(".form-control#name").show();
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
-            this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            if ('undefined' !== typeof this.nameListView) {
+                this.nameListView.close();
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            } else {
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            }
             collection.fetch();
             return this;
         } else {
@@ -162,6 +167,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         // this.mapview.featuregroup.clearLayers();
         this.mapview.markerclustergroup.clearLayers();
+        this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
         this.mapview.initialize({collection: collection});
 
