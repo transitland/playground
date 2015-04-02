@@ -9,11 +9,12 @@ $(document).ready(function () {
     $(".btn-default").removeClass("btn-inactive");
 
 	});
+  var navDefault = $("#nav-menu-bar").offset().top - parseInt($("#nav-menu-bar").css('margin-top'));
     DeveloperPlayground.startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
     if($(document).innerWidth() > 768){
-      fixNavigation();
+      fixNavigation(navDefault);
     $(window).scroll(function(){
-       fixNavigation();
+       fixNavigation(navDefault);
       });
     }
 });
