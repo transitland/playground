@@ -9,7 +9,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     setCollection: function(options){
         this.collection = options.collection;
-        console.log("setCollection: ", this.collection);
         this.listenTo(this.collection, 'add', this.addFeature);
         this.listenTo(this.collection, 'sync', this.addFeatureGroup);
         this.collection.each(this.addFeature, this);
@@ -115,7 +114,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     addFeatureGroup: function() {
         var $entitySelect = $('select.form-control#entity');
-        console.log('add');
         // this.featuregroup.addTo(this.map);
         if (!this.map.hasLayer(this.markerclustergroup)) {
             this.markerclustergroup.addTo(this.map);

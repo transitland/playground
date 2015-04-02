@@ -99,8 +99,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         var bounds = this.mapview.getBounds();
         var identifier = $nameSelect.val();
 
-        console.log("identifier: ", identifier);
-
         var shouldFetchAndResetCollection = true;
 
         // FOR STOP QUERIES
@@ -131,7 +129,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                     url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
                 });
             } else if($parameterSelect.val() == "name") {
-                console.log("operators by name");
                 this.operators.hideAll();
                 this.operators.get(identifier).set({ display: true });
                 shouldFetchAndResetCollection = false;
