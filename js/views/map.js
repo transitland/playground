@@ -101,6 +101,13 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     onEachFeature: function(feature, layer) {
 
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.bringToFront();
+
+        }
+
         var stopIcon = L.icon({
             iconUrl: "/images/dot2a.png",
             iconSize:     [15, 15], // size of the icon
@@ -113,6 +120,10 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         if (geom_type == 'point') {
             layer.setIcon(stopIcon);
         }
+
+        layer.on({
+            popupopen: highlightFeature
+        });
 
         layer.bindPopup(feature.name);
     },
