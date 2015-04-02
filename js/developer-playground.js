@@ -11,9 +11,9 @@ $(document).ready(function () {
 console.log('success!');
 
   });
-	$(document).ajaxComplete(function(event, xhr, settings) {
+	$(document).ajaxComplete(function(event, request, settings) {
 		// stop spinner, add style here
-    console.log(  xhr.responseText);
+    console.log(  request.responseText);
     $("#loading").addClass("hide");
     $(".btn-default").removeClass("btn-inactive");
 
