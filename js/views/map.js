@@ -9,7 +9,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     setCollection: function(options){
         this.collection = options.collection;
-        console.log("setCollection: ", this.collection);
         this.listenTo(this.collection, 'add', this.addFeature);
         this.listenTo(this.collection, 'sync', this.addFeatureGroup);
         this.collection.each(this.addFeature, this);
@@ -17,11 +16,14 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             this.addFeatureGroup();
         }
     },
+
+    clearCollection: function() {
+        this.stopListening();
+    },
     
     render: function() {
-        this.markerclustergroup = new L.MarkerClusterGroup(
+        this.markerclustergroup = new L.MarkerClusterGroup({showCoverageOnHover: false});
         
-        );
         this.map = L.map('map-view',{
             scrollWheelZoom: false
         }).setView([37.749, -122.443], 15);
@@ -61,9 +63,15 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     styleEachFeature: function(feature) {
 
+        var color;
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        color= "rgb("+r+" ,"+g+","+ b+")";
+
         var operatorStyle = {
-            color: "#dd339c",
-            fillColor: "#dd339c",
+            color: color,
+            fillColor: color,
             weight: 3,
             opacity: .6,
             fillOpacity: .3,
@@ -71,7 +79,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         };
 
         var routeStyle = {
-            color: "#7720f2",
+            color: color,
             // color: "#"+feature.attributes.tags.route_color,
             weight: 3,
             opacity: 1,
@@ -112,9 +120,10 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     addFeatureGroup: function() {
         var $entitySelect = $('select.form-control#entity');
-        console.log('add');
         // this.featuregroup.addTo(this.map);
-        this.markerclustergroup.addTo(this.map);
+        if (!this.map.hasLayer(this.markerclustergroup)) {
+            this.markerclustergroup.addTo(this.map);
+        }
         // this.map.fitBounds(this.featuregroup.getBounds());
         if ($entitySelect.val() !== "routes") {
             this.map.fitBounds(this.markerclustergroup.getBounds());

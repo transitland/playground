@@ -7,7 +7,6 @@ DeveloperPlayground.HeaderView = Backbone.View.extend({
     templateRouteHeader: _.template( $('#routes-header-template').html() ),
 		
 	initialize: function() {
-		// console.log("headerView initialized");
         this.render();
 	},
 	
