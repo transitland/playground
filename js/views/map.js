@@ -65,7 +65,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             color: "#dd339c",
             fillColor: "#dd339c",
             weight: 3,
-            opacity: .8,
+            opacity: .6,
             fillOpacity: .3,
             className: 'blah'
         };
@@ -94,7 +94,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     onEachFeature: function(feature, layer) {
 
         var stopIcon = L.icon({
-            iconUrl: "/assets/images/dot2a.png",
+            iconUrl: "/images/dot2a.png",
             iconSize:     [15, 15], // size of the icon
             iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
             popupAnchor:  [5, 5] // point from which the popup should open relative to the iconAnchor
@@ -111,12 +111,12 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
 
     addFeatureGroup: function() {
+        var $entitySelect = $('select.form-control#entity');
         console.log('add');
         // this.featuregroup.addTo(this.map);
         this.markerclustergroup.addTo(this.map);
         // this.map.fitBounds(this.featuregroup.getBounds());
-        if (collection != "routes") {
-            console.log('not routes');
+        if ($entitySelect.val() !== "routes") {
             this.map.fitBounds(this.markerclustergroup.getBounds());
         }
         
