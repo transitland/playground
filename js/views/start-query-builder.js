@@ -116,7 +116,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             } else if($parameterSelect.val() == "operator") {
                 collection = this.stops;
                 this.stops.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?servedBy='+identifier,
                 });
                 console.log("url: ", this.url);
             }
