@@ -46,11 +46,23 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.collection = feature.collection;
 
         if (feature.get('display') !== false) {
-            var s = {
+            var s = {};
+
+            if (feature.attributes.name == feature.attributes.tags.route_long_name){
+                s = {
                 'type': 'Feature',
                 'name': feature.attributes.name,
+                'longName': "",
                 'geometry':feature.attributes.geometry,
-            };
+                };
+            } else {
+                s = {
+                    'type': 'Feature',
+                    'name': feature.attributes.name,
+                    'longName': feature.attributes.tags.route_long_name,
+                    'geometry':feature.attributes.geometry,
+                };
+            }
             L.geoJson(s, {
                 onEachFeature: this.onEachFeature,
                 style: this.styleEachFeature
@@ -135,7 +147,9 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             popupopen: highlightFeature,
             popupclose: resetFeatureStyle
         });
-        layer.bindPopup(feature.name);
+        layer.bindPopup(feature.name + " " + feature.longName);
+        console.log("feature long name: ", feature.longName);
+
     },
 
     addFeatureGroup: function() {
