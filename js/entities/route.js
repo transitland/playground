@@ -9,7 +9,7 @@ DeveloperPlayground.Routes = Backbone.Collection.extend({
 	setQueryParameters: function(queryParameters) {
 		this.identifier = queryParameters.identifier;
 		this.url = queryParameters.url;
-        console.log("url: ", this.url);
+        console.log("API query url: ", this.url);
 	},
 	
 	parse: function(response, xhr) {
