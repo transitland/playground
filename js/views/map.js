@@ -11,11 +11,13 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.collection = options.collection;
         this.listenTo(this.collection, 'add', this.addFeature);
         this.listenTo(this.collection, 'sync', this.addFeatureGroup);
-        this.collection.each(this.addFeature, this);
-        if (this.collection.length > 0) {
-            this.addFeatureGroup();
-        }
-    },
+        this.emptydata = true;
+     //   this.collection.each(this.addFeature, this);
+     //   if (this.collection.length > 0) {
+     //       this.addFeatureGroup();
+     //   }
+      //  console.log(this.collection);
+    },     
 
     clearCollection: function() {
         this.stopListening();
@@ -43,8 +45,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     },
 
     addFeature: function(feature) {
-        this.collection = feature.collection;
-
+        //this.collection = feature.collection;
         if (feature.get('display') !== false) {
             var s = {
                 'type': 'Feature',
@@ -57,6 +58,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             })
             .addTo(this.markerclustergroup);
         }
+        this.emptydata = false;
         return this;
     },
 
@@ -138,31 +140,24 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         layer.bindPopup(feature.name);
     },
 
-    addFeatureGroup: function() {
+    addFeatureGroup: function(feature) {
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
-        console.log(this.markerclustergroup);
         if (!this.map.hasLayer(this.markerclustergroup)) {
             this.markerclustergroup.addTo(this.map);
         }
-        // this.map.fitBounds(this.featuregroup.getBounds());
-        if ($entitySelect.val() == "routes") {
-            if ($parameterSelect.val() !== "map view"){
-                this.map.fitBounds(this.markerclustergroup.getBounds());
-               // this.checkLayer(this.markerclustergroup._featureGroup._layers);
+        if(!this.emptydata){
+            if ($entitySelect.val() == "routes") {
+                if ($parameterSelect.val() !== "map view"){
+                    this.map.fitBounds(this.markerclustergroup.getBounds());
+                }
+            }else{
+                   this.map.fitBounds(this.markerclustergroup.getBounds());
             }
         }else{
-            this.map.fitBounds(this.markerclustergroup.getBounds());
-               //this.checkLayer(this.markerclustergroup._featureGroup._layers);
-        }
-    },
-    checkLayer:function(layer){
-        
-        if(!jQuery.isEmptyObject(layer)) this.map.fitBounds(this.markerclustergroup.getBounds());
-        else {
             if($(".no-result").hasClass("hide")){
                 $(".no-result").removeClass("hide");
-            }
+            } 
         }
     }
     
