@@ -12,12 +12,11 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.listenTo(this.collection, 'add', this.addFeature);
         this.listenTo(this.collection, 'sync', this.addFeatureGroup);
         this.emptydata = true;
-     //   this.collection.each(this.addFeature, this);
-     //   if (this.collection.length > 0) {
-     //       this.addFeatureGroup();
-     //   }
-      //  console.log(this.collection);
-    },     
+        this.collection.each(this.addFeature, this);
+        if (this.collection.length > 0) {
+            this.addFeatureGroup();
+        }
+    },
 
     clearCollection: function() {
         this.stopListening();
@@ -45,7 +44,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     },
 
     addFeature: function(feature) {
-        //this.collection = feature.collection;
+        this.collection = feature.collection;
         if (feature.get('display') !== false) {
             var s = {
                 'type': 'Feature',
@@ -104,15 +103,11 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
         function highlightFeature(e) {
             var layer = e.target;
-
             layer.setStyle({
                 opacity: 1,
             });
-
             layer.bringToFront();
-
         }
-
         function resetFeatureStyle(e) {
             var layer = e.target;
 
