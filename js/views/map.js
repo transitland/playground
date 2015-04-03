@@ -31,7 +31,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             maxZoom: 18,
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
-            .addTo(this.map);
+        .addTo(this.map);
         return this;
     },
 
@@ -39,6 +39,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.bounds=this.map.getBounds();
         this.bBoxString=this.bounds.toBBoxString();
         return this.bBoxString;
+        
     },
 
     addFeature: function(feature) {
@@ -55,9 +56,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
                 style: this.styleEachFeature
             })
             .addTo(this.markerclustergroup);
-
         }
-
         return this;
     },
 
@@ -128,7 +127,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         });
 
         var geom_type = feature.geometry.type.toLowerCase();
-
         if (geom_type == 'point') {
             layer.setIcon(stopIcon);
         }
@@ -137,10 +135,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             popupopen: highlightFeature,
             popupclose: resetFeatureStyle
         });
-
         layer.bindPopup(feature.name);
     },
-
 
     addFeatureGroup: function() {
         var $entitySelect = $('select.form-control#entity');
@@ -153,15 +149,22 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         // this.map.fitBounds(this.featuregroup.getBounds());
         if ($entitySelect.val() == "routes") {
             if ($parameterSelect.val() !== "map view"){
-                this.map.fitBounds(this.markerclustergroup.getBounds());
+                this.checkLayer(this.markerclustergroup._featureGroup._layers);
             }
-        } else {
-                this.map.fitBounds(this.markerclustergroup.getBounds());
+        }else{
+               this.checkLayer(this.markerclustergroup._featureGroup._layers);
         }
+    },
+    checkLayer:function(layer){
         
-
+        if(!jQuery.isEmptyObject(layer)) this.map.fitBounds(this.markerclustergroup.getBounds());
+        else {
+            if($(".no-result").hasClass("hide")){
+                $(".no-result").removeClass("hide");
+            }
+        }
     }
-
+    
 });
 
 

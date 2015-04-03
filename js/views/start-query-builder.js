@@ -9,9 +9,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit',
+        'click .btn' : 'submit'
     },
-
 
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
