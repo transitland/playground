@@ -1,22 +1,20 @@
 $(document).ready(function () {
-	$(document).ajaxStart(function() {
-    console.log("ajaxStart");
+
+   $(document).ajaxError(function(event, xhr, settings) {
+      console.log("err err err");
+      console.log(xhr.reponseText);
+  });
+    $(document).ajaxStart(function() {
 		 $("#loading").removeClass("hide");
      $(".btn-default").addClass("btn-inactive");
 	});
 	$(document).ajaxComplete(function(event, request, settings) {
-		// stop spinner, add style here
-
-    console.log(  request.responseText);
     $("#loading").addClass("hide");
     $(".btn-default").removeClass("btn-inactive");
-
 	});
-  $(document).ajaxError(function() {
-    console.log('error');
-  });
-  $(document).ajaxSuccess(function() {
-    console.log('success!');
+
+  $(document).click(function(){
+    if(!$(".no-result").hasClass("hide"))$(".no-result").addClass("hide");
   });
   var navDefault = $("#nav-menu-bar").offset().top - parseInt($("#nav-menu-bar").css('margin-top'));
     DeveloperPlayground.startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
