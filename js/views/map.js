@@ -48,7 +48,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         if (feature.get('display') !== false) {
             var s = {};
 
-            if (feature.attributes.name == feature.attributes.tags.route_long_name){
+            if (feature.attributes.name == feature.attributes.tags.route_long_name || feature.attributes.tags.route_long_name == undefined){
                 s = {
                 'type': 'Feature',
                 'name': feature.attributes.name,
