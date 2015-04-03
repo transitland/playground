@@ -118,7 +118,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.stops.setQueryParameters({
                     url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?servedBy='+identifier,
                 });
-                console.log("url: ", this.url);
             }
         
         // FOR OPERATOR QUERIES
@@ -151,7 +150,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.routes.setQueryParameters({
                     url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
                 });
-                console.log("url: ", this.url);
             } else if($parameterSelect.val() == "route number") {
                 collection = this.routes;
                 alert("routes by route number not yet functional");

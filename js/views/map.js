@@ -144,8 +144,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             popupclose: resetFeatureStyle
         });
         layer.bindPopup(feature.name + " " + feature.longName);
-        console.log("feature long name: ", feature.longName);
-
     },
 
     addFeatureGroup: function(feature) {
