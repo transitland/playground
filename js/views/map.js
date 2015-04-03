@@ -48,7 +48,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         if (feature.get('display') !== false) {
             var s = {};
 
-            if (feature.attributes.name == feature.attributes.tags.route_long_name || feature.attributes.tags.route_long_name == undefined){
+            if (feature.attributes.name == feature.attributes.tags.route_long_name || feature.attributes.tags.route_long_name === undefined){
                 s = {
                 'type': 'Feature',
                 'name': feature.attributes.name,
@@ -74,7 +74,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     },
 
     styleEachFeature: function(feature) {
-
         var color;
         var r = Math.floor(Math.random() * 255);
         var g = Math.floor(Math.random() * 255);
@@ -86,16 +85,16 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             fillColor: color,
             weight: 3,
             opacity: .6,
-            fillOpacity: .3,
-            className: 'blah'
+            fillOpacity: .3
+            // className: 'blah'
         };
 
         var routeStyle = {
             color: color,
             // color: "#"+feature.attributes.tags.route_color,
             weight: 4,
-            opacity: .3,
-            className: 'blah'
+            opacity: .3
+            // className: 'blah'
         };
 
         var geom_type = feature.geometry.type.toLowerCase();
@@ -111,7 +110,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     },
 
     onEachFeature: function(feature, layer) {
-
+        
         function highlightFeature(e) {
             var layer = e.target;
             layer.setStyle({
@@ -121,9 +120,8 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         }
         function resetFeatureStyle(e) {
             var layer = e.target;
-
             layer.setStyle({
-                opacity: .3,
+                opacity: .3
             });
         }
 
@@ -163,7 +161,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         }else{
             if($(".no-result").hasClass("hide")){
                 $(".no-result").removeClass("hide");
-            } 
+            }
         }
     }
     

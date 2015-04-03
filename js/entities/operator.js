@@ -40,8 +40,6 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 	visibleOperators: function() {
 		return this.where({display: true});
 	}
-
-
 });
 
 
