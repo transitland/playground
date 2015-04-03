@@ -14,7 +14,7 @@ $(document).ready(function () {
     if(!$(".no-result").hasClass("hide"))$(".no-result").addClass("hide");
   });
 
-  var navDefault = $("#nav-menu-bar").offset().top - parseInt($("#nav-menu-bar").css('margin-top'), radix);
+  var navDefault = $("#nav-menu-bar").offset().top - parseInt($("#nav-menu-bar").css('margin-top'));
     DeveloperPlayground.startQueryBuilderView = new DeveloperPlayground.StartQueryBuilderView();
     if($(document).innerWidth() > 768){
       fixNavigation(navDefault);
