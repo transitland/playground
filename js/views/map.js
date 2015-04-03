@@ -105,7 +105,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         } else if (geom_type == 'point') {
             return {};
         } else if (geom_type.indexOf('line') !== -1) {
-            // styles.color = "#f34";
             return routeStyle;
         }
         return {};

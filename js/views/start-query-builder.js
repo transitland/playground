@@ -82,6 +82,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             } else {
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             }
+            this.operators.setQueryParameters({
+                    url: API_HOST+'/api/v1/operators.json'
+                });
             collection.fetch();
             return this;
         } else {
@@ -161,7 +164,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.reset();
         }
 
-        // this.mapview.featuregroup.clearLayers();
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
@@ -170,11 +172,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if ('undefined' !== typeof this.gridview) this.gridview.close();
 
         this.gridview = new DeveloperPlayground.GridView({collection: collection});
-        
-
-
-        // this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        // this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
 
         if (shouldFetchAndResetCollection) {
             collection.fetch();
