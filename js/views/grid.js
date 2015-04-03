@@ -12,11 +12,9 @@ DeveloperPlayground.GridView = Backbone.View.extend({
     },
 
     render: function(model){
-
         var columns;
         var grid;
         var $entitySelect = $('select.form-control#entity');
-
 
         if ($entitySelect.val() == "operators"){
 
@@ -110,16 +108,12 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 editable: false,
                 cell: "string"
             }];
-
             grid = new Backgrid.Grid({
             columns: columns,
             collection: this.collection
             });
             $("#results").append(grid.render().$el);
         }
-            
-
-
     },
 
     close: function() {
