@@ -40,7 +40,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 cell: "uri"
               }, {
                 name: "onestop_id",
-                label: "OneStop ID",
+                label: "Onestop ID",
                 editable: false,
                 cell: "string"
             }];
@@ -64,13 +64,13 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 editable: false,
                 cell: "string"
               }, {
-                name: "operators_serving_stop",
+                name: "operatorNames",
                 label: "Operators serving stop",
                 editable: false,
                 cell: "string"
               }, {
                 name: "onestop_id",
-                label: "OneStop ID",
+                label: "Onestop ID",
                 editable: false,
                 cell: "string"
             }];
@@ -106,7 +106,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 cell: "string"
               }, {
                 name: "onestop_id",
-                label: "OneStop ID",
+                label: "Onestop ID",
                 editable: false,
                 cell: "string"
             }];
