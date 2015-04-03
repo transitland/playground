@@ -144,13 +144,19 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     addFeatureGroup: function() {
         var $entitySelect = $('select.form-control#entity');
-        // this.featuregroup.addTo(this.map);
+        var $parameterSelect = $('select.form-control#parameter');
+
+
         if (!this.map.hasLayer(this.markerclustergroup)) {
             this.markerclustergroup.addTo(this.map);
         }
         // this.map.fitBounds(this.featuregroup.getBounds());
-        if ($entitySelect.val() !== "routes") {
-            this.map.fitBounds(this.markerclustergroup.getBounds());
+        if ($entitySelect.val() == "routes") {
+            if ($parameterSelect.val() !== "map view"){
+                this.map.fitBounds(this.markerclustergroup.getBounds());
+            }
+        } else {
+                this.map.fitBounds(this.markerclustergroup.getBounds());
         }
         
 

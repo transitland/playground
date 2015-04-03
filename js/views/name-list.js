@@ -18,7 +18,6 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
 
     selectName: function(model) {
 		this.$el.val();
-		console.log("selectName val: ", this.$el.val());
 		return this;
     },
 
