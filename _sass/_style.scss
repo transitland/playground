@@ -62,7 +62,7 @@
 }
 
 #nameMenu{
-  width:900px;
+  width:930px;
   height:42px;
 }
 .form-control {
@@ -106,6 +106,20 @@ option{
   left:50%;
   width:80px;
   height:80px;
+  z-index:1030;
+}
+
+.no-result{
+  position:fixed;
+  top:55%;
+  left:50%;
+  width:280px;
+  margin-left:-140px;
+  padding:10px;
+  font-size:20px;
+  text-align: center;
+  background-color:rgba(255,255,255,1.0);
+  color:rgba(0,0,0,1.0);
   z-index:1030;
 }
 

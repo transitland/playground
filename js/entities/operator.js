@@ -19,7 +19,7 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 	
 	setQueryParameters: function(queryParameters) {
 		this.url = queryParameters.url;
-        console.log("url: ", this.url);
+        console.log("API query url: ", this.url);
 	},
 	
 	parse: function(response, xhr) {
@@ -40,8 +40,6 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 	visibleOperators: function() {
 		return this.where({display: true});
 	}
-
-
 });
 
 

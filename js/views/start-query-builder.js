@@ -9,9 +9,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit',
+        'click .btn' : 'submit'
     },
-
 
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
@@ -83,6 +82,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             } else {
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             }
+            this.operators.setQueryParameters({
+                    url: API_HOST+'/api/v1/operators.json'
+                });
             collection.fetch();
             return this;
         } else {
@@ -116,7 +118,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.stops.setQueryParameters({
                     url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?servedBy='+identifier,
                 });
-                console.log("url: ", this.url);
             }
         
         // FOR OPERATOR QUERIES
@@ -149,7 +150,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.routes.setQueryParameters({
                     url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
                 });
-                console.log("url: ", this.url);
             } else if($parameterSelect.val() == "route number") {
                 collection = this.routes;
                 alert("routes by route number not yet functional");
@@ -162,7 +162,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.reset();
         }
 
-        // this.mapview.featuregroup.clearLayers();
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
@@ -171,11 +170,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if ('undefined' !== typeof this.gridview) this.gridview.close();
 
         this.gridview = new DeveloperPlayground.GridView({collection: collection});
-        
-
-
-        // this.tableview = new DeveloperPlayground.TableView({collection: collection});
-        // this.headerView = new DeveloperPlayground.HeaderView({collection: collection});
 
         if (shouldFetchAndResetCollection) {
             collection.fetch();
