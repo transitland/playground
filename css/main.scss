@@ -4,12 +4,16 @@
 @charset "utf-8";
 // Our variables
 $base-font-family: Lato, Helvetica, Arial, sans-serif;
+$font-awesome:      FontAwesome;
 $base-font-size:   30px;
+$base-font-weight: 300;
 $medium-font-size:  $base-font-size * 0.875;
-$small-font-size:   $base-font-size * 0.575;
+$small-font-size:  $base-font-size * 0.575;
+$base-line-height: 1.5;
 
 $spacing-unit:     30px;
-
+$mobile-footer-h:  120px;
+$footer-h:         150px;
 $text-color:       #000;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
@@ -21,8 +25,9 @@ $grey-color-dark:  darken($grey-color, 25%);
 // Width of the content area
 $content-width:    800px;
 
-$on-palm:          399px;
+$on-palm:          400px;
 $on-pad:           767px;
+$on-ipad:          768px;
 $on-small-screen:  991px;
 
 
@@ -34,13 +39,13 @@ $logo-color-4:  #ee914b;
 $logo-color-5:  #66ad2a;
 $logo-color-6:  #9f5bcc;
 $logo-colors : ($logo-color-1,$logo-color-2,$logo-color-3,$logo-color-4,$logo-color-5,$logo-color-6);
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
+$logo-hover-colors: ();
+$index-sections:();
+
+@for $i from 1 through 6 {
+  $logo-hover-colors:append($logo-hover-colors,darken(nth($logo-colors,$i),5%) );
+}
+
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
@@ -52,5 +57,6 @@ $logo-colors : ($logo-color-1,$logo-color-2,$logo-color-3,$logo-color-4,$logo-co
         "bootstrap",
         "override",
         "nav",
-        "style"
+        "style",
+        "footer"
 ;

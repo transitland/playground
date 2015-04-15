@@ -10,6 +10,7 @@
   padding:10px 0;
   text-align: center;
   z-index:1030;
+  border-radius:0;
 }
 
 .nav-menu{
@@ -17,12 +18,17 @@
 }
 
 .logo-image{
-  background-image:url(../images/transit-logo.png);
+  background-image:url(../images/logo/transitland_logo@1x.png);
   background-size:contain;
   background-repeat:no-repeat;
   width: 326px;
   height:145px;
   margin: 0 auto;
+}
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    background-image:url(../images/logo/transitland_logo@2x.png);
 }
 
 .circle{
@@ -33,7 +39,7 @@
   width:8px;
   height:8px;
   position:relative;
-  top:-5px;
+  top:-4px;
 }
 
 .float-left{
@@ -41,6 +47,9 @@
   padding: 0 20px;
 }
 
+.main{
+  text-transform: uppercase;
+}
 nav a{
   color:#000000;
   text-decoration: none;
@@ -59,7 +68,7 @@ nav a:visited{
 
 @for $i from 1 through 6 {
   .nav-menu .float-left:nth-child(#{$i}) a:hover{color:nth($logo-colors,$i);}
-  .nav-menu .float-left:nth-child(#{$i}) .selected{color:nth($logo-colors,$i);}
+  .nav-menu .float-left:nth-child(#{$i}) .active{color:nth($logo-colors,$i);}
 }
 
 .nav-helper{
@@ -89,7 +98,11 @@ nav a:visited{
   }
   .logo-image{
     margin:0 auto;
-    background-image:url(../images/transit-logo.png);
+    background-image:url(../images/logo/transitland_logo-mobile@1x.png);
+    @media 
+    (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        background-image:url(../images/logo/transitland_logo-mobile@2x.png);
+    }
     width:226px;
     height:100px;
     
