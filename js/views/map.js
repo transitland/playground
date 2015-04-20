@@ -33,6 +33,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
         .addTo(this.map);
+        L.control.locations({ position: 'topright', keepCurrentZoomLevel: true }).addTo(this.map);
         return this;
     },
 
