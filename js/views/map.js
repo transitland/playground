@@ -30,7 +30,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         }).setView([37.749, -122.443], 15);
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.li1lhlf0/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         })
         .addTo(this.map);
         L.control.locations({ position: 'topright', keepCurrentZoomLevel: true }).addTo(this.map);
