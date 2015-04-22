@@ -28,15 +28,21 @@ layout: default
       </span>
     </p>
     <p class="run center-text">
-      <button class="btn btn-med btn-default">RUN QUERY</button>
+      <button class="btn btn-med btn-default" id="run-query-btn">RUN QUERY</button>
     </p>
     <div id="loading" class="hide"></div>
     <div class="no-result hide">
       no result
     </div>
     <div class="custom-popup" id="map-view"></div>
+    <p class="run center-text" id="download-bar"></p>
    <div class="backgrid-container white-text" id="results"></div>
+   
+  </script>
 
+  <script type="text/template" id="download-bar-template">
+    <button class="btn btn-med btn-default" id="csv">Download CSV</button>
+    <button class="btn btn-med btn-default" id="json">Download JSON</button>
   </script>
 
   <script type="text/template" id="name-template">
@@ -78,12 +84,14 @@ layout: default
   <script type="text/javascript" src="/js/entities/operator.js"></script>
   <script type="text/javascript" src="/js/entities/stop.js"></script>
   <script type="text/javascript" src="/js/entities/route.js"></script>
+  <script type="text/javascript" src="/js/views/download-bar.js"></script>
   <script type="text/javascript" src="/js/views/map.js" type="text/javascript"></script>
   <script type="text/javascript" src="/js/views/name-list.js" type="text/javascript"></script>
   <script type="text/javascript" src="/js/views/name.js" type="text/javascript"></script>
   <script type="text/javascript" src="/js/views/grid.js" type="text/javascript"></script>
   <script type="text/javascript"src="/js/lib/L.Control.Locations.js"></script>
   <script type="text/javascript" src="/js/lib/backbone-dotattr.js"></script>
+  <script type="text/javascript" src="/js/lib/FileSaver.js"></script>
   <script type="text/javascript" src="/js/ui/nav.js" type="text/javascript"></script>
   <script type="text/javascript" src="/js/ui/nav.js" type="text/javascript"></script>
   <script type="text/javascript" src="/js/developer-playground.js"></script>
