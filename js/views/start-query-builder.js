@@ -9,7 +9,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit'
+        'click .btn#run-query-btn' : 'submit'
     },
 
     initialize: function () {
@@ -166,6 +166,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
         this.mapview.initialize({collection: collection});
+        this.downloadview = new DeveloperPlayground.DownloadView({collection: collection});
+        this.downloadview.render();
+
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
 
