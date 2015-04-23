@@ -8,7 +8,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     events: {
         'change .form-control#entity': 'changeParam',
-        'change .form-control#parameter': 'changeName',
+        'change .form-control#parameter': 'changeFilter',
         'click .btn#run-query-btn' : 'submit'
     },
 
@@ -69,7 +69,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
     
-    changeName: function() {
+    changeFilter: function() {
         var $parameterSelect = $('select.form-control#parameter');
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
@@ -87,6 +87,18 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
             collection.fetch();
             return this;
+        } else if($parameterSelect.val() == "map view") {
+            // this.mapview.changeLocation();
+
+
+            // $(".form-control#name").show();
+            // if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+            // if ('undefined' !== typeof this.nameListView) {
+            //     this.nameListView.close();
+            // } else {
+            //     this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            // }
+            // return this;
         } else {
             $(".form-control#name").hide();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");

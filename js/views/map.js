@@ -44,6 +44,10 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         
     },
 
+    changeLocation: function() {
+        // move map to NY or SF
+    },
+
     addFeature: function(feature) {
         this.collection = feature.collection;
         if (feature.get('display') !== false) {
