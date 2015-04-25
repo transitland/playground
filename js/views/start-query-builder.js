@@ -178,6 +178,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
+        this.mapview.initialize({collection: collection});
 
         this.downloadview.setCollection({collection: collection});
         // this.downloadview.showTemplate();

@@ -11,7 +11,7 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 	render: function() {
 		renderedHtml = this.template();
-		this.$el.html(renderedHtml); 
+		this.$el.html(renderedHtml);
 		return this;
 		},
 
