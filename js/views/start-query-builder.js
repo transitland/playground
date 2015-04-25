@@ -91,20 +91,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
             collection.fetch();
             return this;
-        } else if($parameterSelect.val() == "map view") {
-        //     // $("#locationMenu").show();
-            
-        //     console.log("select map view");
-        //     // this.mapview.changeLocation();
-            console.log("Change made");
-            $(".form-control#name").hide();
-            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
-
-
-
+      
         } else {
             $(".form-control#name").hide();
             // $("#locationMenu").hide();
+            console.log("Change made 2");
+
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
