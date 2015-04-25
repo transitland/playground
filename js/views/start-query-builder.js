@@ -76,7 +76,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
-            $("#locationMenu").hide();
+            // $("#locationMenu").hide();
             $(".form-control#name").show();
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
@@ -92,16 +92,19 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
             return this;
         } else if($parameterSelect.val() == "map view") {
-            $("#locationMenu").show();
+        //     // $("#locationMenu").show();
             
-            console.log("select map view");
-            this.mapview.changeLocation();
+        //     console.log("select map view");
+        //     // this.mapview.changeLocation();
+            console.log("Change made");
+            $(".form-control#name").hide();
+            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
 
 
         } else {
             $(".form-control#name").hide();
-            $("#locationMenu").hide();
+            // $("#locationMenu").hide();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
@@ -181,7 +184,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.initialize({collection: collection});
 
         this.downloadview.setCollection({collection: collection});
-        // this.downloadview.showTemplate();
 
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
