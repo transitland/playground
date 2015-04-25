@@ -9,15 +9,15 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         'click .btn' : 'submit',
     },
 
-	initialize:function(options){
-        this.collection = options.collection;
-	},
-
 	render: function() {
 		renderedHtml = this.template();
 		this.$el.html(renderedHtml);
 		return this;
 	},
+
+	setCollection: function(options){
+        this.collection = options.collection;
+    },
 
 	submit: function(event) {
 		url = this.collection.url;

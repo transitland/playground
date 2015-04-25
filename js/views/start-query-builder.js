@@ -25,6 +25,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
+        this.downloadview = new DeveloperPlayground.DownloadView();
+        this.downloadview.render();
         return this;
     },
 
@@ -88,19 +90,15 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
             return this;
         } else if($parameterSelect.val() == "map view") {
-            // this.mapview.changeLocation();
+            $(".form-control#name").show();
+            
+            console.log("select map view");
+            this.mapview.changeLocation();
 
 
-            // $(".form-control#name").show();
-            // if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
-            // if ('undefined' !== typeof this.nameListView) {
-            //     this.nameListView.close();
-            // } else {
-            //     this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
-            // }
-            // return this;
         } else {
             $(".form-control#name").hide();
+            $(".form-control#location").hide();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
@@ -177,9 +175,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
-        this.mapview.initialize({collection: collection});
-        this.downloadview = new DeveloperPlayground.DownloadView({collection: collection});
-        this.downloadview.render();
+        this.downloadview.setCollection({collection: collection});
 
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
