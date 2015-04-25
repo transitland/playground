@@ -3,16 +3,18 @@ var DeveloperPlayground = DeveloperPlayground || {};
 DeveloperPlayground.DownloadView = Backbone.View.extend({
 	el: '#download-bar',
 	
-	template: _.template( $('#download-bar-template').html() ),
+	// template: _.template( $('#download-bar-template').html() ),
 
 	events: {
         'click .btn' : 'submit',
     },
 
 	render: function() {
-		renderedHtml = this.template();
-		this.$el.html(renderedHtml);
+		// renderedHtml = this.template();
+		// this.$el.html(renderedHtml);
 
+		// var hideTemplate = _.template( $('#download-bar-template-hidden').html() );
+		// this.$el.append(hideTemplate);
 		return this;
 	},
 
@@ -20,9 +22,21 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         this.collection = options.collection;
     },
 
+    showTemplate: function(){
+		// $('#download-bar-template-hidden', this.$el).empty();
+		// var showTemplate = _.template( $('#download-bar-template').html() );
+		// this.$el.append(showTemplate);
+
+		if ($('#download-bar').is(':empty')){
+			console.log("yes");
+            var showTemplate = _.template( $('#download-bar-template').html() );
+			this.$el.append(showTemplate);
+        }
+    },
+
 	submit: function(event) {
 		url = this.collection.url;
-
+        
 		if (event.target.id == "csv") {
 			url = url.replace(".json", ".csv");
 		} else if (event.target.id == "json") {
@@ -32,6 +46,7 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 		window.open(url, '_blank');
 
-	}
+	},
+
 
  });

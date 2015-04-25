@@ -95,6 +95,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             console.log("select map view");
             this.mapview.changeLocation();
 
+            this.locationListView = new DeveloperPlayground.NameListView();
+            this.locationListview.render();
+
             // if ('undefined' !== typeof this.locationListView) {
             //     this.locationListView.close();
             //     this.locationListView = new DeveloperPlayground.NameListView({collection: collection});
@@ -182,6 +185,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
+        this.downloadview.showTemplate();
         this.downloadview.setCollection({collection: collection});
 
 
