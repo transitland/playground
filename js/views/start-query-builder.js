@@ -90,10 +90,17 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
             return this;
         } else if($parameterSelect.val() == "map view") {
-            $(".form-control#name").show();
+            // $(".form-control#location").show();
             
             console.log("select map view");
             this.mapview.changeLocation();
+
+            // if ('undefined' !== typeof this.locationListView) {
+            //     this.locationListView.close();
+            //     this.locationListView = new DeveloperPlayground.NameListView({collection: collection});
+            // } else {
+            //     this.locationListView = new DeveloperPlayground.LocationListView({collection: collection});
+            // }
 
 
         } else {
