@@ -15,6 +15,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 		// var hideTemplate = _.template( $('#download-bar-template-hidden').html() );
 		// this.$el.append(hideTemplate);
+		var showTemplate = _.template( $('#download-bar-template').html() );
+		this.$el.append(showTemplate);
 		return this;
 	},
 
@@ -22,17 +24,16 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         this.collection = options.collection;
     },
 
-    showTemplate: function(){
-		// $('#download-bar-template-hidden', this.$el).empty();
-		// var showTemplate = _.template( $('#download-bar-template').html() );
-		// this.$el.append(showTemplate);
+  //   showTemplate: function(){
+		// // $('#download-bar-template-hidden', this.$el).empty();
+		// // var showTemplate = _.template( $('#download-bar-template').html() );
+		// // this.$el.append(showTemplate);
 
-		if ($('#download-bar').is(':empty')){
-			console.log("yes");
-            var showTemplate = _.template( $('#download-bar-template').html() );
-			this.$el.append(showTemplate);
-        }
-    },
+		// if ($('#download-bar').is(':empty')){
+  //           var showTemplate = _.template( $('#download-bar-template').html() );
+		// 	this.$el.append(showTemplate);
+  //       }
+  //   },
 
 	submit: function(event) {
 		url = this.collection.url;

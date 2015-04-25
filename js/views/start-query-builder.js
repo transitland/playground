@@ -76,7 +76,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
+            $("#locationMenu").hide();
             $(".form-control#name").show();
+
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
                 this.nameListView.close();
@@ -90,25 +92,16 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
             return this;
         } else if($parameterSelect.val() == "map view") {
-            // $(".form-control#location").show();
+            $("#locationMenu").show();
             
             console.log("select map view");
             this.mapview.changeLocation();
 
-            this.locationListView = new DeveloperPlayground.NameListView();
-            this.locationListview.render();
-
-            // if ('undefined' !== typeof this.locationListView) {
-            //     this.locationListView.close();
-            //     this.locationListView = new DeveloperPlayground.NameListView({collection: collection});
-            // } else {
-            //     this.locationListView = new DeveloperPlayground.LocationListView({collection: collection});
-            // }
 
 
         } else {
             $(".form-control#name").hide();
-            $(".form-control#location").hide();
+            $("#locationMenu").hide();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
@@ -185,8 +178,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
-        this.downloadview.showTemplate();
+
         this.downloadview.setCollection({collection: collection});
+        // this.downloadview.showTemplate();
 
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
