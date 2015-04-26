@@ -76,8 +76,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
-            // $("#locationMenu").hide();
             $(".form-control#name").show();
+            // commenting out for current version
+            // $("#toggle-location").hide();
+
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
@@ -94,8 +96,17 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
       
         } else {
             $(".form-control#name").hide();
-            // $("#locationMenu").hide();
-            console.log("Change made 2");
+
+
+
+
+            // commenting out for current version
+            // if ('undefined' !== typeof this.locationListView) {
+            //     this.locationListView.close();
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // } else {
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // }
 
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
@@ -174,12 +185,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
         this.mapview.initialize({collection: collection});
-
         this.downloadview.setCollection({collection: collection});
 
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
-
         this.gridview = new DeveloperPlayground.GridView({collection: collection});
 
         if (shouldFetchAndResetCollection) {
