@@ -43,11 +43,6 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         
     },
 
-    // changeLocation: function() {
-    //     // move map to NY or SF
-    //     console.log("change location");
-    // },
-
     addFeature: function(feature) {
         this.collection = feature.collection;
         if (feature.get('display') !== false) {
@@ -91,15 +86,12 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             weight: 3,
             opacity: .6,
             fillOpacity: .3
-            // className: 'blah'
         };
 
         var routeStyle = {
             color: color,
-            // color: "#"+feature.attributes.tags.route_color,
             weight: 4,
             opacity: .3
-            // className: 'blah'
         };
 
         var geom_type = feature.geometry.type.toLowerCase();

@@ -1,26 +1,23 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.LocationListView = Backbone.View.extend({
-	el: '.btn-group#locationMenu',
+    el: '.center-text#toggle-location',
+    template: _.template( $('#location-template').html() ),
+
+
 
 	initialize:function(options){
-       
+        // console.log("location list renders");
+            this.render();
     },
 
-    renderName: function(model) {
-        var locationView = new DeveloperPlayground.LocationView({
-            model: model
-        });
-        $(".form-control#location", this.$el).append(locationView.render().$el);
-    },
-
-    selectName: function(model) {
-		this.$el.val();
-		return this;
+    render: function(options){
+        renderedHtml = this.template();
+        this.$el.html(renderedHtml);
     },
 
     close: function() {
-        $('.form-control#location', this.$el).empty();
+        $(this.$el).empty();
         this.stopListening();
         return this;
     }
