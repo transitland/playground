@@ -21,13 +21,20 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     clearCollection: function() {
         this.stopListening();
     },
-    
+
+    // set mapview function, take in lat and long arguments, possibly also a zoom level argument
+    setMapview: function() {
+
+    };
+
+    // setview using output from setMapview
     render: function() {
         this.markerclustergroup = new L.MarkerClusterGroup({showCoverageOnHover: false});
         
         this.map = L.map('map-view',{
             scrollWheelZoom: false
         }).setView([37.749, -122.443], 15);
+        // run setMapview inside of setview
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.li1lhlf0/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
