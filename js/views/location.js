@@ -7,7 +7,7 @@ DeveloperPlayground.LocationListView = Backbone.View.extend({
 
 
 	initialize:function(options){
-        // console.log("location list renders");
+        console.log("location list renders");
             this.render();
     },
 

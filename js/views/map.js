@@ -24,7 +24,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     // set mapview function, take in lat and long arguments, possibly also a zoom level argument
     setMapview: function() {
-
+        console.log("hi!");
     },
 
     // setview using output from setMapview
@@ -91,14 +91,14 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             color: color,
             fillColor: color,
             weight: 3,
-            opacity: .6,
-            fillOpacity: .3
+            opacity: 0.6,
+            fillOpacity: 0.3
         };
 
         var routeStyle = {
             color: color,
             weight: 4,
-            opacity: .3
+            opacity: 0.3
         };
 
         var geom_type = feature.geometry.type.toLowerCase();
@@ -125,7 +125,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         function resetFeatureStyle(e) {
             var layer = e.target;
             layer.setStyle({
-                opacity: .3
+                opacity: 0.3
             });
         }
 

@@ -78,7 +78,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.operators;
             $(".form-control#name").show();
             // commenting out for current version
-            // $("#toggle-location").hide();
+            $("#toggle-location").hide();
 
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
@@ -100,13 +100,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
 
 
-            // commenting out for current version
-            // if ('undefined' !== typeof this.locationListView) {
-            //     this.locationListView.close();
-            //     this.locationListView = new DeveloperPlayground.LocationListView();
-            // } else {
-            //     this.locationListView = new DeveloperPlayground.LocationListView();
-            // }
+            // commenting out?
+            if ('undefined' !== typeof this.locationListView) {
+                this.locationListView.close();
+                this.locationListView = new DeveloperPlayground.LocationListView();
+            } else {
+                this.locationListView = new DeveloperPlayground.LocationListView();
+            }
 
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
