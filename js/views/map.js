@@ -25,7 +25,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     // set mapview function, take in lat and long arguments, possibly also a zoom level argument
     setMapview: function() {
 
-    };
+    },
 
     // setview using output from setMapview
     render: function() {
