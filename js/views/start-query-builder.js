@@ -9,6 +9,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeFilter',
+        'click .btn#san-francisco': 'changeMapSF',
+        'click .btn#new-york': 'changeMapNY',
         'click .btn#run-query-btn' : 'submit'
     },
 
@@ -22,6 +24,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $(".form-control#name").hide();
+        $(".btn#new-york").hide();
+        $(".btn#san-francisco").hide();
+
+
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
@@ -30,9 +36,24 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
+    changeMapSF: function(){
+        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+        $(".btn#san-francisco").addClass("active");
+        this.mapview.setMapviewSF();
+    },
+
+    changeMapNY: function(){
+        $(".btn#new-york").addClass("active");
+        if($(".btn#san-francisco").hasClass("active")) $(".btn#san-francisco").removeClass("active");
+        this.mapview.setMapviewNY();
+    },
+
     changeParam: function() {
 
         $(".form-control#name").hide();
+        $(".btn#new-york").hide();
+        $(".btn#san-francisco").hide();
+
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         var $entitySelect = $('select.form-control#entity');
@@ -78,7 +99,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.operators;
             $(".form-control#name").show();
             // commenting out for current version
-            $("#toggle-location").hide();
+            $(".btn#new-york").hide();
+            $(".btn#san-francisco").hide();
 
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
@@ -96,17 +118,19 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
       
         } else {
             $(".form-control#name").hide();
-
+            $(".btn#san-francisco").addClass("active");
+            $(".btn#new-york").show();
+            $(".btn#san-francisco").show();
 
 
 
             // commenting out?
-            if ('undefined' !== typeof this.locationListView) {
-                this.locationListView.close();
-                this.locationListView = new DeveloperPlayground.LocationListView();
-            } else {
-                this.locationListView = new DeveloperPlayground.LocationListView();
-            }
+            // if ('undefined' !== typeof this.locationListView) {
+            //     this.locationListView.close();
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // } else {
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // }
 
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }

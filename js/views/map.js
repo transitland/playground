@@ -22,12 +22,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.stopListening();
     },
 
-    // set mapview function, take in lat and long arguments, possibly also a zoom level argument
-    setMapview: function() {
-        console.log("hi!");
-    },
-
-    // setview using output from setMapview
+    
     render: function() {
         this.markerclustergroup = new L.MarkerClusterGroup({showCoverageOnHover: false});
         
@@ -41,6 +36,14 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         })
         .addTo(this.map);
         return this;
+    },
+
+    setMapviewSF: function() {
+        this.map.panTo(new L.LatLng(37.749, -122.443));
+    },
+
+    setMapviewNY: function() {
+        this.map.panTo(new L.LatLng(40.7127, -74.0059));
     },
 
     getBounds: function() {
