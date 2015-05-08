@@ -53,6 +53,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         $(".form-control#name").hide();
         $(".btn#new-york").hide();
         $(".btn#san-francisco").hide();
+        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
