@@ -16,6 +16,8 @@ DeveloperPlayground.GridView = Backbone.View.extend({
         var grid;
         var $entitySelect = $('select.form-control#entity');
 
+        //  if (feature.get('display') !== false) {
+
         if ($entitySelect.val() == "operators"){
 
             columns = [{

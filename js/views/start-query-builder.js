@@ -101,7 +101,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $(".form-control#name").show();
-            // commenting out for current version
             $(".btn#new-york").hide();
             $(".btn#san-francisco").hide();
             if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
@@ -210,6 +209,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.reset();
         }
 
+        $("#download-bar").show();
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
