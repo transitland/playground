@@ -22,21 +22,16 @@ layout: default
       </span>
     </p>
     <p class="center-text">
+      <span id="locationMenu" class="btn-group h2">
+         <button class="btn btn-med btn-default" id="san-francisco">San Francisco</button>
+       <button class="btn btn-med btn-default" id="new-york">New York</button>
+      </span>
+     
       <span id="nameMenu" class="btn-group h2">
-        <select class="form-control h2 s-text" id="name">
-        </select>
+        <select class="form-control h2 s-text" id="name"></select>  
       </span>
     </p>
-
-
-
-    <!--commenting out for current version-->
-    <!--<p class="center-text" id="toggle-location"></p>-->
     
-    
-
-
-
 
     <p class="run center-text">
       <button class="btn btn-med btn-default" id="run-query-btn">RUN QUERY</button>
@@ -61,10 +56,10 @@ layout: default
   </script>
 
 
-  <script type="text/template" id="location-template">
-    <button class="btn btn-med btn-default" id="san-francisco">San Francisco</button>
-    <button class="btn btn-med btn-default" id="new-york">New York</button>
-  </script>
+  <!-- // <script type="text/template" id="location-template"> -->
+  <!-- //   <button class="btn btn-med btn-default" id="san-francisco">San Francisco</button> -->
+  <!-- //   <button class="btn btn-med btn-default" id="new-york">New York</button> -->
+  <!-- // </script> -->
   
   <script type="text/template" id="stop-header-template"> 
     <th>Longitude</th>

@@ -9,9 +9,13 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         'click .btn' : 'submit',
     },
 
+    //  if (feature.get('display') !== false) {
+
+
 	render: function() {
 		renderedHtml = this.template();
 		this.$el.html(renderedHtml);
+        $("#download-bar").hide();
 		return this;
 		},
 
@@ -20,7 +24,14 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
     },
 
 	submit: function(event) {
-		url = this.collection.url;
+
+		if (this.collection.url.split("/").pop() == "operators.json" ) {
+			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id");
+		} else {
+			url = this.collection.url;
+		}
+
+		// if only one operator is visible, then set url parameter to include that operator identifier
         
 		if (event.target.id == "csv") {
 			url = url.replace(".json", ".csv");
