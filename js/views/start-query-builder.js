@@ -37,14 +37,14 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     },
 
     changeMapSF: function(){
-        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
-        $(".btn#san-francisco").addClass("active");
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+        $(".btn#san-francisco").addClass("selected");
         this.mapview.setMapviewSF();
     },
 
     changeMapNY: function(){
-        $(".btn#new-york").addClass("active");
-        if($(".btn#san-francisco").hasClass("active")) $(".btn#san-francisco").removeClass("active");
+        $(".btn#new-york").addClass("selected");
+        if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
         this.mapview.setMapviewNY();
     },
 
@@ -53,8 +53,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         $(".form-control#name").hide();
         $(".btn#new-york").hide();
         $(".btn#san-francisco").hide();
-        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
-        if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
 
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
@@ -122,7 +122,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
       
         } else {
             $(".form-control#name").hide();
-            $(".btn#san-francisco").addClass("active");
+            $(".btn#san-francisco").addClass("selected");
             $(".btn#new-york").show();
             $(".btn#san-francisco").show();
 
