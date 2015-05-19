@@ -13,8 +13,10 @@ DeveloperPlayground.GridView = Backbone.View.extend({
 
     render: function(model){
         var columns;
+        var row;
         var grid;
         var $entitySelect = $('select.form-control#entity');
+
 
         if ($entitySelect.val() == "operators"){
 
@@ -42,8 +44,21 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 editable: false,
                 cell: "string"
             }];
+
+            row = Backgrid.Row.extend({
+                className: function() {
+                    console.log("className called");
+                    if (this.model.get('display') === false) {
+                        console.log("display = false");
+                        return "hide";
+                    }
+                }
+
+            });
+
             grid = new Backgrid.Grid({
             columns: columns,
+            row: row,
             collection: this.collection
             });
             $("#results").append(grid.render().$el);
