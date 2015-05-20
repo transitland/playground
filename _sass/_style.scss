@@ -69,13 +69,19 @@
 
 #nameMenu{
   width:930px;
-  height:42px;
+  height:30px;
+  margin-top:-25px;
 }
-
+#nameMenu select{
+  position:absolute;
+  top:-20px;
+}
 
 #locationMenu{
-  height:42px;
+  height:30px;
+  margin-top:25px;
 }
+
 .form-control {
   width:auto;
   height:35px;
@@ -237,6 +243,10 @@ option{
 
 @include media-query($on-pad){
 
+  #developer-playground{
+    margin-bottom:0;
+  }
+
   span{
     display:block;
   }
@@ -259,8 +269,13 @@ option{
     width:95%;
     height:42px;
   }
+  #nameMenu select{
+    width:100%;
+    position:absolute;
+    top:0px;
+  }
+
   #locationMenu{
-    width:95%;
     height:42px;
   }
   option{
