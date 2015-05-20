@@ -8,8 +8,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     events: {
         'change .form-control#entity': 'changeParam',
-        'change .form-control#parameter': 'changeName',
-        'click .btn' : 'submit'
+        'change .form-control#parameter': 'changeFilter',
+        'click .btn#san-francisco': 'changeMapSF',
+        'click .btn#new-york': 'changeMapNY',
+        'click .btn#run-query-btn' : 'submit'
     },
 
     initialize: function () {
@@ -22,15 +24,39 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $(".form-control#name").hide();
+        $(".btn#new-york").hide();
+        $(".btn#san-francisco").hide();
+
+
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
+        this.downloadview = new DeveloperPlayground.DownloadView();
+        this.downloadview.render();
         return this;
+    },
+
+    changeMapSF: function(){
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+        $(".btn#san-francisco").addClass("selected");
+        this.mapview.setMapviewSF();
+    },
+
+    changeMapNY: function(){
+        $(".btn#new-york").addClass("selected");
+        if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
+        this.mapview.setMapviewNY();
     },
 
     changeParam: function() {
 
         $(".form-control#name").hide();
+        $(".btn#new-york").hide();
+        $(".btn#san-francisco").hide();
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+
+
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         var $entitySelect = $('select.form-control#entity');
@@ -69,12 +95,18 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
     
-    changeName: function() {
+    changeFilter: function() {
         var $parameterSelect = $('select.form-control#parameter');
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $(".form-control#name").show();
+            $(".btn#new-york").hide();
+            $(".btn#san-francisco").hide();
+            if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+            if($(".btn#new-york").hasClass("active")) $(".btn#new-york").removeClass("active");
+
+
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
                 this.nameListView.close();
@@ -87,8 +119,23 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
             collection.fetch();
             return this;
+      
         } else {
             $(".form-control#name").hide();
+            $(".btn#san-francisco").addClass("selected");
+            $(".btn#new-york").show();
+            $(".btn#san-francisco").show();
+
+
+
+            // commenting out?
+            // if ('undefined' !== typeof this.locationListView) {
+            //     this.locationListView.close();
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // } else {
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // }
+
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         }
 
@@ -162,13 +209,15 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.reset();
         }
 
+        $("#download-bar").show();
         this.mapview.markerclustergroup.clearLayers();
         this.mapview.clearCollection();
         this.mapview.setCollection({collection: collection});
         this.mapview.initialize({collection: collection});
+        this.downloadview.setCollection({collection: collection});
+
 
         if ('undefined' !== typeof this.gridview) this.gridview.close();
-
         this.gridview = new DeveloperPlayground.GridView({collection: collection});
 
         if (shouldFetchAndResetCollection) {

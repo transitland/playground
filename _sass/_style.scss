@@ -31,6 +31,12 @@
   text-align: center;
 }
 
+#developer-playground{
+  background-color:#232c31;
+  padding:50px 0;
+  margin-bottom:$footer-h;
+}
+
 #developer-playground p.h2{
   margin-bottom: $spacing-unit;
   margin-top: $spacing-unit;
@@ -65,6 +71,11 @@
   width:930px;
   height:42px;
 }
+
+
+#locationMenu{
+  height:42px;
+}
 .form-control {
   width:auto;
   height:35px;
@@ -83,8 +94,96 @@
   text-shadow: 0 0 0 #fff;
   text-align: center;
   cursor:pointer;
-  
+
 }
+
+
+/* Custom default button */
+
+.btn-run{
+  box-sizing : border-box;
+  padding:15px 20px;
+  font-weight:700;
+  font-size:24px;
+  letter-spacing: 3.1px;
+  text-shadow: none; 
+  color: white;
+  background-color: #8ac418;
+  border: 0px solid #8ac418;
+  /*font-size: 16px;*/
+  outline:none;
+  border-radius: 0px;
+}
+
+.btn-run:hover,.btn-run:active,.btn-run:focus{
+  box-shadow: none;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  outline:none;
+  color: white;
+  border: 0px solid #8ac418;
+  background-color: #5a881d;
+  border-radius: 0px;
+}
+
+.btn-location{
+
+  background-color :transparent;
+  border-radius : 0px;
+  border-style: solid;
+  border-color : #fff;
+  color : #fff;
+  font-size:18px;
+  letter-spacing: 1px;
+
+}
+
+.btn-location.selected{
+  background-color:#fff;
+  color:#232C31;
+}
+
+.btn-location:hover,.btn-location:active{
+
+  box-shadow: none;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  outline:none;
+  background-color:#cecece;
+
+}
+
+.btn-location:focus{
+
+  box-shadow: none;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  outline:none;
+
+}
+
+.btn-location:nth-child(1){
+  border-width: 3px ;
+}
+.btn-location:nth-child(2){
+  border-width: 3px 3px 3px 0;
+}
+
+.btn-download{
+  border-radius : 0px;
+}
+
+.btn-download:hover,.btn-download:active,.btn-download:focus{
+  
+  background-color:#cecece;
+
+}
+
+
+
+.btn-inactive{
+  border: 0px solid #8ac418;
+  outline:#8ac418;
+  background-color: #5a881d;
+}
+
 option{
   margin: 2px auto;
   text-align: center;
@@ -157,6 +256,10 @@ option{
   }
 
   #nameMenu{
+    width:95%;
+    height:42px;
+  }
+  #locationMenu{
     width:95%;
     height:42px;
   }

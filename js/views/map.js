@@ -21,19 +21,28 @@ DeveloperPlayground.MapView = Backbone.View.extend({
     clearCollection: function() {
         this.stopListening();
     },
+
     
     render: function() {
         this.markerclustergroup = new L.MarkerClusterGroup({showCoverageOnHover: false});
-        
         this.map = L.map('map-view',{
             scrollWheelZoom: false
-        }).setView([37.749, -122.443], 15);
+        }).setView([37.749, -122.443], 11);
+        // run setMapview inside of setview
         L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.li1lhlf0/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution: 'Map data &copy; <a target="_blank" href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a target="_blank" href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a target="_blank" href="http://mapbox.com">Mapbox</a>',
         })
         .addTo(this.map);
         return this;
+    },
+
+    setMapviewSF: function() {
+        this.map.panTo(new L.LatLng(37.749, -122.443));
+    },
+
+    setMapviewNY: function() {
+        this.map.panTo(new L.LatLng(40.7127, -74.0059));
     },
 
     getBounds: function() {
@@ -84,17 +93,14 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             color: color,
             fillColor: color,
             weight: 3,
-            opacity: .6,
-            fillOpacity: .3
-            // className: 'blah'
+            opacity: 0.6,
+            fillOpacity: 0.3
         };
 
         var routeStyle = {
             color: color,
-            // color: "#"+feature.attributes.tags.route_color,
             weight: 4,
-            opacity: .3
-            // className: 'blah'
+            opacity: 0.3
         };
 
         var geom_type = feature.geometry.type.toLowerCase();
@@ -121,7 +127,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         function resetFeatureStyle(e) {
             var layer = e.target;
             layer.setStyle({
-                opacity: .3
+                opacity: 0.3
             });
         }
 
