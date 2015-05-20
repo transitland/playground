@@ -120,6 +120,15 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             $(".btn#new-york").show();
             $(".btn#san-francisco").show();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
+
+
+            // commenting out?
+            // if ('undefined' !== typeof this.locationListView) {
+            //     this.locationListView.close();
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // } else {
+            //     this.locationListView = new DeveloperPlayground.LocationListView();
+            // }
         }
     },
 
