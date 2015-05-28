@@ -43,8 +43,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     },
 
     changeMapNY: function(){
-        $(".btn#new-york").addClass("selected");
         if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
+        $(".btn#new-york").addClass("selected");
         this.mapview.setMapviewNY();
     },
 
