@@ -5,6 +5,10 @@ $(document).ready(function () {
     $(".btn-default").addClass("btn-inactive");
 	});
 
+  $( document ).ajaxError(function() {
+    $("#loading").addClass("hide");
+  });
+
 	$(document).ajaxComplete(function(event, request, settings) {
     $("#loading").addClass("hide");
     $(".btn-default").removeClass("btn-inactive");

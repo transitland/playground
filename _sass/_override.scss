@@ -23,6 +23,7 @@ section{
   display: block;
  // overflow: hidden;
 }
+
 .reveal section{
   min-height:0px;
 }
@@ -44,39 +45,6 @@ section{
 .btn-group{
   margin-left: 10px;
   margin-right: 10px;
-}
-/* Custom default button */
-
-.btn-default,.btn-default:focus {
-  font-weight:700;
-  font-size:16px;
-  letter-spacing: 3.1px;
-  display:inline;
-  vertical-align: middle;
-  text-shadow: none; 
-  color: white;
-  background-color: #8ac418;
-  border: 0px solid #8ac418;
-  /*font-size: 16px;*/
-  outline:none;
-  border-radius: 0px;
-}
-
-.btn-inactive{
-  border: 0px solid #8ac418;
-  outline:#8ac418;
-  background-color: #5a881d;
-}
-
-.btn-default:hover{
-  text-shadow: none; /* Prevent inheritence from `body` */
-  color: white;
-  border: 0px solid #8ac418;
-  outline:#8ac418;
-  background-color: #5a881d;
-  font-size: 16px;
-  border-radius: 0px;
-
 }
 
 a{
