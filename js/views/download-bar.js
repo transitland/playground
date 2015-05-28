@@ -25,8 +25,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 	submit: function(event) {
 
-		if (this.collection.url.split("/").pop() == "operators.json" ) {
-			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id");
+		if (this.collection.url.split("/").pop() == "operators.json?per_page=5000" ) {
+			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id")+'&per_page=5000';
 		} else {
 			url = this.collection.url;
 		}

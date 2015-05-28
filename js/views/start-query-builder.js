@@ -109,7 +109,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             }
             this.operators.setQueryParameters({
-                    url: API_HOST+'/api/v1/operators.json'
+                    url: API_HOST+'/api/v1/operators.json?per_page=5000'
                 });
             collection.fetch();
             return this;
@@ -119,16 +119,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             this.changeMapSF();
             $(".btn#new-york").show();
             $(".btn#san-francisco").show();
+
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
-
-            // commenting out?
-            // if ('undefined' !== typeof this.locationListView) {
-            //     this.locationListView.close();
-            //     this.locationListView = new DeveloperPlayground.LocationListView();
-            // } else {
-            //     this.locationListView = new DeveloperPlayground.LocationListView();
-            // }
         }
     },
 
@@ -148,13 +141,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             if($parameterSelect.val() == "map view") {
             collection = this.stops;
             this.stops.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds+'&per_page=5000'
                 });
             // for search by operator name
             } else if($parameterSelect.val() == "operator") {
                 collection = this.stops;
                 this.stops.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?servedBy='+identifier,
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?servedBy='+identifier+'&per_page=5000',
                 });
             }
         
@@ -165,7 +158,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             if($parameterSelect.val() == "map view") {
                 collection = this.operators;
                 this.operators.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds+'&per_page=5000'
                 });
             } else if($parameterSelect.val() == "name") {
                 this.operators.hideAll();
@@ -181,12 +174,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             if($parameterSelect.val() == "map view") {
                 collection = this.routes;
                 this.routes.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?bbox='+bounds+'&per_page=5000'
                 });
             } else if($parameterSelect.val() == "operator") {
                 collection = this.routes;
                 this.routes.setQueryParameters({
-                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier,
+                    url: API_HOST+'/api/v1/'+$entitySelect.val()+'.json?operatedBy='+identifier+'&per_page=5000',
                 });
             } else if($parameterSelect.val() == "route number") {
                 collection = this.routes;
