@@ -208,5 +208,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
         }
 
+        ga('send', 'event', 'button', 'click', 'run-query-btn');
+
+        // $('#run-query-btn').on('click', function() {
+        //     ga('send', 'event', 'button', 'click', 'run-query-btn');
+        // });
+
     },
 });
