@@ -113,7 +113,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 editable: false,
                 cell: "string"
               }, {
-                name: "tags.agency_id",
+                name: "operated_by_name",
                 label: "Operator",
                 editable: false,
                 cell: "string"
