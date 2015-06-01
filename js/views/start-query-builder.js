@@ -209,9 +209,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         }
 
         if ($parameterSelect.val() == "name" || $parameterSelect.val() == "operator"){
-            ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+' , '+$nameSelect.val());
+            ga('send', 'event', 'button', 'click', $entitySelect.val()+'by '+$parameterSelect.val()+', '+$nameSelect.val());
         } else {
-            ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
+            ga('send', 'event', 'button', 'click', $entitySelect.val()+'by '+$parameterSelect.val());
         }
 
 
