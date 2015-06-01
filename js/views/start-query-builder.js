@@ -208,7 +208,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
         }
 
-        if ($parameterSelect.val() == "name"){
+        if ($parameterSelect.val() == "name" || $parameterSelect.val() == "operator"){
             ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+' , '+$nameSelect.val());
         } else {
             ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
