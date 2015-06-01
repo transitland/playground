@@ -208,7 +208,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
         }
 
-        ga('send', 'event', 'button', 'click', $entitySelect.val());
+        ga('send', 'event', 'button', 'click', $entitySelect.val())+'by'$parameterSelect.val();
 
         // $('#run-query-btn').on('click', function() {
         //     ga('send', 'event', 'button', 'click', 'run-query-btn');
