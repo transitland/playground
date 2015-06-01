@@ -208,8 +208,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection.fetch();
         }
 
-
-        ga('send', 'event', 'button', 'click', $entitySelect.val()+'by'+$parameterSelect.val());
+        if ($parameterSelect.val() == "name"){
+            ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+' , '+$nameSelect.val());
+        } else {
+            ga('send', 'event', 'button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
+        }
 
 
         // $('#run-query-btn').on('click', function() {
