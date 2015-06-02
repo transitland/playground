@@ -30,6 +30,7 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
             ga('send', 'event', 'button', 'click', 'json');
 		} else {
 			url = this.collection.url;
+            ga('send', 'event', 'button', 'click', 'json');
 		}
 
 		// if only one operator is visible, then set url parameter to include that operator identifier
