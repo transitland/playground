@@ -35,13 +35,11 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         
 		if (event.target.id == "csv") {
 			url = url.replace(".json", ".csv");
-            ga('send', 'event', 'button', 'click', 'csv');
+            ga('send', 'event', 'button', 'click', 'csv download: '+url);
 		} else if (event.target.id == "json") {
 			var blob = new Blob([JSON.stringify(this.collection.toJSON())], {type: "application/json;charset=utf-8"});
 			saveAs(blob, "download.json");
             ga('send', 'event', 'button', 'click', 'json');
-            ga('send', 'event', 'button', 'click', 'data download: '+url);
-
 		}
 
 		window.open(url, '_blank');
