@@ -27,10 +27,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 		if (this.collection.url.split("/").pop() == "operators.json?per_page=5000" ) {
 			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id")+'&per_page=5000';
-            ga('send', 'event', 'button', 'click', 'json');
 		} else {
 			url = this.collection.url;
-            ga('send', 'event', 'button', 'click', 'json');
 		}
 
 		// if only one operator is visible, then set url parameter to include that operator identifier
@@ -41,6 +39,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 		} else if (event.target.id == "json") {
 			var blob = new Blob([JSON.stringify(this.collection.toJSON())], {type: "application/json;charset=utf-8"});
 			saveAs(blob, "download.json");
+            ga('send', 'event', 'button', 'click', 'json');
+			
 		}
 
 		window.open(url, '_blank');
