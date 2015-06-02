@@ -40,7 +40,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 			var blob = new Blob([JSON.stringify(this.collection.toJSON())], {type: "application/json;charset=utf-8"});
 			saveAs(blob, "download.json");
             ga('send', 'event', 'button', 'click', 'json');
-			
+            ga('send', 'event', 'button', 'click', 'data download: '+url);
+
 		}
 
 		window.open(url, '_blank');
