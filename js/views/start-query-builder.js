@@ -211,9 +211,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         // analytics event tracker:
         if ($parameterSelect.val() == "name" || $parameterSelect.val() == "operator"){
-            ga('send', 'event', 'submit button', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+', '+$nameSelect.val());
+            ga('send', 'event', 'run query', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+', '+$nameSelect.val());
         } else {
-            ga('send', 'event', 'submit button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
+            ga('send', 'event', 'run button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
         }
     },
 });

@@ -39,12 +39,12 @@ DeveloperPlayground.MapView = Backbone.View.extend({
 
     setMapviewSF: function() {
         this.map.panTo(new L.LatLng(37.749, -122.443));
-        ga('send', 'event', 'button', 'click', 'city toggle: SF');
+        ga('send', 'event', 'location toggle', 'click', 'SF');
     },
 
     setMapviewNY: function() {
         this.map.panTo(new L.LatLng(40.7127, -74.0059));
-        ga('send', 'event', 'button', 'click', 'city toggle: NY');
+        ga('send', 'event', 'location toggle', 'click', 'NY');
     },
 
     getBounds: function() {
