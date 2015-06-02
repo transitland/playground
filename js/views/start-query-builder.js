@@ -11,8 +11,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#parameter': 'changeFilter',
         'click .btn#san-francisco': 'changeMapSF',
         'click .btn#new-york': 'changeMapNY',
-        'click .btn#run-query-btn' : 'submit',
-        'click .backgrid-container' : 'clickGrid'
+        'click .btn#run-query-btn' : 'submit'
 
     },
 
@@ -125,10 +124,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         }
-    },
-
-    clickGrid: function(){
-        ga('send', 'event', 'grid', 'click');
     },
 
     submit: function() {
