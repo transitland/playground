@@ -12,6 +12,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'click .btn#san-francisco': 'changeMapSF',
         'click .btn#new-york': 'changeMapNY',
         'click .btn#run-query-btn' : 'submit'
+
     },
 
     initialize: function () {
@@ -36,16 +37,26 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
+    setMapSF: function(){
+        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
+        $(".btn#san-francisco").addClass("selected");
+        this.mapview.setMapviewSF();
+    },
+
     changeMapSF: function(){
         if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
         $(".btn#san-francisco").addClass("selected");
         this.mapview.setMapviewSF();
+        // analytics event tracking:
+        ga('send', 'event', 'location toggle', 'click', 'SF');
     },
 
     changeMapNY: function(){
         if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
         $(".btn#new-york").addClass("selected");
         this.mapview.setMapviewNY();
+        // analytics event tracking:
+        ga('send', 'event', 'location toggle', 'click', 'NY');
     },
 
     changeParam: function() {
@@ -116,7 +127,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         } else {
             $(".form-control#name").hide();
-            this.changeMapSF();
+            this.setMapSF();
             $(".btn#new-york").show();
             $(".btn#san-francisco").show();
 
@@ -210,9 +221,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         // analytics event tracker:
         if ($parameterSelect.val() == "name" || $parameterSelect.val() == "operator"){
-            ga('send', 'event', 'submit button', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+', '+$nameSelect.val());
+            ga('send', 'event', 'run query', 'click', $entitySelect.val()+' by '+$parameterSelect.val()+', '+$nameSelect.val());
         } else {
-            ga('send', 'event', 'submit button', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
+            ga('send', 'event', 'run query', 'click', $entitySelect.val()+' by '+$parameterSelect.val());
         }
     },
 });
