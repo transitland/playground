@@ -51,7 +51,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
         this.bounds=this.map.getBounds();
         this.bBoxString=this.bounds.toBBoxString();
         // analytics event tracker:
-        ga('send', 'event', 'map', 'move');
+        ga('send', 'event', 'map', 'get bounds', this.bBoxString);
 
         return this.bBoxString;
         
