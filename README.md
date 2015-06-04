@@ -6,4 +6,4 @@ The Playground is a friendly interface for the [Datastore API](https://github.co
 
 ## Contact
 
-[Transitland](https://transit.land) is sponsored by [Mapzen](http://mapzen.com). Contact us with your questions, comments, or suggests: [hello@mapzen.com](mailto:hello@mapzen.com).
+[Transitland](https://transit.land) is sponsored by [Mapzen](http://mapzen.com). Contact us with your questions, comments, or suggestions: [hello@mapzen.com](mailto:hello@mapzen.com).
