@@ -1,6 +1,6 @@
 # transitland-developer-playground
 
-The Playground is a friendly interface for the [Datastore API](https://github.com/transitland/transitland-datastore#api-endpoints), providing a way to view and download all of the data without writing any lines of code. 
+The Playground is a friendly interface for the [Datastore API](https://github.com/transitland/transitland-datastore), providing a way to view and download all of the data without writing any lines of code. 
 
 ---
 
