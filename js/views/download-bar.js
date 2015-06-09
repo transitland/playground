@@ -25,8 +25,8 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
 
 	submit: function(event) {
 
-		if (this.collection.url.split("/").pop() == "operators.json" ) {
-			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id");
+		if (this.collection.url.split("/").pop() == "operators.json?per_page=5000" ) {
+			url = this.collection.url + "?onestop_id=" + this.collection.findWhere({display: true}).get("onestop_id")+'&per_page=5000';
 		} else {
 			url = this.collection.url;
 		}
@@ -35,9 +35,13 @@ DeveloperPlayground.DownloadView = Backbone.View.extend({
         
 		if (event.target.id == "csv") {
 			url = url.replace(".json", ".csv");
+			// analytics event tracker:
+            ga('send', 'event', 'download data', 'csv', url);
 		} else if (event.target.id == "json") {
 			var blob = new Blob([JSON.stringify(this.collection.toJSON())], {type: "application/json;charset=utf-8"});
 			saveAs(blob, "download.json");
+			// analytics event tracker:
+            ga('send', 'event', 'dowload data', 'json', url);
 		}
 
 		window.open(url, '_blank');

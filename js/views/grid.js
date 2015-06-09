@@ -3,6 +3,11 @@ var DeveloperPlayground = DeveloperPlayground || {};
 DeveloperPlayground.GridView = Backbone.View.extend({
     el: '.backgrid-container',
 
+    events: {
+        'mouseover .backgrid-container' : 'mouseoverGrid',
+        'click .backgrid-container' : 'clickGrid'
+    },
+
     initialize:function(options){
         this.collection = options.collection;
         this.listenTo(this.collection, 'sync', this.render);
@@ -113,7 +118,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
                 editable: false,
                 cell: "string"
               }, {
-                name: "tags.agency_id",
+                name: "operated_by_name",
                 label: "Operator",
                 editable: false,
                 cell: "string"
@@ -129,6 +134,14 @@ DeveloperPlayground.GridView = Backbone.View.extend({
             });
             $("#results").append(grid.render().$el);
         }
+    },
+
+    mouseoverGrid: function(){
+        ga('send', 'event', 'grid', 'mouseover');
+    },
+
+    clickGrid: function(){
+        ga('send', 'event', 'grid', 'click');
     },
 
     close: function() {
