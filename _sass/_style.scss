@@ -67,19 +67,26 @@
   width:250px;
 }
 
-#nameMenu{
-  width:930px;
-  height:30px;
-  margin-top:-25px;
+#toggle-container{
+  height:110px;
+  text-align: center;
 }
+
+#nameMenu{
+  width:950px;
+  height:30px;
+  margin-top:30px;
+}
+
 #nameMenu select{
+  width:100%;
   position:absolute;
-  top:-20px;
+  top:-15px;
 }
 
 #locationMenu{
   height:30px;
-  margin-top:25px;
+  margin-top:30px;
 }
 
 .form-control {
