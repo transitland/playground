@@ -61,7 +61,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeParam: function() {
 
         $("#nameMenu").hide();
-        $("locationMenu").hide();
+        $("#locationMenu").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
