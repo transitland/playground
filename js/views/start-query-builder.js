@@ -25,8 +25,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $("#nameMenu").hide();
-        $(".btn#new-york").hide();
-        $(".btn#san-francisco").hide();
+        $("#locationMenu").hide();
 
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
@@ -62,8 +61,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeParam: function() {
 
         $("#nameMenu").hide();
-        $(".btn#new-york").hide();
-        $(".btn#san-francisco").hide();
+        $("#locationMenu").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
@@ -109,8 +107,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $("#nameMenu").show();
-            $(".btn#new-york").hide();
-            $(".btn#san-francisco").hide();
+            $("#locationMenu").hide();
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
@@ -128,8 +125,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         } else {
             $("#nameMenu").hide();
             this.setMapSF();
-            $(".btn#new-york").show();
-            $(".btn#san-francisco").show();
+            $("#locationMenu").show();
 
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
