@@ -8,3 +8,14 @@
         "shared/nav",
         "shared/footer",
         "style";
+
+#license-info {
+	padding: 30px;
+	.panel-heading a:hover, .panel-heading a:focus {
+		color: #ee914b;
+	}
+	.panel-body p {
+		color: white;
+		font-size: 11pt;
+	}	
+}
