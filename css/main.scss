@@ -10,11 +10,14 @@
         "style";
 
 #license-info {
-	padding: 30px;
-	.panel-heading a:hover, .panel-heading a:focus {
+	padding-top: 50px;
+	padding-bottom: 0px;
+	padding-left: 15%;
+	padding-right: 15%;
+	h4 {
 		color: #ee914b;
 	}
-	.panel-body p {
+	p {
 		color: white;
 		font-size: 11pt;
 	}	
