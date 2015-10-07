@@ -201,15 +201,18 @@ option{
 
 //loading spinner animation
 @keyframes spinning {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
+@-webkit-keyframes spinning {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spinning {
+  0% { -moz-transform: -moz-rotate(0deg); }
+  100% { -moz-transform: -moz-rotate(360deg); }
+}
 
 #loading {
 
@@ -233,10 +236,9 @@ option{
     border: 15px solid $logo-color-4;
     border-top-color: transparent;
     color: #fff;
-    animation-name: spinning;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: spinning 1s infinite linear;
+    -webkit-animation: spinning 1s infinite linear;
+    -moz-animation: spinning 1s infinite linear;
   }
   &::after {
     content: 'Loading';
