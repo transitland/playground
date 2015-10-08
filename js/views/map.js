@@ -29,9 +29,9 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             scrollWheelZoom: false
         }).setView([37.749, -122.443], 11);
         // run setMapview inside of setview
-        L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.li1lhlf0/{z}/{x}/{y}.png', {
+        L.tileLayer(' https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: 'Map data &copy; <a target="_blank" href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a target="_blank" href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a target="_blank" href="http://mapbox.com">Mapbox</a>',
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
         })
         .addTo(this.map);
         return this;
