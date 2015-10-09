@@ -11,7 +11,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#parameter': 'changeFilter',
         'click .btn#san-francisco': 'changeMapSF',
         'click .btn#new-york': 'changeMapNY',
-        'click .btn#run-query-btn' : 'submit'
+        'click .btn#run-query-btn' : 'submit',
+        // rerender name list here:
+
+
 
     },
 
@@ -45,6 +48,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
         $(".btn#san-francisco").addClass("selected");
         this.mapview.setMapviewSF();
+        this.changeFilter();
         // analytics event tracking:
         ga('send', 'event', 'location toggle', 'click', 'SF');
     },
@@ -53,6 +57,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
         $(".btn#new-york").addClass("selected");
         this.mapview.setMapviewNY();
+        this.changeFilter();
+        
         // analytics event tracking:
         ga('send', 'event', 'location toggle', 'click', 'NY');
     },
