@@ -4,6 +4,13 @@ layout: default
 <body>
   <div id="developer-playground"></div>
   <script type="text/template" id="playground-template">
+    <div id="toggle-container" class="center-text">
+      <span id="locationMenu" class="btn-group">
+         <button class="btn btn-med btn-location" id="san-francisco">San Francisco</button>
+       <button class="btn btn-med btn-location" id="new-york">New York City</button>
+      </span>
+    </div>
+    
     <p class="instruction white-text center-text">
       <span class="h2">SHOW ME</span>
       <span id ="entityMenu" class="btn-group dropdown h2">
@@ -21,15 +28,13 @@ layout: default
         </select>
       </span>
     </p>
-    <div id="toggle-container" class="center-text">
-      <span id="locationMenu" class="btn-group">
-         <button class="btn btn-med btn-location" id="san-francisco">San Francisco</button>
-       <button class="btn btn-med btn-location" id="new-york">New York City</button>
-      </span>
+    
+    <div id="name-container" class="center-text">
       <span id="nameMenu" class="btn-group h2">
         <select class="form-control h2 s-text" id="name"></select>  
       </span>
     </div>
+
 
     <p class="run center-text">
       <button class="btn btn-run" id="run-query-btn">RUN QUERY</button>

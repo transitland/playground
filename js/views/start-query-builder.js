@@ -11,7 +11,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#parameter': 'changeFilter',
         'click .btn#san-francisco': 'changeMapSF',
         'click .btn#new-york': 'changeMapNY',
-        'click .btn#run-query-btn' : 'submit'
+        'click .btn#run-query-btn' : 'submit',
+        // rerender name list here:
+
+
 
     },
 
@@ -25,7 +28,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $("#nameMenu").hide();
-        $("#locationMenu").hide();
 
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
@@ -46,6 +48,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
         $(".btn#san-francisco").addClass("selected");
         this.mapview.setMapviewSF();
+        this.changeFilter();
         // analytics event tracking:
         ga('send', 'event', 'location toggle', 'click', 'SF');
     },
@@ -54,6 +57,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
         $(".btn#new-york").addClass("selected");
         this.mapview.setMapviewNY();
+        this.changeFilter();
+        
         // analytics event tracking:
         ga('send', 'event', 'location toggle', 'click', 'NY');
     },
@@ -61,7 +66,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeParam: function() {
 
         $("#nameMenu").hide();
-        $("#locationMenu").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
@@ -107,7 +111,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $("#nameMenu").show();
-            $("#locationMenu").hide();
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
@@ -124,8 +127,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         } else {
             $("#nameMenu").hide();
-            this.setMapSF();
-            $("#locationMenu").show();
+            // this.setMapSF();
 
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
