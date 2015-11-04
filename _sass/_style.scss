@@ -1,61 +1,48 @@
-.h2{
-  font-weight:400;
-  font-size: $base-font-size;
-  letter-spacing: 2px;
-}
-.col-1{color:$logo-color-1;}
-.col-2{color:$logo-color-2;}
-.col-3{color:$logo-color-3;}
-.col-4{color:$logo-color-4;}
-.col-5{color:$logo-color-5;}
-
-.desc{
-  padding-top:50px;
-}
-
-.white-text{
-  color:#fff;
-}
-
-.center-text{
-  text-align: center;
-}
-
-.instruction{
-  margin-top:250px;
-  text-align: center;
-}
-.run{
-  margin-top:$spacing-unit;
-  margin-bottom:$spacing-unit;
-  text-align: center;
-}
-
 #developer-playground{
   background-color:#232c31;
   padding:50px 0;
-  margin-bottom:$footer-h;
+
+  p.h2  {
+    margin-bottom: $spacing-unit;
+    margin-top: $spacing-unit;
+  }
+
 }
 
-#developer-playground p.h2{
-  margin-bottom: $spacing-unit;
-  margin-top: $spacing-unit;
+.h2 {
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.desc {
+  padding-top: 50px;
+}
+
+
+.instruction {
+  margin-top: 240px;
+  text-align: center;
+}
+.run {
+  margin-top: $spacing-unit + 30px;
+  margin-bottom: $spacing-unit + 30px;
+  text-align: center;
 }
 
 .custom-popup#map-view {
   color:black;
 }
- 
+
 .queryBuilder-container {
   margin-right: auto;
   margin-left: auto;
 }
 
 .dropdown{
-  height:42px;
-  margin-right:5px;
+  height: 42px;
   margin-left:5px;
-  background-image : url('../images/icon_dropdown.png');
+  background-image : url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzAgNDIiPjxzdHlsZT4uc3Qwe2ZpbGw6IzY1QUQ0NTt9PC9zdHlsZT48cGF0aCBpZD0iWE1MSURfMV8iIGNsYXNzPSJzdDAiIGQ9Ik0zMCAyMC43bC01IDguNy01LTguN3oiLz48L3N2Zz4=);
   background-repeat: no-repeat;
   background-position: right center;
   vertical-align: baseline;
@@ -68,25 +55,26 @@
 }
 
 #toggle-container{
-  height:110px;
+  height: 70px;
   text-align: center;
 }
 
 #nameMenu{
-  width:950px;
-  height:30px;
-  margin-top:40px;
+  width: 950px;
+  height: 30px;
+  margin-top: 40px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzAgMzAiPjxzdHlsZT4uc3Qwe2ZpbGw6IzY1QUQ0NTt9PC9zdHlsZT48cGF0aCBpZD0iWE1MSURfMV8iIGNsYXNzPSJzdDAiIGQ9Ik0zMCA1LjZsLTUgOC44LTUtOC44aDEweiIvPjwvc3ZnPg==);
+  select {
+    width: 100%;
+    position: absolute;
+    top: -15px;
+  }
 }
 
-#nameMenu select{
-  width:100%;
-  position:absolute;
-  top:-15px;
-}
 
 #locationMenu{
   height:30px;
-  margin-top:40px;
+  margin-top:50px;
 }
 
 .form-control {
@@ -211,16 +199,56 @@ option{
   display:none;
 }
 
-#loading{
-  background-image:url("../images/loader.gif");
-  background-size:cover;
-  position:fixed;
-  top:55%;
-  left:50%;
-  width:80px;
-  height:80px;
-  z-index:1030;
+//loading spinner animation
+@keyframes spinning {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
+
+@-webkit-keyframes spinning {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spinning {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+
+#loading {
+
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.3);
+  z-index: 30;
+
+  &::before {
+    content: ' ';
+    position: fixed;
+    top: 55%;
+    left: calc(50% - 50px) ;
+    width: 100px;
+    height: 100px;
+    z-index: 20030;
+    border-radius: 50%;
+    border: 15px solid $logo-color-4;
+    border-top-color: transparent;
+    color: #fff;
+    animation: spinning 1s infinite linear;
+    -webkit-animation: spinning 1s infinite linear;
+    -moz-animation: spinning 1s infinite linear;
+  }
+  &::after {
+    content: 'Loading';
+    position: fixed;
+    top: calc(55% + 40px);
+    left: calc(50% - 24px);
+  }
+}
+
+
 
 .no-result{
   position:fixed;
@@ -265,11 +293,11 @@ option{
 
   .h2{
     font-weight:400;
-    font-size:$medium-font-size;
+    font-size:$small-font-size;
     letter-spacing: 1.5px;
   }
   .s-text{
-    font-size:$medium-font-size;
+    font-size:$small-font-size;
     letter-spacing:1px;
   }
 
@@ -294,7 +322,7 @@ option{
 
 @include media-query($on-palm){
   .s-text{
-    font-size:$small-font-size;
+    font-size:$small-font-size * 0.85;
     letter-spacing:0.8px;
   }
 

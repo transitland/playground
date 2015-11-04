@@ -4,6 +4,13 @@ layout: default
 <body>
   <div id="developer-playground"></div>
   <script type="text/template" id="playground-template">
+    <div id="toggle-container" class="center-text">
+      <span id="locationMenu" class="btn-group">
+         <button class="btn btn-med btn-location" id="san-francisco">San Francisco</button>
+       <button class="btn btn-med btn-location" id="new-york">New York City</button>
+      </span>
+    </div>
+    
     <p class="instruction white-text center-text">
       <span class="h2">SHOW ME</span>
       <span id ="entityMenu" class="btn-group dropdown h2">
@@ -21,15 +28,13 @@ layout: default
         </select>
       </span>
     </p>
-    <div id="toggle-container" class="center-text">
-      <span id="locationMenu" class="btn-group">
-         <button class="btn btn-med btn-location" id="san-francisco">San Francisco</button>
-       <button class="btn btn-med btn-location" id="new-york">New York City</button>
-      </span>
+    
+    <div id="name-container" class="center-text">
       <span id="nameMenu" class="btn-group h2">
         <select class="form-control h2 s-text" id="name"></select>  
       </span>
     </div>
+
 
     <p class="run center-text">
       <button class="btn btn-run" id="run-query-btn">RUN QUERY</button>
@@ -41,6 +46,15 @@ layout: default
     <div class="custom-popup" id="map-view"></div>
     <p class="run center-text" id="download-bar"></p>
    <div class="backgrid-container white-text" id="results"></div>
+
+   <div id="license-info">
+    <h4>
+      License Info
+    </h4>
+    <p>The Transitland Playground displays data merged together from the following GTFS feeds: <a href="https://transit.land/feed-registry/operators/o-9q9-actransit">AC Transit</a>, <a href="https://transit.land/feed-registry/operators/o-9q9-bart">BART</a>, <a href="https://transit.land/feed-registry/operators/o-9q9-caltrain">Caltrain</a>, <a href="https://transit.land/feed-registry/operators/o-dr5r-nyct">NYCT</a>, <a href="https://transit.land/feed-registry/operators/o-dr5r7-nycdot">NYC DOT</a>, <a href="https://transit.land/feed-registry/operators/o-dr5r-path">PATH</a>, <a href="https://transit.land/feed-registry/operators/o-9q8y-sfmta">SFMTA</a>, <a href="https://transit.land/feed-registry/operators/o-9q8-samtrans">SamTrans</a>, and <a href="https://transit.land/feed-registry/operators/o-9q9-vta">VTA</a>. Please consult each feed's license for more information on permissions and restrictions.</p>
+
+    <p>NYC DOT requires that we add: This application may contain and/or utilize information which was originally compiled by the New York City Department of Transportation (DOT) for governmental purposes; the information may subsequently been modified by entity/entities other than DOT. DOT and the City of New York make no representation as to the accuracy or usefulness of the information provided by this application or the information's suitability for any purpose and disclaim any liability for omissions or errors that may be contained therein. The public is advised to observe posted signage for compliance with applicable laws and regulations.</p>
+  </div>
    
   </script>
 

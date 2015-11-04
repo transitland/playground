@@ -3,7 +3,7 @@ footer {
   bottom: 0;
   background-color: #eee;
   display: inline-block;
-  background-image:url('../images/animation/ferry_bg.png');
+  background-image:url('../images/ferry_bg.png');
   background-position: center bottom;
   background-repeat: repeat-x;
   .container {
@@ -23,7 +23,7 @@ footer {
     }
     li {
       width: 100%;
-      height: 25px;
+      line-height: 1.8;
       font-weight: 400;
       a {
         color: $mz-gray;
