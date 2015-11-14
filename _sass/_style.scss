@@ -57,6 +57,13 @@
 #toggle-container{
   height: 70px;
   text-align: center;
+
+  .coming-soon {
+    color: #fff;
+    font-size: $small-font-size;
+    font-weight: 300;
+    line-height: 50px;
+  }
 }
 
 #nameMenu{
@@ -293,7 +300,6 @@ option{
 
   .h2{
     font-weight:400;
-    font-size:$small-font-size;
     letter-spacing: 1.5px;
   }
   .s-text{
