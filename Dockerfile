@@ -7,7 +7,8 @@ ADD Gemfile /playground/Gemfile
 ADD Gemfile.lock /playground/Gemfile.lock
 RUN bundle install
 RUN apt-get update && \
-    apt-get -y install nginx
+    apt-get -y install nginx && \
+    apt-get -y install nodejs
 
-RUN bundle exec jekyll build --destination /var/www/html
+RUN bundle exec jekyll build --destination /var/www/html/playground
 CMD nginx -g 'daemon off;'
