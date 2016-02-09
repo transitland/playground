@@ -1,5 +1,5 @@
 # Site settings
-title: Transit Land
+title: Transitland
 email: transitland@mapzen.com
 description: > # A community edited dataservice aggregating transit networks across metropolitan and rural areas around the world.
 baseurl: "" # the subpath of your site, e.g. /blog/
