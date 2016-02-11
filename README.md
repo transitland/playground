@@ -2,6 +2,8 @@
 
 The [Transitland Playground](https://transit.land/playground) is a friendly interface for the [Datastore API](https://github.com/transitland/transitland-datastore), providing a way to view and download transit data without writing any lines of code. 
 
+To run the Playground locally, use `bundle exec jekyll serve`.
+
 ---
 
 ## Contact
