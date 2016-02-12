@@ -13,11 +13,17 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
         var nameView = new DeveloperPlayground.NameView({
             model: model
         });
+        var $regionSelect = $('select.form-control#region');
+
 
         // use region selection to render list of operator names
-        if (model.get('metro') === $('select.form-control#region')){
+        if (model.get('metro') === $regionSelect.val()){
+            console.log("model.get(metro): " + model.get('metro'));
             $(".form-control#name", this.$el).append(nameView.render().$el);
         }
+
+        // $(".form-control#name", this.$el).append(nameView.render().$el);
+
 
         // Code below is what we used to toggle between SF and NYC:
         //     

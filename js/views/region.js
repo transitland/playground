@@ -8,7 +8,7 @@ DeveloperPlayground.RegionView = Backbone.View.extend({
 		this.$el.get('metro');
 		renderedHtml = this.template(this.model.toJSON());
 		this.$el.html(renderedHtml);
-		this.$el.val(this.model.get('onestop_id'));
+		this.$el.val(this.model.get('metro'));
 		return this;
 	},
 

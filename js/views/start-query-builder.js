@@ -120,9 +120,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     // NEW CODE HERE //
     changeRegion: function() {
-        var $parameterSelect = $('select.form-control#parameter');
+        var $regionSelect = $('select.form-control#region');
 
-        if ($regionMenu.val() !== 'undefined') {
+        if ($regionSelect.val() !== 'undefined') {
             collection = this.operators;
             $("#nameMenu").show();
             
