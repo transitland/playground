@@ -9,13 +9,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeFilter',
+        'change .form-control#region': 'changeRegion',
         'click .btn#san-francisco': 'changeMapSF',
         'click .btn#new-york': 'changeMapNY',
         'click .btn#run-query-btn' : 'submit',
-        // rerender name list here:
-
-
-
     },
 
     initialize: function () {
@@ -45,6 +42,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         $("#nameMenu").hide();
         $("#regionMenu").hide();
+        $("#region-line").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
@@ -88,14 +86,47 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeFilter: function() {
         var $parameterSelect = $('select.form-control#parameter');
 
+        // If the filter (name/mapview) is changed to name/operator, show the region line/menu
+
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
-            $("#nameMenu").show();
             $("#regionMenu").show();
             $("#region-line").show();
 
-            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if(!$("#regionMenu").hasClass("dropdown")) $("#regionMenu").addClass("dropdown");
+            if ('undefined' !== typeof this.regionListView) {
+                this.regionListView.close();
+                this.regionListView = new DeveloperPlayground.RegionListView({collection: collection});
+            } else {
+                this.regionListView = new DeveloperPlayground.RegionListView({collection: collection});
+            }
+            this.operators.setQueryParameters({
+                    url: API_HOST+'/api/v1/operators.json?per_page=5000'
+                });
+            collection.fetch();
+            return this;
+
+        } else {
+            // if the filter is changed to mapview, hide the region line/menue and the name menu (if shown)
+            $("#region-line").hide();
+            $("#regionMenu").hide();
+            $("#nameMenu").hide();
+
+            if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
+
+        }
+    },
+
+    // NEW CODE HERE //
+    changeRegion: function() {
+        var $parameterSelect = $('select.form-control#parameter');
+
+        if ($regionMenu.val() !== 'undefined') {
+            collection = this.operators;
+            $("#nameMenu").show();
+            
+            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
                 this.nameListView.close();
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
@@ -109,15 +140,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
-            $("#regionMenu").hide();
             $("#nameMenu").hide();
-            // this.setMapSF();
 
-            if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         }
     },
+    // END NEW CODE HERE //
 
     submit: function() {
         var $entitySelect = $('select.form-control#entity');

@@ -2,7 +2,7 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.RegionListView = Backbone.View.extend({
 	el: '.btn-group#regionMenu',
-
+   
 	initialize:function(options){
         this.collection = options.collection;
         this.listenTo(this.collection, 'add', this.renderRegion);
@@ -13,16 +13,15 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
         var regionView = new DeveloperPlayground.RegionView({
             model: model
         });
-        
-        if ($(".btn#san-francisco").hasClass("selected")) {
-            if (model.get('metro') === 'San Francisco Bay Area'){
-                $(".form-control#name", this.$el).append(nameView.render().$el);
-            }
-        } else if ($(".btn#new-york").hasClass("selected")) {
-            if (model.get('metro') === 'New York City'){
-                $(".form-control#name", this.$el).append(nameView.render().$el);
-            }
-        }
+
+        var locations = _.uniq(this.collection.pluck('metro'));
+      
+
+        // if new model's metro is not in locations, then:
+
+        $(".form-control#region", this.$el).append(regionView.render().$el);
+
+
     },
 
     selectRegion: function(model) {
