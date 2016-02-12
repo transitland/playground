@@ -17,7 +17,7 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
         var locations = _.uniq(this.collection.pluck('metro'));
       
 
-        // if new model's metro is not in locations, then:
+        // for each metro in locations array:
 
         $(".form-control#region", this.$el).append(regionView.render().$el);
 
