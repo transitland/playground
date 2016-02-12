@@ -28,9 +28,12 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $("#nameMenu").hide();
+        $("#regionMenu").hide();
+        $("#region-line").hide();
 
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
+        if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
         this.downloadview = new DeveloperPlayground.DownloadView();
@@ -38,36 +41,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         return this;
     },
 
-    setMapSF: function(){
-        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
-        $(".btn#san-francisco").addClass("selected");
-        this.mapview.setMapviewSF();
-    },
-
-    changeMapSF: function(){
-        if($(".btn#new-york").hasClass("selected")) $(".btn#new-york").removeClass("selected");
-        $(".btn#san-francisco").addClass("selected");
-        this.mapview.setMapviewSF();
-        this.changeFilter();
-        // analytics event tracking:
-        ga('send', 'event', 'location toggle', 'click', 'SF');
-    },
-
-    changeMapNY: function(){
-        if($(".btn#san-francisco").hasClass("selected")) $(".btn#san-francisco").removeClass("selected");
-        $(".btn#new-york").addClass("selected");
-        this.mapview.setMapviewNY();
-        this.changeFilter();
-        
-        // analytics event tracking:
-        ga('send', 'event', 'location toggle', 'click', 'NY');
-    },
-
     changeParam: function() {
 
         $("#nameMenu").hide();
+        $("#regionMenu").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
+        if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
 
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
@@ -111,8 +91,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
             $("#nameMenu").show();
+            $("#regionMenu").show();
+            $("#region-line").show();
 
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+            if(!$("#regionMenu").hasClass("dropdown")) $("#regionMenu").addClass("dropdown");
             if ('undefined' !== typeof this.nameListView) {
                 this.nameListView.close();
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
@@ -126,9 +109,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
+            $("#regionMenu").hide();
             $("#nameMenu").hide();
             // this.setMapSF();
 
+            if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         }

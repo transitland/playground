@@ -23,12 +23,21 @@ title: Playground
         </select>
       </span>
     </p>
-    
+
+    <p class="region-list white-text center-text">
+      <span style="margin-left:10px" class="h2" id="region-line"> IN </span>
+      <span id="regionMenu" class="btn-group h2">
+        <select class="form-control h2 s-text" id="region"></select>  
+      </span>
+    </p>
+
     <div id="name-container" class="center-text">
       <span id="nameMenu" class="btn-group h2">
         <select class="form-control h2 s-text" id="name"></select>  
       </span>
     </div>
+
+
 
 
     <p class="run center-text">
@@ -62,12 +71,10 @@ title: Playground
     <%= name %>
   </script>
 
-
-  <!-- // <script type="text/template" id="location-template"> -->
-  <!-- //   <button class="btn btn-med btn-default" id="san-francisco">San Francisco</button> -->
-  <!-- //   <button class="btn btn-med btn-default" id="new-york">New York</button> -->
-  <!-- // </script> -->
-  
+   <script type="text/template" id="region-template">
+    <%= region %>
+  </script>
+ 
   <script type="text/template" id="stop-header-template"> 
     <th>Longitude</th>
     <th>Latitude</th>

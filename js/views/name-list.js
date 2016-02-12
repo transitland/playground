@@ -13,16 +13,23 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
         var nameView = new DeveloperPlayground.NameView({
             model: model
         });
-        
-        if ($(".btn#san-francisco").hasClass("selected")) {
-            if (model.get('metro') === 'San Francisco Bay Area'){
-                $(".form-control#name", this.$el).append(nameView.render().$el);
-            }
-        } else if ($(".btn#new-york").hasClass("selected")) {
-            if (model.get('metro') === 'New York City'){
-                $(".form-control#name", this.$el).append(nameView.render().$el);
-            }
+
+        // use region selection to render list of operator names
+        if (model.get('metro') === $('select.form-control#region')){
+            $(".form-control#name", this.$el).append(nameView.render().$el);
         }
+        //         $(".form-control#name", this.$el).append(nameView.render().$el);
+        //     }
+        
+        // if ($(".btn#san-francisco").hasClass("selected")) {
+        //     if (model.get('metro') === 'San Francisco Bay Area'){
+        //         $(".form-control#name", this.$el).append(nameView.render().$el);
+        //     }
+        // } else if ($(".btn#new-york").hasClass("selected")) {
+        //     if (model.get('metro') === 'New York City'){
+        //         $(".form-control#name", this.$el).append(nameView.render().$el);
+        //     }
+        // }
     },
 
     selectName: function(model) {
