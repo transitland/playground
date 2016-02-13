@@ -9,10 +9,6 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
         this.regionViews = [];
         this.listenTo(this.collection, 'add', this.renderRegion);
         this.collection.each(this.renderRegion, this);
-
-        // $(".form-control#region", this.$el).append(function() {
-
-        // });
     },
 
     renderRegion: function(model) {
