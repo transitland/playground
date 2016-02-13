@@ -45,6 +45,7 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
 
     close: function() {
         $('.form-control#name', this.$el).empty();
+        $('.form-control#name', this.$el).prepend("<option> </option>");
         this.stopListening();
         return this;
     }

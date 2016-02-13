@@ -85,6 +85,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     
     changeFilter: function() {
         var $parameterSelect = $('select.form-control#parameter');
+        $('.form-control#region', this.$el).empty();
+        $('.form-control#region', this.$el).prepend("<option> </option>");
 
         // If the filter (name/mapview) is changed to name/operator, show the region line/menu
 
@@ -107,7 +109,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
-            // if the filter is changed to mapview, hide the region line/menue and the name menu (if shown)
             $("#region-line").hide();
             $("#regionMenu").hide();
             $("#nameMenu").hide();
@@ -118,7 +119,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         }
     },
 
-    // NEW CODE HERE //
     changeRegion: function() {
         var $regionSelect = $('select.form-control#region');
 
@@ -146,7 +146,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         }
     },
-    // END NEW CODE HERE //
 
     submit: function() {
         var $entitySelect = $('select.form-control#entity');
