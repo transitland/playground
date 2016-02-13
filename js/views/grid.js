@@ -52,9 +52,7 @@ DeveloperPlayground.GridView = Backbone.View.extend({
 
             row = Backgrid.Row.extend({
                 className: function() {
-                    console.log("className called");
                     if (this.model.get('display') === false) {
-                        console.log("display = false");
                         return "hide";
                     }
                 }
