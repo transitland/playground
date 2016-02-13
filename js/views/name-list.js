@@ -18,7 +18,6 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
 
         // use region selection to render list of operator names
         if (model.get('metro') === $regionSelect.val()){
-            console.log("model.get(metro): " + model.get('metro'));
             $(".form-control#name", this.$el).append(nameView.render().$el);
         }
 
