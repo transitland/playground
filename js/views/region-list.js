@@ -2,9 +2,11 @@ var DeveloperPlayground = DeveloperPlayground || {};
 
 DeveloperPlayground.RegionListView = Backbone.View.extend({
 	el: '.btn-group#regionMenu',
+
    
 	initialize:function(options){
         this.collection = options.collection;
+        this.regionViews = [];
         this.listenTo(this.collection, 'add', this.renderRegion);
         this.collection.each(this.renderRegion, this);
     },
@@ -13,14 +15,11 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
         var regionView = new DeveloperPlayground.RegionView({
             model: model
         });
-
-        var locations = _.uniq(this.collection.pluck('metro'));
-      
-
-        // for each metro in locations array:
-
-        $(".form-control#region", this.$el).append(regionView.render().$el);
-
+        
+        if (!_.contains(this.regionViews, model.get('metro'))){
+            this.regionViews.push(model.get('metro'));
+            $(".form-control#region", this.$el).append(regionView.render().$el);
+        }
 
     },
 
