@@ -10,8 +10,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeFilter',
         'change .form-control#region': 'changeRegion',
-        'click .btn#san-francisco': 'changeMapSF',
-        'click .btn#new-york': 'changeMapNY',
         'click .btn#run-query-btn' : 'submit',
     },
 
