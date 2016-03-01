@@ -100,15 +100,25 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             collection = this.operators;
             $("#region-line").show();
             $("#countryMenu").show();
+            $("#nameMenu").show();
 
 
             if(!$("#countryMenu").hasClass("dropdown")) $("#countryMenu").addClass("dropdown");
+            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+
 
             if ('undefined' !== typeof this.countryListView) {
                 this.countryListView.close();
                 this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
             } else {
                 this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
+            }
+
+            if ('undefined' !== typeof this.nameListView) {
+                this.nameListView.close();
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            } else {
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             }
 
             this.operators.setQueryParameters({
@@ -136,14 +146,16 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeCountry: function() {
         var $countrySelect = $('select.form-control#country');
         $("#regionMenu").hide();
-        if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
 
+        if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+        if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
 
 
         if ($countrySelect.val() !== 'undefined') {
             collection = this.operators;
             $("#stateMenu").show();
-            
+            $("#nameMenu").show();
+
             if(!$("#stateMenu").hasClass("dropdown")) $("#stateMenu").addClass("dropdown");
             
             if ('undefined' !== typeof this.stateListView) {
@@ -151,6 +163,13 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 this.stateListView = new DeveloperPlayground.StateListView({collection: collection});
             } else {
                 this.stateListView = new DeveloperPlayground.StateListView({collection: collection});
+            }
+
+            if ('undefined' !== typeof this.nameListView) {
+                this.nameListView.close();
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            } else {
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             }
 
             this.operators.setQueryParameters({
@@ -171,14 +190,26 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if ($stateSelect.val() !== 'undefined') {
             collection = this.operators;
             $("#regionMenu").show();
+            $("#nameMenu").show();
+
             
             if(!$("#regionMenu").hasClass("dropdown")) $("#regionMenu").addClass("dropdown");
+            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+
             if ('undefined' !== typeof this.regionListView) {
                 this.regionListView.close();
                 this.regionListView = new DeveloperPlayground.RegionListView({collection: collection});
             } else {
                 this.regionListView = new DeveloperPlayground.RegionListView({collection: collection});
             }
+
+            if ('undefined' !== typeof this.nameListView) {
+                this.nameListView.close();
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            } else {
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            }
+
             this.operators.setQueryParameters({
                     url: API_HOST+'/api/v1/operators.json?per_page=5000'
                 });
@@ -187,7 +218,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         } else {
             $("#regionMenu").hide();
-
             if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
 
         }
@@ -198,9 +228,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         if ($regionSelect.val() !== 'undefined') {
             collection = this.operators;
-            $("#nameMenu").show();
+            // $("#nameMenu").show();
             
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+            
             if ('undefined' !== typeof this.nameListView) {
                 this.nameListView.close();
                 this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
