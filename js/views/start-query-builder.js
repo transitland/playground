@@ -9,6 +9,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     events: {
         'change .form-control#entity': 'changeParam',
         'change .form-control#parameter': 'changeFilter',
+        'change .form-control#country': 'changeCountry',
+        'change .form-control#state': 'changeState',
         'change .form-control#region': 'changeRegion',
         'click .btn#run-query-btn' : 'submit',
     },
@@ -23,12 +25,16 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template());
         $("#nameMenu").hide();
+        $("#countryMenu").hide();
+        $("#stateMenu").hide();
         $("#regionMenu").hide();
         $("#region-line").hide();
 
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+        if($("#stateMenu").hasClass("dropdown")) $("#stateMenu").removeClass("dropdown");
+        if($("#countryMenu").hasClass("dropdown")) $("#countryMenu").removeClass("dropdown");
         this.mapview = new DeveloperPlayground.MapView();
         this.mapview.render();
         this.downloadview = new DeveloperPlayground.DownloadView();
@@ -39,11 +45,14 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeParam: function() {
 
         $("#nameMenu").hide();
+        $("#countryMenu").hide();
+        $("#stateMenu").hide();
         $("#regionMenu").hide();
         $("#region-line").hide();
 
         if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
         if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+        if($("#countryMenu").hasClass("dropdown")) $("#countryMenu").removeClass("dropdown");
 
         var $entitySelect = $('select.form-control#entity');
         var $parameterSelect = $('select.form-control#parameter');
@@ -83,16 +92,86 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     
     changeFilter: function() {
         var $parameterSelect = $('select.form-control#parameter');
-        $('.form-control#region', this.$el).empty();
-        $('.form-control#region', this.$el).prepend("<option> </option>");
+        $('.form-control#country', this.$el).empty();
 
         // If the filter (name/mapview) is changed to name/operator, show the region line/menu
 
         if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
             collection = this.operators;
-            $("#regionMenu").show();
             $("#region-line").show();
+            $("#countryMenu").show();
 
+
+            if(!$("#countryMenu").hasClass("dropdown")) $("#countryMenu").addClass("dropdown");
+
+            if ('undefined' !== typeof this.countryListView) {
+                this.countryListView.close();
+                this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
+            } else {
+                this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
+            }
+
+            this.operators.setQueryParameters({
+            url: API_HOST+'/api/v1/operators.json?per_page=5000'
+                });
+            collection.fetch();
+
+            return this;
+
+        } else {
+            $("#region-line").hide();
+            $("#countryMenu").hide();
+            $("#stateMenu").hide();
+            $("#regionMenu").hide();
+            $("#nameMenu").hide();
+
+            if($("#countryMenu").hasClass("dropdown")) $("#countryMenu").removeClass("dropdown");
+            if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+            if($("#stateMenu").hasClass("dropdown")) $("#stateMenu").removeClass("dropdown");
+            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
+
+        }
+    },
+
+    changeCountry: function() {
+        var $countrySelect = $('select.form-control#country');
+        $("#regionMenu").hide();
+        if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
+
+
+
+        if ($countrySelect.val() !== 'undefined') {
+            collection = this.operators;
+            $("#stateMenu").show();
+            
+            if(!$("#stateMenu").hasClass("dropdown")) $("#stateMenu").addClass("dropdown");
+            
+            if ('undefined' !== typeof this.stateListView) {
+                this.stateListView.close();
+                this.stateListView = new DeveloperPlayground.StateListView({collection: collection});
+            } else {
+                this.stateListView = new DeveloperPlayground.StateListView({collection: collection});
+            }
+
+            this.operators.setQueryParameters({
+                    url: API_HOST+'/api/v1/operators.json?per_page=5000'
+                });
+            collection.fetch();
+            return this;
+
+        } else {
+            $("#stateMenu").hide();
+            if($("#stateMenu").hasClass("dropdown")) $("#stateMenu").removeClass("dropdown");
+        }
+    },
+
+    changeState: function() {
+        var $stateSelect = $('select.form-control#state');
+
+        if ($stateSelect.val() !== 'undefined') {
+            collection = this.operators;
+            $("#regionMenu").show();
+            
             if(!$("#regionMenu").hasClass("dropdown")) $("#regionMenu").addClass("dropdown");
             if ('undefined' !== typeof this.regionListView) {
                 this.regionListView.close();
@@ -107,12 +186,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
-            $("#region-line").hide();
             $("#regionMenu").hide();
-            $("#nameMenu").hide();
 
             if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
-            if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         }
     },
@@ -139,7 +215,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         } else {
             $("#nameMenu").hide();
-
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
 
         }
