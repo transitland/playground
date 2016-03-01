@@ -34,18 +34,7 @@ DeveloperPlayground.MapView = Backbone.View.extend({
             attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
         })
         .addTo(this.map);
-        $(".btn#san-francisco").addClass("selected");
         return this;
-    },
-
-    setMapviewSF: function() {
-        this.map.panTo(new L.LatLng(37.749, -122.443));
-        // ga('send', 'event', 'location toggle', 'click', 'SF');
-    },
-
-    setMapviewNY: function() {
-        this.map.panTo(new L.LatLng(40.7127, -74.0059));
-        // ga('send', 'event', 'location toggle', 'click', 'NY');
     },
 
     getBounds: function() {
