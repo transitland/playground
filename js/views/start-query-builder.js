@@ -151,7 +151,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
 
 
-        if ($countrySelect.val() !== 'undefined') {
+        if (($countrySelect.val() !== 'undefined') && ($countrySelect.val() !== '') ) {
             collection = this.operators;
             $("#stateMenu").show();
             $("#nameMenu").show();
@@ -187,7 +187,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
     changeState: function() {
         var $stateSelect = $('select.form-control#state');
 
-        if ($stateSelect.val() !== 'undefined') {
+        if (($stateSelect.val() !== 'undefined') && ($stateSelect.val() !== ''))  {
             collection = this.operators;
             $("#regionMenu").show();
             $("#nameMenu").show();
