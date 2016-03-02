@@ -8,7 +8,6 @@ DeveloperPlayground.CountryListView = Backbone.View.extend({
         this.close();
         this.collection = options.collection;
         this.countryViews = [];
-        // $('.form-control#region', this.$el).prepend("<option>region (optional)</option>");
         
         this.listenTo(this.collection, 'add', this.renderCountry);
         this.collection.each(this.renderCountry, this);

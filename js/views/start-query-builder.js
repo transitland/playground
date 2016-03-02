@@ -228,7 +228,6 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         if ($regionSelect.val() !== 'undefined') {
             collection = this.operators;
-            // $("#nameMenu").show();
             
             if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
             

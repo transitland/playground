@@ -19,7 +19,6 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
             model: model
         });
         
-        // if ((!_.contains(this.regionViews, model.get('metro'))) && (this.get('metro') === countrySelect)){
         if ((!_.contains(this.regionViews, model.get('metro'))) && (model.get('state') === $stateSelect)){
             this.regionViews.push(model.get('metro'));
             $(".form-control#region", this.$el).append(regionView.render().$el);

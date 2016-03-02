@@ -8,7 +8,6 @@ DeveloperPlayground.StateListView = Backbone.View.extend({
         this.close();
         this.collection = options.collection;
         this.stateViews = [];
-        // $('.form-control#region', this.$el).prepend("<option>region (optional)</option>");
         
         this.listenTo(this.collection, 'add', this.renderState);
         this.collection.each(this.renderState, this);
@@ -20,11 +19,7 @@ DeveloperPlayground.StateListView = Backbone.View.extend({
         var stateView = new DeveloperPlayground.StateView({
             model: model
         });
-        // if (!_.contains(this.stateViews, model.get('state'))){
-        //     this.stateViews.push(model.get('state'));
-        //     $(".form-control#state", this.$el).append(stateView.render().$el);
-        // }
-
+     
         if ((!_.contains(this.stateViews, model.get('state'))) && (model.get('country') === $countrySelect)){
             this.stateViews.push(model.get('state'));
             $(".form-control#state", this.$el).append(stateView.render().$el);
