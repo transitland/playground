@@ -179,6 +179,8 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
+            this.nameListView.close();
+            this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             $("#stateMenu").hide();
             if($("#stateMenu").hasClass("dropdown")) $("#stateMenu").removeClass("dropdown");
         }
@@ -215,11 +217,11 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
                 });
             collection.fetch();
             return this;
-
         } else {
+            this.nameListView.close();
+            this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             $("#regionMenu").hide();
             if($("#regionMenu").hasClass("dropdown")) $("#regionMenu").removeClass("dropdown");
-
         }
     },
 
@@ -244,9 +246,10 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
             return this;
 
         } else {
+            this.nameListView.close();
+            this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
             $("#nameMenu").hide();
             if($("#nameMenu").hasClass("dropdown")) $("#nameMenu").removeClass("dropdown");
-
         }
     },
 
