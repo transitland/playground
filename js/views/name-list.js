@@ -14,9 +14,18 @@ DeveloperPlayground.NameListView = Backbone.View.extend({
             model: model
         });
         var $regionSelect = $('select.form-control#region');
+        var $stateSelect = $('select.form-control#state');
+        var $countrySelect = $('select.form-control#country');
+        var $parameterSelect = $('select.form-control#parameter');
+       
 
-        // use region selection to render list of operator names
-        if (model.get('metro') === $regionSelect.val()){
+        if (($countrySelect.val() === '' || $countrySelect.val() === 'undefined' ) && ($parameterSelect.val() == "name" || $parameterSelect.val() == "operator")) {
+            $(".form-control#name", this.$el).append(nameView.render().$el);
+        } else if (($stateSelect.val() === '' || $stateSelect.val() === 'undefined' ) && (model.get('country') === $countrySelect.val())){
+            $(".form-control#name", this.$el).append(nameView.render().$el);
+        } else if (($regionSelect.val() === '' || $regionSelect.val() === 'undefined' ) && (model.get('state') === $stateSelect.val())){
+            $(".form-control#name", this.$el).append(nameView.render().$el);
+        } else if (model.get('metro') === $regionSelect.val()){
             $(".form-control#name", this.$el).append(nameView.render().$el);
         }
 

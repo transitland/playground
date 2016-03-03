@@ -25,14 +25,27 @@ title: Playground
     </p>
 
     <p class="region-list white-text center-text">
-      <span style="margin-left:10px" class="h2" id="region-line"> IN </span>
-      <span id="regionMenu" class="btn-group h2">
-        <select class="form-control h2 s-text" id="region">
-          <option> </option>
-        </select>  
+      <span style="margin-left:10px" class="h2" id="region-line"> IN
+        <br>
+         <span id="countryMenu" class="btn-group h2">
+          <select class="form-control h2 s-text" id="country">
+            <option> </option>
+          </select>  
+        </span>
+        <br>
+        <span id="stateMenu" class="btn-group h2">
+          <select class="form-control h2 s-text" id="state">
+            <option> </option>
+          </select>  
+        </span>
+        <br>
+        <span id="regionMenu" class="btn-group h2">
+          <select class="form-control h2 s-text" id="region">
+            <option> </option>
+          </select>  
+        </span>
       </span>
     </p>
-
     <div id="name-container" class="center-text">
       <span id="nameMenu" class="btn-group h2">
         <select class="form-control h2 s-text" id="name">
@@ -75,7 +88,15 @@ title: Playground
     <%= name %>
   </script>
 
-   <script type="text/template" id="region-template">
+  <script type="text/template" id="country-template">
+    <%= country %>
+  </script>
+
+  <script type="text/template" id="state-template">
+    <%= state %>
+  </script>
+
+  <script type="text/template" id="region-template">
     <%= metro %>
   </script>
  
@@ -118,8 +139,16 @@ title: Playground
   <script type="text/javascript" src="js/views/map.js" type="text/javascript"></script>
   <script type="text/javascript" src="js/views/name-list.js" type="text/javascript"></script>
   <script type="text/javascript" src="js/views/name.js" type="text/javascript"></script>
+ 
   <script type="text/javascript" src="js/views/region-list.js" type="text/javascript"></script>
   <script type="text/javascript" src="js/views/region.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="js/views/state-list.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/views/state.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="js/views/country-list.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/views/country.js" type="text/javascript"></script>
+  
   <script type="text/javascript" src="js/views/grid.js" type="text/javascript"></script>
   <script type="text/javascript" src="js/lib/backbone-dotattr.js"></script>
   <script type="text/javascript" src="js/lib/FileSaver.js"></script>
