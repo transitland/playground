@@ -9,7 +9,7 @@ DeveloperPlayground.RegionView = Backbone.View.extend({
 		renderedHtml = this.template(this.model.toJSON());
 		this.$el.html(renderedHtml);
 		this.$el.val(this.model.get('metro'));
-		this.$el.text(this.model.get('country') + ", " + this.model.get('state') + ", " + this.model.get('metro'));
+		this.$el.text(this.model.get('metro'));
 		return this;
 	},
 

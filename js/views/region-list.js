@@ -12,11 +12,14 @@ DeveloperPlayground.RegionListView = Backbone.View.extend({
     },
 
     renderRegion: function(model) {
+
+        var $stateSelect = $('select.form-control#state').val();
+
         var regionView = new DeveloperPlayground.RegionView({
             model: model
         });
         
-        if (!_.contains(this.regionViews, model.get('metro'))){
+        if ((!_.contains(this.regionViews, model.get('metro'))) && (model.get('state') === $stateSelect)){
             this.regionViews.push(model.get('metro'));
             $(".form-control#region", this.$el).append(regionView.render().$el);
         }
