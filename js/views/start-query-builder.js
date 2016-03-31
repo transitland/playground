@@ -96,7 +96,42 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
         // If the filter (name/mapview) is changed to name/operator, show the region line/menu
 
-        if($parameterSelect.val() == "name" || $parameterSelect.val() == "operator") {
+        if ($parameterSelect.val() == "operator") {
+            this.operators = new DeveloperPlayground.Operators();
+            collection = this.operators;
+            
+
+            $("#region-line").show();
+            $("#countryMenu").show();
+            $("#nameMenu").show();
+
+
+            if(!$("#countryMenu").hasClass("dropdown")) $("#countryMenu").addClass("dropdown");
+            if(!$("#nameMenu").hasClass("dropdown")) $("#nameMenu").addClass("dropdown");
+
+
+            if ('undefined' !== typeof this.countryListView) {
+                this.countryListView.close();
+                this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
+            } else {
+                this.countryListView = new DeveloperPlayground.CountryListView({collection: collection});
+            }
+
+            if ('undefined' !== typeof this.nameListView) {
+                this.nameListView.close();
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            } else {
+                this.nameListView = new DeveloperPlayground.NameListView({collection: collection});
+            }
+
+            this.operators.setQueryParameters({
+            url: API_HOST+'/api/v1/operators.json?import_level=1,2,4&per_page=5000'
+                });
+            collection.fetch();
+
+            return this;
+
+        } else if ($parameterSelect.val() == "name") {
             collection = this.operators;
             $("#region-line").show();
             $("#countryMenu").show();

@@ -19,7 +19,6 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 	
 	setQueryParameters: function(queryParameters) {
 		this.url = queryParameters.url;
-        console.log("API query url: ", this.url);
 	},
 	
 	parse: function(response, xhr) {
@@ -28,7 +27,6 @@ DeveloperPlayground.Operators = Backbone.Collection.extend({
 
 	listNames: function(nameListURL) {
 		this.url = nameListURL.url;
-        console.log("url: ", this.url);
 	},
 
 	hideAll: function() {
