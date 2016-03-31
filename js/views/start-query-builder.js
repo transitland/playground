@@ -17,6 +17,7 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
 
     initialize: function () {
         this.operators = new DeveloperPlayground.Operators();
+        this.operatorsFiltered = new DeveloperPlayground.OperatorsFiltered();
         this.stops = new DeveloperPlayground.Stops();
         this.routes = new DeveloperPlayground.Routes();
         this.render();
@@ -97,9 +98,9 @@ DeveloperPlayground.StartQueryBuilderView = Backbone.View.extend({
         // If the filter (name/mapview) is changed to name/operator, show the region line/menu
 
         if ($parameterSelect.val() == "operator") {
-            this.operators = new DeveloperPlayground.Operators();
-            collection = this.operators;
+            collection = this.operatorsFiltered;
             
+
 
             $("#region-line").show();
             $("#countryMenu").show();
