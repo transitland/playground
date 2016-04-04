@@ -1,6 +1,6 @@
 var DeveloperPlayground = DeveloperPlayground || {};
 
-DeveloperPlayground.Operator = Backbone.Model.extend({
+DeveloperPlayground.OperatorFiltered = Backbone.Model.extend({
 	idAttribute: "onestop_id",
 	defaults: {
 		"display": true,
@@ -13,9 +13,9 @@ DeveloperPlayground.Operator = Backbone.Model.extend({
 	}
 });
 
-DeveloperPlayground.Operators = Backbone.Collection.extend({
-	model: DeveloperPlayground.Operator,
-	url: API_HOST + '/api/v1/operators.json',
+DeveloperPlayground.OperatorsFiltered = Backbone.Collection.extend({
+	model: DeveloperPlayground.OperatorFiltered,
+	url: API_HOST + '/api/v1/operators.json?import_level=1,2,4',
 	
 	setQueryParameters: function(queryParameters) {
 		this.url = queryParameters.url;
