@@ -3,7 +3,7 @@
 The [Transitland Playground](https://transit.land/playground) is a Backbone.js app designed to be a friendly interface for the [Datastore API](https://github.com/transitland/transitland-datastore), providing a way to view and download transit data without writing any lines of code. 
 
 <!-- screenshot of playground interface -->
-![Transitland Playground UI](https://github.com/transitland/playground/raw/images/README_00_Transitland_Playground.png "Transitland Playground UI")
+![Transitland Playground UI](https://github.com/transitland/playground/raw/decommission%23139/images/README_00_Transitland_Playground.png "Transitland Playground UI")
 
 The Playground allowed for querying for routes, stops and operators by name:
 
