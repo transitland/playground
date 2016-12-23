@@ -1,6 +1,8 @@
-# transitland-developer-playground
+# Transitland Playground
 
-The [Transitland Playground](https://transit.land/playground) is a Backbone.js app designed to be a friendly interface for the [Datastore API](https://github.com/transitland/transitland-datastore), providing a way to view and download transit data without writing any lines of code. 
+**We're no longer maintaining the Transitland Playground, but the code is still available here for reference. And this readme includes screenshots showing the Playground in action. If you'd like to quickly start interacting with the Transitland Datastore API in a web browser, please try the Mapzen Mobility Explorer at https://mapzen.com/mobility/explorer/ (its source code is also on GitHub at [mapzen/mobility-explorer](https://github.com/mapzen/mobility-explorer)).**
+
+The [Transitland Playground](https://transit.land/playground) is a Backbone.js app designed to be a friendly interface for the [Transitland Datastore API](https://transit.land/documentation/datastore/api-endpoints.html), providing a way to view and download transit data without writing any lines of code. 
 
 ![Transitland Playground UI](https://github.com/transitland/playground/raw/master/images/README_00_Transitland_Playground.png "Transitland Playground UI")
 
@@ -20,7 +22,11 @@ Query data is provided in a table below the map:
 
 ![Table showing query data](https://github.com/transitland/playground/raw/master/images/README_04_data_table.png "Table showing query data")
 
-The Playground is no longer available on [Transitland](https://transit.land), but to run it locally, use `bundle exec jekyll serve`.
+The Playground is no longer hosted on Transitland's web servers, but you can still run it locally on your own computer:
+
+1. Make sure you have Ruby available
+2. Install dependencies: `bundle install`
+3. Start the local development web server: `bundle exec jekyll serve`.
 
 The Mapzen [Mobility Explorer](https://mapzen.com/mobility/explorer) now provides a way to view Transitland data, as well test out Mapzen mobility APIs.
 
