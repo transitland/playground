@@ -35,4 +35,4 @@ The Mapzen [Mobility Explorer](https://mapzen.com/mobility/explorer) now provide
 
 ## Contact
 
-[Transitland](https://transit.land) is sponsored by [Mapzen](http://mapzen.com). Contact us with your questions, comments, or suggestions: [hello@mapzen.com](mailto:hello@mapzen.com).
+Contact us with your questions, comments, or suggestions: [hello@mapzen.com](mailto:hello@transit.land).
