@@ -11,13 +11,7 @@ module Jekyll
         site.config['url'] = '//transit.land/'
         site.config['playground_url'] = '//transit.land/playground'
         site.config['api_host'] = '//transit.land'
-        site.config['analytics_key'] = 'UA-47035811-2'
-      else
-        site.config['url'] = '//dev.transit.land/'
-        site.config['playground_url'] = '//dev.transit.land/playground'
-        site.config['api_host'] = '//dev.transit.land'
-        site.config['analytics_key'] = 'UA-47035811-4'
-        
+        site.config['analytics_key'] = 'UA-47531031-4'
       end
     end
  
